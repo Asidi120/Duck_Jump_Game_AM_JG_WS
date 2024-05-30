@@ -6,8 +6,8 @@ int main()
 
     while (gra.czyGraOtwarta())
     {
-        gra.update();
+        gra.aktualizuj();
         
-        gra.render();
+        gra.rysuj();
     }
 }
