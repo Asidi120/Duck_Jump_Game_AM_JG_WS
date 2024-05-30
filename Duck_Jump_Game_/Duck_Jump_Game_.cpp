@@ -7,7 +7,7 @@ int main(void) {
 
     while (window.isOpen()) 
     {
-        sf::Event event;
+        sf::Event event; //proba
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
