@@ -7,6 +7,7 @@ Menu::Menu()
 	{
 		cout << "Error" << endl;
 	}
+
 	menu[0].setFont(czcionka);
 	menu[0].setFillColor(Color::Red);
 	menu[0].setString("Graj");
@@ -38,6 +39,7 @@ void Menu::rysuj_menu()
 	{
 		okno->draw(menu[i]);
 	}
+
 }
 
 void Menu::ruch_do_gory()
