@@ -10,7 +10,7 @@ int main(void) {
         sf::Event event; //proba test tooooooooooooooooooooooooo
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) //ja jestem Weronika seksi cipka spod Rybnika je je je
-                window.close();//koniec prob
+                window.close();//koniec prob teraz bedzie to
         }
 
         window.clear();
