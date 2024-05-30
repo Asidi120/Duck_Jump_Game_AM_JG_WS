@@ -49,9 +49,10 @@ void Gra::aktualizuj()
 
 void Gra::rysuj()
 {
+    Menu menu;
     okno->clear(); //czysci stare okno
     //tu bedziemy rysowac elementy gry 
-    ;
+    rysuj_menu(menu);
     okno->display(); //koniec renderingu
 }
 

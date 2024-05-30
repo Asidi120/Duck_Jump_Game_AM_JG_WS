@@ -21,7 +21,7 @@ Menu::Menu()
 	menu[2].setFillColor(Color::White);
 	//menu[2].setString("Ustawienia");
 	menu[2].setPosition(Vector2f(650 / 2, 900 / (Ilosc_Napisow + 1) * 3));
-	menu[2].
+
 	//menu[3].setFont(czcionka);
 	menu[3].setFillColor(Color::White);
 	//menu[3].setString("Wyjdz");
