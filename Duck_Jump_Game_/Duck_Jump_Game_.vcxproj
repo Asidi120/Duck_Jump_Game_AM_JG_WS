@@ -156,9 +156,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Duck_Jump_Game_.cpp" />
+    <ClCompile Include="Gra.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Szablon.h" />
+    <ClInclude Include="Gra.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,23 +1,13 @@
-﻿#include "SFML/Graphics.hpp" // w tym miejscu nawiasy ostre (youtube uniemożliwia umieszczenie ich w opisie filmu)
+﻿#include "Gra.h"
 
-int main(void) {
-    sf::RenderWindow window(sf::VideoMode(700, 900), "Duck_Jump");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+int main() 
+{
+    Gra gra; //konstruktor tworzy okno
 
-    while (window.isOpen()) //:DD
+    while (gra.czyGraOtwarta())
     {
-        sf::Event event;
-        while (window.pollEvent(event)) //ko
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }//dkd
-
-        window.clear();
-        window.draw(shape);
-        window.display();
+        gra.update();
+        
+        gra.render();
     }
-
-    return 0;
 }
