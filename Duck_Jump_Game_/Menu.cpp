@@ -37,7 +37,7 @@ void Menu::rysuj_menu()
 {
 	for (int i = 0; i < Ilosc_Napisow; i++)
 	{
-		game.window->draw(menu[i]);
+		okno->draw(menu[i]);
 	}
 }
 
