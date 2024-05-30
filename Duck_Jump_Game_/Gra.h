@@ -5,7 +5,9 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
+
 using namespace sf;
+using namespace std;
 #pragma once
 
 class Gra

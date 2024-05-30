@@ -1,4 +1,5 @@
 #include "Gra.h"
+#include "Menu.h"
 
 void Gra::tworzOkno()
 {
