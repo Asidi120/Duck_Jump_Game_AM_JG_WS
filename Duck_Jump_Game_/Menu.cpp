@@ -9,11 +9,8 @@ Menu::Menu()
 	}
 	//menu[0].setFont(czcionka);
 	//menu[0].setFillColor(Color::Red);
-	Text description("graj", czcionka, 20);
-	menu[0].("graj", czcionka, 20);
-	description.setPosition(10, 530);
-	description.setFillColor(sf::Color(80, 80, 80));
-	description
+	//menu[0].setString(L"graj");
+	//menu[0].setCharacterSize(28);
 	//menu[0].setPosition(Vector2f(650 / 2, 900 / (Ilosc_Napisow + 1) * 1));
 
 	//menu[1].setFont(czcionka);
@@ -37,7 +34,7 @@ Menu::~Menu()
 
 void rysuj_menu(Menu kook)
 {
-	kook.okno->draw(kook.);
+	kook.okno->draw(kook.description);
 	//for (int i = 0; i < kook.Ilosc_Napisow; i++)
 	//{
 		//kook.okno->draw(kook.menu[i]);

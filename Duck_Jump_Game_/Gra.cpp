@@ -6,7 +6,7 @@ void Gra::tworzOkno()
 	videomode.height = 900; //rozmiary okienka
 	videomode.width = 650;
 	okno = new RenderWindow(videomode, "Duck Jump", Style::Titlebar | Style::Close);
-    okno->setFramerateLimit(90); // 90 fps
+    okno->setVerticalSyncEnabled(1); // fps takie jak monitor
 }
 
 Gra::Gra() //kostruktor domyslny - tworzy okienko
@@ -49,10 +49,10 @@ void Gra::aktualizuj()
 
 void Gra::rysuj()
 {
-    Menu menu;
-    okno->clear(); //czysci stare okno
+    //Menu menu;
+    //okno->clear(); //czysci stare okno
     //tu bedziemy rysowac elementy gry 
-    rysuj_menu(menu);
-    okno->display(); //koniec renderingu
+    //rysuj_menu(menu);
+    //okno->display(); //koniec renderingu
 }
 

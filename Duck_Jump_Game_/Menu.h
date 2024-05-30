@@ -9,6 +9,7 @@ public:
 	const int Ilosc_Napisow = 4;
 	Menu();
 	virtual~Menu();
+	Text description;
 	Text menu[];
 	friend void rysuj_menu(Menu);
 	void ruch_do_gory();
