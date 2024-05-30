@@ -51,7 +51,7 @@ void Gra::rysuj()
 {
     okno->clear(); //czysci stare okno
     //tu bedziemy rysowac elementy gry 
-    menu.rysuj_menu();
+    ;
     okno->display(); //koniec renderingu
 }
 
