@@ -13,11 +13,11 @@ using namespace std;
 
 class Gra
 {
-	VideoMode videomode;
 	Event evnt;
 	void tworzOkno(); // tworzy nam okienko
 public:
 	RenderWindow* okno = nullptr;
+	VideoMode videomode;
 	Gra();
 	virtual~Gra();
 
