@@ -2,41 +2,41 @@
 
 void Gra::tworzOkno()
 {
-	this->videomode.height = 700; //rozmiary okienka
-	this->videomode.width = 900;
-	this->okno = new RenderWindow(this->videomode, "Duck Jump", Style::Titlebar | Style::Close);
+	videomode.height = 700; //rozmiary okienka
+	videomode.width = 900;
+	okno = new RenderWindow(videomode, "Duck Jump", Style::Titlebar | Style::Close);
 
 	this->okno->setFramerateLimit(60); // 60 fps
 }
 
 Gra::Gra()
 {
-	this->tworzOkno();
+	tworzOkno();
 }
 
 Gra::~Gra()
 {
-	delete this->okno; //usuwa okno
+	delete okno; //usuwa okno
 }
 
 const bool Gra::czyGraOtwarta() const
 {
-    return this->okno->isOpen();
+    return okno->isOpen();
 }
 
 void Gra::petlaOkna()
 {
-    while (this->okno->pollEvent(this->e)) //zbiera jakies wydarzenie
+    while (okno->pollEvent(e)) //zbiera jakies wydarzenie
     {
-        switch (this->e.type)
+        switch (e.type)
         {
         case Event::Closed:
-            this->okno->close(); //po nacisnieciu przycisku x okno sie zamknie
+            okno->close(); //po nacisnieciu przycisku x okno sie zamknie
             break;
 
         case Event::KeyPressed:
-            if (this->e.key.code == Keyboard::Escape) //po nacisnieciu klawiszu esc okno sie zamknie
-                this->okno->close();
+            if (e.key.code == Keyboard::Escape) //po nacisnieciu klawiszu esc okno sie zamknie
+                okno->close();
             break;
         }
     }
@@ -44,14 +44,14 @@ void Gra::petlaOkna()
 
 void Gra::update()
 {
-    this->petlaOkna();
+    petlaOkna();
 }
 
 void Gra::render()
 {
-    this->okno->clear(); //czysci stare okno
-    //tu bedziemy rysowac elementy gry min menu
+    okno->clear(); //czysci stare okno
+    //tu bedziemy rysowac elementy gry 
 
-    this->okno->display(); //koniec renderingu
+    okno->display(); //koniec renderingu
 }
 
