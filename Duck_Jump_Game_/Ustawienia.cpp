@@ -38,18 +38,24 @@ void Ustawienia::wylacz_wlacz_muzyka(RenderWindow& okno)
 {
 	while (okno.pollEvent(event_muzyka))
 	{
-		switch(event_muzyka.type)
+		switch (event_muzyka.type)
 		{
 		case Event::KeyPressed:
 			switch (event_muzyka.key.code)
 			{
 			case Keyboard::Right:
-				cout << "Strzalka w bbok";
+				cout << "Strzalka w prawo";
 				break;
+			case Keyboard::Left:
+				cout << "Strzalka w lewo";
+				break;
+			case Keyboard::Escape:
+				cout << "esk";
+				break;
+
 			}
 			break;
 		}
 	}
-
 }
 

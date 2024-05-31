@@ -9,6 +9,7 @@ class Ustawienia:public Menu
 	bool muzyka=1;
 	Event event_muzyka;
 public:
+	bool czy_ustawienia_wlaczone = 0;
 	Ustawienia();
 	virtual ~Ustawienia();
 	void rysuj_ustawienia(RenderWindow &okno);
