@@ -27,16 +27,19 @@ void Gra::ustaw_menu(Menu* menu)
 {
     this->menu = menu;
 }
-
-void ustawieniasierysuja(RenderWindow& okno)
+void Gra::ustaw_ustawienia(Ustawienia* ustawienia)
 {
-    Ustawienia ustawienia;
-    ustawienia.czy_ustawienia_wlaczone = 1;
-    while (ustawienia.czy_ustawienia_wlaczone==1)
+    this->ustawienia = ustawienia;
+}
+
+void ustawieniasierysuja(RenderWindow& okno, Ustawienia* ustawienia)
+{
+    ustawienia->czy_ustawienia_wlaczone = 1;
+    while (ustawienia->czy_ustawienia_wlaczone==1)
     {
         okno.clear();
-        ustawienia.rysuj_ustawienia(okno);
-        ustawienia.wylacz_wlacz_muzyka(okno);
+        ustawienia->rysuj_ustawienia(okno);
+        ustawienia->wylacz_wlacz_muzyka(okno);
         okno.display();
     }
 }
@@ -79,7 +82,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     if (menu->ktory_teraz() == 2) //przycisk ustawienia
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do ustawien)
-                        ustawieniasierysuja(*okno);
+                        ustawieniasierysuja(*okno,ustawienia);
                         menu->czy_menu_otwarte = 1;
                     }
                     if (menu->ktory_teraz() == 1) //przycisk postacie
