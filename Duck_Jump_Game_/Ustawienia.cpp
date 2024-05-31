@@ -37,30 +37,24 @@ void Ustawienia::rysuj_ustawienia(RenderWindow& okno)
 
 void Ustawienia::wylacz_wlacz_muzyka(RenderWindow& okno)
 {
-	while (czy_ustawienia_wlaczone == 1)
+	while (okno.pollEvent(event_muzyka))
 	{
-		while (okno.pollEvent(event_muzyka))
+		if (event_muzyka.type == Event::KeyPressed)
 		{
-			if(event_muzyka.type== Event::KeyPressed)
+			if (event_muzyka.key.code == Keyboard::Right)
 			{
-				if (event_muzyka.key.code == Keyboard::Right)
-				{
-					cout << "Strzalka w prawo";
-				}
-				if (event_muzyka.key.code == Keyboard::Left)
-				{
-					cout << "Strzalka w lewo";
-				}
-				if (event_muzyka.key.code == Keyboard::Escape)
-				{
-					cout << "Esc";
-					break;
-				}
+				cout << "Strzalka w prawo";
+			}
+			if (event_muzyka.key.code == Keyboard::Left)
+			{
+				cout << "Strzalka w lewo";
+			}
+			if (event_muzyka.key.code == Keyboard::Escape)
+			{
+				czy_ustawienia_wlaczone = 0;
+				break;
 			}
 		}
-		czy_ustawienia_wlaczone = 0;
 	}
-	czy_menu_otwarte = 1;
-	cout << "Ustawienia zamkniete";
 }
 

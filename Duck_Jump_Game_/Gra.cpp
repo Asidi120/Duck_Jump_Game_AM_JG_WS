@@ -28,11 +28,24 @@ void Gra::ustaw_menu(Menu* menu)
     this->menu = menu;
 }
 
+void ustawieniasierysuja(RenderWindow& okno)
+{
+    Ustawienia ustawienia;
+    ustawienia.czy_ustawienia_wlaczone = 1;
+    while (ustawienia.czy_ustawienia_wlaczone==1)
+    {
+        okno.clear();
+        ustawienia.rysuj_ustawienia(okno);
+        ustawienia.wylacz_wlacz_muzyka(okno);
+        okno.display();
+    }
+}
+
 void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
 {
     while (menu->czy_menu_otwarte == 1)
     {
-        while (okno->pollEvent(evnt) && menu->czy_menu_otwarte == 1) //zbiera co sie aktualnie dzieje
+        while (okno->pollEvent(evnt)) //zbiera co sie aktualnie dzieje
         {
             if (menu->czy_menu_otwarte == 1) //jezeli menu ma byc rysowane (jest otwarte)
             {
@@ -66,8 +79,8 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     if (menu->ktory_teraz() == 2) //przycisk ustawienia
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do ustawien)
-                        
-                        break;
+                        ustawieniasierysuja(*okno);
+                        menu->czy_menu_otwarte = 1;
                     }
                     if (menu->ktory_teraz() == 1) //przycisk postacie
                     {
@@ -83,15 +96,4 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
 
         }
     }
-    if (menu->ktory_teraz() == 2)
-    {
-        okno->clear();
-        Ustawienia ustawienia;
-        ustawienia.czy_ustawienia_wlaczone = 1;
-        ustawienia.rysuj_ustawienia(*okno);
-        ustawienia.wylacz_wlacz_muzyka(*okno);
-        okno->display();
-    }
-    
-
 }
