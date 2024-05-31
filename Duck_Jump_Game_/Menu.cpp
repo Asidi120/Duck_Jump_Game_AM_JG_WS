@@ -8,7 +8,6 @@ Menu::Menu()
 		cout << "Error" << endl;
 	}
 	menu[0].setFont(czcionka);
-	menu[0].setFillColor(Color::Red);
 	menu[0].setString("Graj");
 	menu[0].setCharacterSize(28);
 	menu[0].setPosition(Vector2f(650 / 2, 900 / (Ilosc_Napisow + 1) * 1));
@@ -37,5 +36,34 @@ void Menu::rysuj_menu(RenderWindow& okno)
 	}
 }
 
-void Menu::ruch_do_gory() {}
-void Menu::ruch_w_dol() {}
+void Menu::ruch_do_gory() 
+{
+	if (wybrany_obiekt - 1 >= 0)
+	{
+		menu[wybrany_obiekt].setFillColor(Color::White);
+		wybrany_obiekt--;
+		menu[wybrany_obiekt].setFillColor(Color::Cyan);
+		cout << "do gory";
+	}
+	else
+	{
+		menu[3].setFillColor(Color::Cyan);
+		menu[wybrany_obiekt].setFillColor(Color::White);
+		wybrany_obiekt=3;
+	}
+}
+void Menu::ruch_w_dol() 
+{
+	if (wybrany_obiekt + 1 <= 3)
+	{
+		menu[wybrany_obiekt].setFillColor(Color::White);
+		wybrany_obiekt++;
+		menu[wybrany_obiekt].setFillColor(Color::Cyan);
+	}
+	else
+	{
+		menu[0].setFillColor(Color::Cyan);
+		menu[wybrany_obiekt].setFillColor(Color::White);
+		wybrany_obiekt = 0;
+	}
+}

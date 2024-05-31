@@ -6,6 +6,7 @@ class Menu
 	Text menu[4];
 	Font czcionka;
 	const int Ilosc_Napisow = 4;
+	int wybrany_obiekt=0;
 public:
 	Menu();
 	virtual~Menu();
