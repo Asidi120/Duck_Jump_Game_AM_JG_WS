@@ -6,10 +6,12 @@
 class Ustawienia:public Menu
 {
 	Text ustawienia_napisy[IloscNapisowUstawienia];
+	bool muzyka=1;
+	Event event_muzyka;
 public:
 	Ustawienia();
 	virtual ~Ustawienia();
 	void rysuj_ustawienia(RenderWindow &okno);
-	void wylacz_wlacz_muzyka();
+	void wylacz_wlacz_muzyka(RenderWindow& okno);
 };
 

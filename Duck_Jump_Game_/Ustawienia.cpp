@@ -34,8 +34,22 @@ void Ustawienia::rysuj_ustawienia(RenderWindow& okno)
 	}
 }
 
-void Ustawienia::wylacz_wlacz_muzyka()
+void Ustawienia::wylacz_wlacz_muzyka(RenderWindow& okno)
 {
+	while (okno.pollEvent(event_muzyka))
+	{
+		switch(event_muzyka.type)
+		{
+		case Event::KeyPressed:
+			switch (event_muzyka.key.code)
+			{
+			case Keyboard::Right:
+				cout << "Strzalka w bbok";
+				break;
+			}
+			break;
+		}
+	}
 
 }
 

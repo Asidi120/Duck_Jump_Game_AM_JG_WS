@@ -30,15 +30,14 @@ void Gra::ustaw_menu(Menu* menu)
 
 void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
 {
-    while (okno->pollEvent(evnt)) //zbiera co sie aktualnie dzieje
+    while (okno->pollEvent(evnt) && menu->czy_menu_otwarte==1) //zbiera co sie aktualnie dzieje
     {
         if (menu->czy_menu_otwarte == 1) //jezeli menu ma byc rysowane (jest otwarte)
         {
             okno->clear(); //czysci stare okno
-            menu->rysuj_menu(*okno);  
+            menu->rysuj_menu(*okno);
             okno->display(); //koniec renderingu
         }
-        
         switch (evnt.type)
         {
         case Event::Closed:
@@ -68,6 +67,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     okno->clear();
                     Ustawienia ustawienia;
                     ustawienia.rysuj_ustawienia(*okno);
+                    ustawienia.wylacz_wlacz_muzyka(*okno);
                     okno->display();
                 }
                 if (menu->ktory_teraz() == 1) //przycisk postacie
@@ -81,5 +81,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
             }
         break;
         }
+
     }
+
 }
