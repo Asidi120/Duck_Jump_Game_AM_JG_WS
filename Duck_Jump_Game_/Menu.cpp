@@ -8,6 +8,7 @@ Menu::Menu()
 		cout << "Error" << endl;
 	}
 	menu[0].setFont(czcionka);
+	menu[0].setFillColor(Color::Cyan);
 	menu[0].setString("Graj");
 	menu[0].setCharacterSize(28);
 	menu[0].setPosition(Vector2f(650 / 2, 900 / (Ilosc_Napisow + 1) * 1));
