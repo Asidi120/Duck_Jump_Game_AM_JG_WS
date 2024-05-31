@@ -3,6 +3,7 @@
 
 class Menu
 {
+protected:
 	Text menu[4];
 	Font czcionka;
 	Text tytul;
@@ -11,11 +12,12 @@ class Menu
 	Texture tekstura_tla;
 	Sprite tlo;
 public:
+	bool czy_menu_otwarte = 1;
 	Menu();
 	virtual~Menu();
 	void rysuj_menu(RenderWindow &okno);
 	int ktory_teraz();
-	void ruch_do_gory();
-	void ruch_w_dol();
+	void ruch_do_gory(int);
+	void ruch_w_dol(int);
 };
 

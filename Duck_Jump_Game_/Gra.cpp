@@ -1,5 +1,6 @@
 #include "Gra.h"
 #include "Menu.h"
+#include "Ustawienia.h"
 
 Gra::Gra() //kostruktor domyslny - tworzy okienko
 {  
@@ -31,6 +32,13 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
 {
     while (okno->pollEvent(evnt)) //zbiera co sie aktualnie dzieje
     {
+        if (menu->czy_menu_otwarte == 1)
+        {
+            okno->clear(); //czysci stare okno
+            menu->rysuj_menu(*okno);  
+            okno->display(); //koniec renderingu
+        }
+        
         switch (evnt.type)
         {
         case Event::Closed:
@@ -44,31 +52,34 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                 okno->close();
                 break;
             case Keyboard::Down:
-                menu->ruch_w_dol();
+                menu->ruch_w_dol(4);
                 break;
             case Keyboard::Up:
-                menu->ruch_do_gory();
+                menu->ruch_do_gory(4);
                 break;
             case Keyboard::Enter:
-                if (menu->ktory_teraz() == 3)
+                if (menu->ktory_teraz() == 3) //przycisk wyjdz
                 {
                     okno->close();
                 }
-                if (menu->ktory_teraz() == 2)
+                if (menu->ktory_teraz() == 2) //przycisk ustawienia
+                {
+                    menu->czy_menu_otwarte = 0;
+                    okno->clear();
+                    Ustawienia ustawienia;
+                    ustawienia.rysuj_ustawienia(*okno);
+                    okno->display();
+                }
+                if (menu->ktory_teraz() == 1) //przycisk postacie
                 {
                 }
-                if (menu->ktory_teraz() == 1)
+                if (menu->ktory_teraz() == 0) //przycisk graj
                 {
-                }
-                if (menu->ktory_teraz() == 0)
-                {
+                    //tu bedzie dziko
                 }
                 break;
             }
         break;
         }
-        okno->clear(); //czysci stare okno
-        menu->rysuj_menu(*okno);
-        okno->display(); //koniec renderingu
     }
 }

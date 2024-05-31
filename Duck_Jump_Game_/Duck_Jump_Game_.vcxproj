@@ -157,11 +157,17 @@
   <ItemGroup>
     <ClCompile Include="Duck_Jump_Game_.cpp" />
     <ClCompile Include="Gra.cpp" />
+    <ClCompile Include="Graj.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Postacie_sklep.cpp" />
+    <ClCompile Include="Ustawienia.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gra.h" />
+    <ClInclude Include="Graj.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Postacie_sklep.h" />
+    <ClInclude Include="Ustawienia.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

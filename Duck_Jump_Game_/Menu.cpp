@@ -1,7 +1,7 @@
 #include "Menu.h"
 #include "Gra.h"
 
-Menu::Menu()
+Menu::Menu(): wybrany_obiekt(0)
 {
 	if (!czcionka.loadFromFile("Asul-Regular.ttf"))
 	{
@@ -51,25 +51,24 @@ void Menu::rysuj_menu(RenderWindow& okno)
 	}
 }
 
-void Menu::ruch_do_gory() 
+void Menu::ruch_do_gory(int ilosc_linijek)
 {
 	if (wybrany_obiekt - 1 >= 0)
 	{
 		menu[wybrany_obiekt].setFillColor(Color::White);
 		wybrany_obiekt--;
 		menu[wybrany_obiekt].setFillColor(Color::Cyan);
-		cout << "do gory";
 	}
 	else
 	{
-		menu[3].setFillColor(Color::Cyan);
+		menu[ilosc_linijek-1].setFillColor(Color::Cyan);
 		menu[wybrany_obiekt].setFillColor(Color::White);
-		wybrany_obiekt=3;
+		wybrany_obiekt= ilosc_linijek - 1;
 	}
 }
-void Menu::ruch_w_dol() 
+void Menu::ruch_w_dol(int ilosc_linijek) 
 {
-	if (wybrany_obiekt + 1 <= 3)
+	if (wybrany_obiekt + 1 <= (ilosc_linijek-1))
 	{
 		menu[wybrany_obiekt].setFillColor(Color::White);
 		wybrany_obiekt++;
