@@ -11,13 +11,15 @@ Menu::Menu(): wybrany_obiekt(0)
 	{
 		cout << "Blad ladowania tla" << endl;
 	}
+	if (!menu_tekst.loadFromFile("menu_tekst.png", IntRect(0, 0, 1000, 1000)))
+	{
+		cout << "Blad ladowania tla" << endl;
+	}
 	tekstura_tla.isSmooth();
 	tlo.setTexture(tekstura_tla);
-	tytul.setFont(czcionka);
-	tytul.setFillColor(Color::Magenta);
-	tytul.setString("Duck Jump");
-	tytul.setCharacterSize(60);
-	tytul.setPosition(Vector2f(180,150));
+	warstwa.setTexture(menu_tekst);
+	warstwa.setScale(0.6, 0.8);
+	warstwa.setPosition(Vector2f(25, 80));
 
 	menu[0].setFont(czcionka);
 	menu[0].setFillColor(Color::Red);
@@ -44,7 +46,7 @@ Menu::~Menu() {}
 void Menu::rysuj_menu(RenderWindow& okno)
 {
 	okno.draw(tlo);
-	okno.draw(tytul);
+	okno.draw(warstwa);
 	for (int i = 0; i < Ilosc_Napisow; i++)
 	{
 		okno.draw(menu[i]);

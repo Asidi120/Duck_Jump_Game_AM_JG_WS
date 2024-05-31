@@ -10,7 +10,9 @@ protected:
 	const int Ilosc_Napisow = 4;
 	int wybrany_obiekt=0;
 	Texture tekstura_tla;
+	Texture menu_tekst;
 	Sprite tlo;
+	Sprite warstwa;
 public:
 	bool czy_menu_otwarte = 1;
 	Menu();
