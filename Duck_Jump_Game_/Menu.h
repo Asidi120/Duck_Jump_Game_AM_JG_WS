@@ -5,8 +5,11 @@ class Menu
 {
 	Text menu[4];
 	Font czcionka;
+	Text tytul;
 	const int Ilosc_Napisow = 4;
 	int wybrany_obiekt=0;
+	Texture tekstura_tla;
+	Sprite tlo;
 public:
 	Menu();
 	virtual~Menu();

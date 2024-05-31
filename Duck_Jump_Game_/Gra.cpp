@@ -38,19 +38,19 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
             break;
 
         case Event::KeyPressed:
-            if (evnt.key.code == Keyboard::Escape) //po nacisnieciu klawiszu esc okno sie zamknie
+            switch (evnt.key.code)
             {
+            case Keyboard::Escape://po nacisnieciu klawiszu esc okno sie zamknie
                 okno->close();
-            }
-            if (evnt.key.code == Keyboard::Down)
-            {
+                break;
+            case Keyboard::Down:
                 menu->ruch_w_dol();
-                cout << "klikam";
-            }
-            if (evnt.key.code == Keyboard::Up)
-            {
+                break;
+            case Keyboard::Up:
                 menu->ruch_do_gory();
-                cout << "To tez";
+                break;
+            case Keyboard::Enter:
+                break;
             }
         break;
         }
