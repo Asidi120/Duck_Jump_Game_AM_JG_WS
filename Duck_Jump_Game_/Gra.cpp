@@ -32,7 +32,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
 {
     while (okno->pollEvent(evnt)) //zbiera co sie aktualnie dzieje
     {
-        if (menu->czy_menu_otwarte == 1)
+        if (menu->czy_menu_otwarte == 1) //jezeli menu ma byc rysowane (jest otwarte)
         {
             okno->clear(); //czysci stare okno
             menu->rysuj_menu(*okno);  
@@ -64,7 +64,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                 }
                 if (menu->ktory_teraz() == 2) //przycisk ustawienia
                 {
-                    menu->czy_menu_otwarte = 0;
+                    menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do ustawien)
                     okno->clear();
                     Ustawienia ustawienia;
                     ustawienia.rysuj_ustawienia(*okno);
