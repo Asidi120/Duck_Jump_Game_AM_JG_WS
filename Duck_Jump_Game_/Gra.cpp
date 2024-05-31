@@ -50,6 +50,19 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                 menu->ruch_do_gory();
                 break;
             case Keyboard::Enter:
+                if (menu->ktory_teraz() == 3)
+                {
+                    okno->close();
+                }
+                if (menu->ktory_teraz() == 2)
+                {
+                }
+                if (menu->ktory_teraz() == 1)
+                {
+                }
+                if (menu->ktory_teraz() == 0)
+                {
+                }
                 break;
             }
         break;

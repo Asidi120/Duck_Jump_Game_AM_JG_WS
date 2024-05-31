@@ -14,6 +14,7 @@ public:
 	Menu();
 	virtual~Menu();
 	void rysuj_menu(RenderWindow &okno);
+	int ktory_teraz();
 	void ruch_do_gory();
 	void ruch_w_dol();
 };

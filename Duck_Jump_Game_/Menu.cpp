@@ -82,3 +82,8 @@ void Menu::ruch_w_dol()
 		wybrany_obiekt = 0;
 	}
 }
+
+int Menu::ktory_teraz()
+{
+	return wybrany_obiekt;
+}

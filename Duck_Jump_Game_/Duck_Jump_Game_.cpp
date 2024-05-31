@@ -11,4 +11,5 @@ int main()
     {
         gra.aktualizuj();
     }
+    return 0;
 }
