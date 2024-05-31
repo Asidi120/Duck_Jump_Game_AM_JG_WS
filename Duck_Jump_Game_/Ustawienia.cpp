@@ -3,6 +3,7 @@
 
 Ustawienia::Ustawienia()
 {
+	tytul.setFont(czcionka);
 	tytul.setFillColor(Color::Magenta);
 	tytul.setString("Ustawienia");
 	tytul.setCharacterSize(40);
@@ -36,26 +37,30 @@ void Ustawienia::rysuj_ustawienia(RenderWindow& okno)
 
 void Ustawienia::wylacz_wlacz_muzyka(RenderWindow& okno)
 {
-	while (okno.pollEvent(event_muzyka))
+	while (czy_ustawienia_wlaczone == 1)
 	{
-		switch (event_muzyka.type)
+		while (okno.pollEvent(event_muzyka))
 		{
-		case Event::KeyPressed:
-			switch (event_muzyka.key.code)
+			if(event_muzyka.type== Event::KeyPressed)
 			{
-			case Keyboard::Right:
-				cout << "Strzalka w prawo";
-				break;
-			case Keyboard::Left:
-				cout << "Strzalka w lewo";
-				break;
-			case Keyboard::Escape:
-				cout << "esk";
-				break;
-
+				if (event_muzyka.key.code == Keyboard::Right)
+				{
+					cout << "Strzalka w prawo";
+				}
+				if (event_muzyka.key.code == Keyboard::Left)
+				{
+					cout << "Strzalka w lewo";
+				}
+				if (event_muzyka.key.code == Keyboard::Escape)
+				{
+					cout << "Esc";
+					break;
+				}
 			}
-			break;
 		}
+		czy_ustawienia_wlaczone = 0;
 	}
+	czy_menu_otwarte = 1;
+	cout << "Ustawienia zamkniete";
 }
 
