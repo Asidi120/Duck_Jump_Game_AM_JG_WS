@@ -13,17 +13,13 @@ using namespace std;
 
 class Gra
 {
-	Event evnt;
-	void tworzOkno(); // tworzy nam okienko
+	Event evnt{};
+	RenderWindow* okno=nullptr;
 public:
-	RenderWindow* okno = nullptr;
-	VideoMode videomode;
-	Gra();
+	RenderWindow* wskdookna() const; //wskaznik do okna
+	Gra(); //tworzymy w nim okienko
 	virtual~Gra();
-
 	const bool czyGraOtwarta() const; //potrzebne do petli w main, zwraca czy okno jest otwarte
-	void petlaOkna(); //pozwala zamykac okno iksem i klawiszem esc
-	void aktualizuj(); //odpowiada za rzeczy ktore dzieja sie w oknie
-	void rysuj(); //rysuje rzeczy w oknie
+	void aktualizuj(); //pozwala zamykac okno iksem i klawiszem esc
 };
 

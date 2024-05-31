@@ -1,16 +1,15 @@
 #include "Gra.h"
 #pragma once
 
-class Menu : public Gra
+class Menu
 {
-	
+	Text menu[4];
 	Font czcionka;
-public:
 	const int Ilosc_Napisow = 4;
+public:
 	Menu();
 	virtual~Menu();
-	Text menu[];
-	friend void rysuj_menu();
+	void rysuj_menu(RenderWindow &okno);
 	void ruch_do_gory();
 	void ruch_w_dol();
 };

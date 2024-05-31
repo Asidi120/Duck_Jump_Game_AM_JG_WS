@@ -1,30 +1,28 @@
 #include "Gra.h"
 #include "Menu.h"
 
-void Gra::tworzOkno()
-{
-	videomode.height = 900; //rozmiary okienka
-	videomode.width = 650;
-	okno = new RenderWindow(videomode, "Duck Jump", Style::Titlebar | Style::Close);
+Gra::Gra() //kostruktor domyslny - tworzy okienko
+{  
+    okno=new RenderWindow(VideoMode(650,900), "Duck Jump", Style::Titlebar | Style::Close);
     okno->setVerticalSyncEnabled(1); // fps takie jak monitor
 }
 
-Gra::Gra() //kostruktor domyslny - tworzy okienko
+RenderWindow* Gra::wskdookna() const
 {
-	tworzOkno();
+    return okno;
 }
 
 Gra::~Gra() //dekstruktor - usuwa okienko
 {
-	delete okno;
+    delete okno;
 }
 
 const bool Gra::czyGraOtwarta() const
 {
-    return okno->isOpen();
+    return  okno->isOpen();
 }
 
-void Gra::petlaOkna() //co robi okienko, czy zamyka sie, czy nie
+void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
 {
     while (okno->pollEvent(evnt)) //zbiera co sie aktualnie dzieje
     {
@@ -40,17 +38,5 @@ void Gra::petlaOkna() //co robi okienko, czy zamyka sie, czy nie
             break;
         }
     }
-}
-
-void Gra::aktualizuj()
-{
-    petlaOkna();
-}
-
-void Gra::rysuj()
-{
-    okno->clear(); //czysci stare okno
-    //tu bedziemy rysowac elementy gry
-    okno->display(); //koniec renderingu
 }
 
