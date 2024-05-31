@@ -8,13 +8,20 @@ Ustawienia::Ustawienia()
 	tytul.setString("Ustawienia");
 	tytul.setCharacterSize(40);
 	tytul.setPosition(Vector2f(180, 150));
+	if (!buformuzyki.loadFromFile("muzyka_menu.wav"))
+	{
+		cout << "Blad ladowania muzyki" << endl;
+	}
+	dzwiek_menu.setBuffer(buformuzyki);
 	if (muzyka == 1)
 	{
 		ustawienia_napisy[0].setString("Muzyka: <TAK>");
+		dzwiek_menu.play();
 	}
 	else
 	{
 		ustawienia_napisy[0].setString("Muzyka: <NIE>");
+		dzwiek_menu.pause();
 	}
 	ustawienia_napisy[0].setFillColor(Color::Black);
 	ustawienia_napisy[0].setCharacterSize(28);
@@ -50,30 +57,32 @@ void Ustawienia::wylacz_wlacz_muzyka(RenderWindow& okno)
 		{
 			if (event_muzyka.key.code == Keyboard::Right)
 			{
-				cout << "Strzalka w prawo";
 				if (muzyka == 1)
 				{
 					muzyka = 0;
 					ustawienia_napisy[0].setString("Muzyka: <NIE>");
+					dzwiek_menu.pause();
 				}
 				else
 				{
 					muzyka = 1;
 					ustawienia_napisy[0].setString("Muzyka: <TAK>");
+					dzwiek_menu.play();
 				}
 			}
 			if (event_muzyka.key.code == Keyboard::Left)
 			{
-				cout << "Strzalka w lewo";
 				if (muzyka == 1)
 				{
 					muzyka = 0;
 					ustawienia_napisy[0].setString("Muzyka: <NIE>");
+					dzwiek_menu.pause();
 				}
 				else
 				{
 					muzyka = 1;
 					ustawienia_napisy[0].setString("Muzyka: <TAK>");
+					dzwiek_menu.play();
 				}
 			}
 			if (event_muzyka.key.code == Keyboard::Escape)

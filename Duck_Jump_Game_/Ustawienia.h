@@ -8,6 +8,8 @@ class Ustawienia:public Menu
 	Text ustawienia_napisy[IloscNapisowUstawienia];
 	bool muzyka=1;
 	Event event_muzyka;
+	SoundBuffer buformuzyki;
+	Sound dzwiek_menu;
 public:
 	bool czy_ustawienia_wlaczone = 0;
 	Ustawienia();
