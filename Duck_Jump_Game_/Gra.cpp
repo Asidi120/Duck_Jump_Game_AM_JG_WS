@@ -1,6 +1,7 @@
 #include "Gra.h"
 #include "Menu.h"
 #include "Ustawienia.h"
+#include "Zasady.h"
 
 Gra::Gra() //kostruktor domyslny - tworzy okienko
 {  
@@ -32,7 +33,12 @@ void Gra::ustaw_ustawienia(Ustawienia* ustawienia)
     this->ustawienia = ustawienia;
 }
 
-void ustawieniasierysuja(RenderWindow& okno, Ustawienia* ustawienia)
+void Gra::ustaw_zasady(Zasady* zasady)
+{
+    this->zasady = zasady;
+}
+
+void ustawienia_sie_rysuja(RenderWindow& okno, Ustawienia* ustawienia)
 {
     ustawienia->czy_ustawienia_wlaczone = 1;
     while (ustawienia->czy_ustawienia_wlaczone==1)
@@ -40,6 +46,18 @@ void ustawieniasierysuja(RenderWindow& okno, Ustawienia* ustawienia)
         okno.clear();
         ustawienia->rysuj_ustawienia(okno);
         ustawienia->wylacz_wlacz_muzyka(okno);
+        okno.display();
+    }
+}
+
+void zasady_sie_rysuja(RenderWindow& okno, Zasady* zasady)
+{
+    zasady->czy_zasady_wlaczone = 1;
+    while (zasady->czy_zasady_wlaczone == 1)
+    {
+        okno.clear();
+        zasady->rysuj_zasady(okno);
+        zasady->co_sie_dzieje_w_zasadach(okno);
         okno.display();
     }
 }
@@ -69,20 +87,26 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     okno->close();
                     break;
                 case Keyboard::Down:
-                    menu->ruch_w_dol(4);
+                    menu->ruch_w_dol(5);
                     break;
                 case Keyboard::Up:
-                    menu->ruch_do_gory(4);
+                    menu->ruch_do_gory(5);
                     break;
                 case Keyboard::Enter:
-                    if (menu->ktory_teraz() == 3) //przycisk wyjdz
+                    if (menu->ktory_teraz() == 4) //przycisk wyjdz
                     {
                         okno->close();
+                    }
+                    if (menu->ktory_teraz() == 3) //przycisk wyjdz
+                    {
+                        menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do zasad)
+                        zasady_sie_rysuja(*okno, zasady);
+                        menu->czy_menu_otwarte = 1;
                     }
                     if (menu->ktory_teraz() == 2) //przycisk ustawienia
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do ustawien)
-                        ustawieniasierysuja(*okno,ustawienia);
+                        ustawienia_sie_rysuja(*okno,ustawienia);
                         menu->czy_menu_otwarte = 1;
                     }
                     if (menu->ktory_teraz() == 1) //przycisk postacie
@@ -94,7 +118,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     }
                     break;
                 }
-                break;
+            break;
             }
 
         }

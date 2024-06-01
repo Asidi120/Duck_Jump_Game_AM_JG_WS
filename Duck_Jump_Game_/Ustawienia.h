@@ -5,7 +5,7 @@
 #pragma once
 class Ustawienia:public Menu
 {
-	Text ustawienia_napisy[IloscNapisowUstawienia];
+	Text ustawienia_napisy[IloscNapisowUstawienia]{};
 	bool muzyka=1;
 	Event event_muzyka{};
 	SoundBuffer buformuzyki;

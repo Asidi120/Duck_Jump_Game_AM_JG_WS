@@ -1,6 +1,9 @@
 ﻿#include "Gra.h"
 #include "Menu.h"
 #include "Ustawienia.h"
+#include "Zasady.h"
+#include "Graj.h"
+#include "Postacie_sklep.h"
 
 int main()
 {
@@ -8,8 +11,10 @@ int main()
     RenderWindow* okno = gra.wskdookna(); //ustawienie wskaznika do okna
     Menu menu;
     Ustawienia ustawienia;
+    Zasady zasady;
     gra.ustaw_menu(&menu); //ustawienie wskaznika do menu
     gra.ustaw_ustawienia(&ustawienia);
+    gra.ustaw_zasady(&zasady);
     while (gra.czyGraOtwarta())
     {
         gra.aktualizuj();

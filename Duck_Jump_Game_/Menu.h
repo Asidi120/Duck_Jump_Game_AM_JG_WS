@@ -1,13 +1,13 @@
 #include "Gra.h"
 #pragma once
+#define Ilosc_Napisow 5
 
 class Menu
 {
 protected:
-	Text menu[4];
+	Text menu[5];
 	Font czcionka;
 	Text tytul;
-	const int Ilosc_Napisow = 4;
 	int wybrany_obiekt=0;
 	Texture tekstura_tla;
 	Texture menu_tekst;
