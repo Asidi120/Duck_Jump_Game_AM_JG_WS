@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Ustawienia.h"
 #include "Zasady.h"
+#include "Postacie_sklep.h"
 
 Gra::Gra() //kostruktor domyslny - tworzy okienko
 {  
@@ -38,6 +39,11 @@ void Gra::ustaw_zasady(Zasady* zasady)
     this->zasady = zasady;
 }
 
+void Gra::ustaw_postacie_sklep(Postacie_sklep* postacie_sklep)
+{
+    this->postacie_sklep = postacie_sklep;
+}
+
 void ustawienia_sie_rysuja(RenderWindow& okno, Ustawienia* ustawienia)
 {
     ustawienia->czy_ustawienia_wlaczone = 1;
@@ -58,6 +64,17 @@ void zasady_sie_rysuja(RenderWindow& okno, Zasady* zasady)
         okno.clear();
         zasady->rysuj_zasady(okno);
         zasady->co_sie_dzieje_w_zasadach(okno);
+        okno.display();
+    }
+}
+void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_sklep)
+{
+    postacie_sklep->czy_postacie_sklep_wlaczone = 1;
+    while (postacie_sklep->czy_postacie_sklep_wlaczone == 1)
+    {
+        okno.clear();
+        postacie_sklep->rysuj_postacie_sklep(okno);
+        postacie_sklep->co_sie_dzieje_w_sklepie(okno);
         okno.display();
     }
 }
@@ -111,6 +128,9 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     }
                     if (menu->ktory_teraz() == 1) //przycisk postacie
                     {
+                        menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do postaci)
+                        postacie_sklep_sie_rysuje(*okno, postacie_sklep);
+                        menu->czy_menu_otwarte = 1;
                     }
                     if (menu->ktory_teraz() == 0) //przycisk graj
                     {

@@ -12,6 +12,7 @@ using namespace std;
 class Menu;
 class Ustawienia;
 class Zasady;
+class Postacie_sklep;
 class Gra
 {
 	Event evnt{};
@@ -19,6 +20,7 @@ class Gra
 	Menu* menu = nullptr;
 	Ustawienia* ustawienia = nullptr;
 	Zasady* zasady = nullptr;
+	Postacie_sklep* postacie_sklep = nullptr;
 public:
 	RenderWindow* wskdookna() const; //wskaznik do okna
 	Gra(); //tworzymy w nim okienko
@@ -28,5 +30,6 @@ public:
 	void ustaw_menu(Menu* menu);
 	void ustaw_ustawienia(Ustawienia* ustawienia);
 	void ustaw_zasady(Zasady* zasady);
+	void ustaw_postacie_sklep(Postacie_sklep* postacie_sklep);
 };
 
