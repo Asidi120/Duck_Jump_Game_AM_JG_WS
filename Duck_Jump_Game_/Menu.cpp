@@ -56,35 +56,37 @@ void Menu::rysuj_menu(RenderWindow& okno)
 	}
 }
 
-void Menu::ruch_do_gory(int ilosc_linijek)
+int Menu::ruch_do_gory(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 {
 	if (wybrany_obiekt - 1 >= 0)
 	{
-		menu[wybrany_obiekt].setFillColor(Color::Black);
+		tekst[wybrany_obiekt].setFillColor(Color::Black);
 		wybrany_obiekt--;
-		menu[wybrany_obiekt].setFillColor(Color::Red);
+		tekst[wybrany_obiekt].setFillColor(Color::Red);
 	}
 	else
 	{
-		menu[ilosc_linijek-1].setFillColor(Color::Red);
-		menu[wybrany_obiekt].setFillColor(Color::Black);
+		tekst[ilosc_linijek-1].setFillColor(Color::Red);
+		tekst[wybrany_obiekt].setFillColor(Color::Black);
 		wybrany_obiekt= ilosc_linijek - 1;
 	}
+	return wybrany_obiekt;
 }
-void Menu::ruch_w_dol(int ilosc_linijek) 
+int Menu::ruch_w_dol(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 {
 	if (wybrany_obiekt + 1 <= (ilosc_linijek-1))
 	{
-		menu[wybrany_obiekt].setFillColor(Color::Black);
+		tekst[wybrany_obiekt].setFillColor(Color::Black);
 		wybrany_obiekt++;
-		menu[wybrany_obiekt].setFillColor(Color::Red);
+		tekst[wybrany_obiekt].setFillColor(Color::Red);
 	}
 	else
 	{
-		menu[0].setFillColor(Color::Red);
-		menu[wybrany_obiekt].setFillColor(Color::Black);
+		tekst[0].setFillColor(Color::Red);
+		tekst[wybrany_obiekt].setFillColor(Color::Black);
 		wybrany_obiekt = 0;
 	}
+	return wybrany_obiekt;
 }
 
 int Menu::ktory_teraz()

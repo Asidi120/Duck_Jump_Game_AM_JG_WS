@@ -126,19 +126,20 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     okno->close();
                     break;
                 case Keyboard::Down:
-                    menu->ruch_w_dol(5);
+                    menu->wybrany_obiekt = menu->ruch_w_dol(5, menu->menu, menu->wybrany_obiekt);
                     break;
                 case Keyboard::Up:
-                    menu->ruch_do_gory(5);
+                    menu->wybrany_obiekt = menu->ruch_do_gory(5, menu->menu, menu->wybrany_obiekt);
                     break;
                 case Keyboard::Enter:
                     if (menu->ktory_teraz() == 4) //przycisk wyjdz
                     {
                         okno->close();
                     }
-                    if (menu->ktory_teraz() == 3) //przycisk wyjdz
+                    if (menu->ktory_teraz() == 3) //przycisk zasady
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do zasad)
+                        
                         zasady_sie_rysuja(*okno, zasady);
                         menu->czy_menu_otwarte = 1;
                     }

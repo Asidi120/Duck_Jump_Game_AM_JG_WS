@@ -9,6 +9,7 @@ class Zasady : public Menu
 	Event event_zasady{};
 	int wysokosc=350;
 public:
+	int wybrany_obiekt_zasady = 0;
 	bool czy_zasady_wlaczone = 0;
 	Zasady();
 	virtual ~Zasady();
