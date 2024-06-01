@@ -42,6 +42,7 @@ void Zasady::co_sie_dzieje_w_zasadach(RenderWindow& okno)
 				czy_zasady_wlaczone = 0;
 				break;
 			}
+
 		}
 	}
 }

@@ -17,7 +17,7 @@ RenderWindow* Gra::wskdookna() const
     return okno;
 }
 
-Gra::~Gra() //dekstruktor - usuwa okienko
+Gra::~Gra() //dekstruktor - usuwa wszystkie wskazniki
 {
     delete okno;
     delete menu;
@@ -31,26 +31,26 @@ const bool Gra::czyGraOtwarta() const
 {
     return  okno->isOpen();
 }
-void Gra::ustaw_menu(Menu* menu) 
+void Gra::ustaw_menu(Menu* menu) //ustawia wskaznik na menu
 {
     this->menu = menu;
 }
-void Gra::ustaw_ustawienia(Ustawienia* ustawienia)
+void Gra::ustaw_ustawienia(Ustawienia* ustawienia) //ustawia wskaznik na ustawienia
 {
     this->ustawienia = ustawienia;
 }
 
-void Gra::ustaw_zasady(Zasady* zasady)
+void Gra::ustaw_zasady(Zasady* zasady) //ustawia wskaznik na zasady 
 {
     this->zasady = zasady;
 }
 
-void Gra::ustaw_postacie_sklep(Postacie_sklep* postacie_sklep)
+void Gra::ustaw_postacie_sklep(Postacie_sklep* postacie_sklep) //ustawia wskaznik na postacie
 {
     this->postacie_sklep = postacie_sklep;
 }
 
-void Gra::ustaw_graj(Graj* graj)
+void Gra::ustaw_graj(Graj* graj) //ustawia wskaznik na graj
 {
     this->graj = graj;
 }
@@ -58,11 +58,12 @@ void Gra::ustaw_graj(Graj* graj)
 void ustawienia_sie_rysuja(RenderWindow& okno, Ustawienia* ustawienia)
 {
     ustawienia->czy_ustawienia_wlaczone = 1;
+    ustawienia->wybrany_obiekt = 0;
     while (ustawienia->czy_ustawienia_wlaczone==1)
     {
         okno.clear();
         ustawienia->rysuj_ustawienia(okno);
-        ustawienia->wylacz_wlacz_muzyka(okno);
+        ustawienia->co_sie_dzieje_w_ustawieniach(okno);
         okno.display();
     }
 }

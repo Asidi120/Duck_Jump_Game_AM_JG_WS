@@ -15,6 +15,6 @@ public:
 	Ustawienia();
 	virtual ~Ustawienia();
 	void rysuj_ustawienia(RenderWindow &okno);
-	void wylacz_wlacz_muzyka(RenderWindow& okno);
+	void co_sie_dzieje_w_ustawieniach(RenderWindow& okno);
 };
 
