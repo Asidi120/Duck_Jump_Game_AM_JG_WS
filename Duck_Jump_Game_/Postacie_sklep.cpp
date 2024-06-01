@@ -11,7 +11,7 @@ Postacie_sklep::Postacie_sklep()
 	{
 		postacie_sklep_tekst[i].setFillColor(Color::Black);
 		postacie_sklep_tekst[i].setCharacterSize(28);
-		postacie_sklep_tekst[i].setPosition(Vector2f(200, wysokosc));
+		postacie_sklep_tekst[i].setPosition(Vector2f(200,wysokosc));
 		postacie_sklep_tekst[i].setFont(czcionka);
 		wysokosc += 80;
 	}

@@ -11,7 +11,7 @@ Zasady::Zasady()
 	{
 		zasady_tekst[i].setFillColor(Color::Black);
 		zasady_tekst[i].setCharacterSize(28);
-		zasady_tekst[i].setPosition(Vector2f(200, wysokosc));
+		zasady_tekst[i].setPosition(Vector2f(200, static_cast<float>(wysokosc)));
 		zasady_tekst[i].setFont(czcionka);
 		wysokosc += 80;
 	}

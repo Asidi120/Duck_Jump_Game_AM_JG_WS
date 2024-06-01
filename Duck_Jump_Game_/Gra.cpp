@@ -20,6 +20,11 @@ RenderWindow* Gra::wskdookna() const
 Gra::~Gra() //dekstruktor - usuwa okienko
 {
     delete okno;
+    delete menu;
+    delete ustawienia;
+    delete zasady ;
+    delete postacie_sklep;
+    delete graj;
 }
 
 const bool Gra::czyGraOtwarta() const

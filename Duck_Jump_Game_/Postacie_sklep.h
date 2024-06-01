@@ -6,7 +6,7 @@ class Postacie_sklep: public Menu
 {
 	Text postacie_sklep_tekst[IloscNapisowPostacie]{};
 	Event event_postacie{};
-	int wysokosc = 350;
+	float wysokosc = 350;
 public:
 	bool czy_postacie_sklep_wlaczone = 0;
 	Postacie_sklep();

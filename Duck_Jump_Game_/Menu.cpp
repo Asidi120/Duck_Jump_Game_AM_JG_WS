@@ -18,7 +18,7 @@ Menu::Menu(): wybrany_obiekt(0)
 	tekstura_tla.isSmooth();
 	tlo.setTexture(tekstura_tla);
 	warstwa.setTexture(menu_tekst);
-	warstwa.setScale(0.6, 0.8);
+	warstwa.setScale(0.6f, 0.8f);
 	warstwa.setPosition(Vector2f(25, 80));
 
 	for (int i = 0;i<Ilosc_Napisow;i++)

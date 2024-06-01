@@ -23,5 +23,6 @@ int main()
     {
         gra.aktualizuj();
     }
+    delete okno;
     return 0;
 }
