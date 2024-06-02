@@ -14,11 +14,7 @@ int main()
     Zasady zasady;
     Postacie_sklep postacie_sklep;
     Graj graj;
-    gra.ustaw_menu(&menu); //ustawienie wskaznika do menu
-    gra.ustaw_ustawienia(&ustawienia);
-    gra.ustaw_zasady(&zasady);
-    gra.ustaw_postacie_sklep(&postacie_sklep);
-    gra.ustaw_graj(&graj);
+    gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj); //ustawienie wskaznikow 
     while (gra.czyGraOtwarta())
     {
         gra.aktualizuj();

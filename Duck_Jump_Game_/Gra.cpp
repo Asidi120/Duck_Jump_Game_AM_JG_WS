@@ -26,35 +26,19 @@ Gra::~Gra() //dekstruktor - usuwa wszystkie wskazniki
     delete postacie_sklep;
     delete graj;
 }
+void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj)
+{
+    this->menu = menu;
+    this->zasady = zasady;
+    this->postacie_sklep = postacie_sklep;
+    this->graj = graj;
+    this->ustawienia = ustawienia;
+}
 
 const bool Gra::czyGraOtwarta() const
 {
     return  okno->isOpen();
 }
-void Gra::ustaw_menu(Menu* menu) //ustawia wskaznik na menu
-{
-    this->menu = menu;
-}
-void Gra::ustaw_ustawienia(Ustawienia* ustawienia) //ustawia wskaznik na ustawienia
-{
-    this->ustawienia = ustawienia;
-}
-
-void Gra::ustaw_zasady(Zasady* zasady) //ustawia wskaznik na zasady 
-{
-    this->zasady = zasady;
-}
-
-void Gra::ustaw_postacie_sklep(Postacie_sklep* postacie_sklep) //ustawia wskaznik na postacie
-{
-    this->postacie_sklep = postacie_sklep;
-}
-
-void Gra::ustaw_graj(Graj* graj) //ustawia wskaznik na graj
-{
-    this->graj = graj;
-}
-
 void ustawienia_sie_rysuja(RenderWindow& okno, Ustawienia* ustawienia)
 {
     ustawienia->czy_ustawienia_wlaczone = 1;
@@ -170,3 +154,4 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
         }
     }
 }
+

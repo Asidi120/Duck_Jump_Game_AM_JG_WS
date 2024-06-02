@@ -29,11 +29,7 @@ public:
 	virtual~Gra();
 	const bool czyGraOtwarta() const; //potrzebne do petli w main, zwraca czy okno jest otwarte
 	void aktualizuj(); //pozwala zamykac okno iksem i klawiszem esc
-	void ustaw_menu(Menu* menu);
-	void ustaw_ustawienia(Ustawienia* ustawienia);
-	void ustaw_zasady(Zasady* zasady);
-	void ustaw_postacie_sklep(Postacie_sklep* postacie_sklep);
-	void ustaw_graj(Graj* graj);
+	void ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj);
 
 };
 
