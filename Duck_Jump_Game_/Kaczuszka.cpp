@@ -18,13 +18,21 @@ void Kaczuszka::rysuj_gracza(RenderWindow& okno)
 
 void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 {
-	float przemieszczenie_x = 10.0f;
+	float przemieszczenie_x = 10.f;
 	if (kierunek_x == 1 && kierunek_y == 0)
 	{
-		kaczuszka.move(przemieszczenie_x, 0.0f);
+		if (kaczuszka.getPosition().x >= 650)
+		{
+			kaczuszka.setPosition(Vector2f((0.f-kaczuszka.getSize().x), kaczuszka.getPosition().y));
+		}
+		kaczuszka.move(przemieszczenie_x, 0.f);
 	}
 	if (kierunek_x == -1 && kierunek_y == 0)
 	{
-		kaczuszka.move(-przemieszczenie_x, 0.0f);
+		if (kaczuszka.getPosition().x <= (0-kaczuszka.getSize().x))
+		{
+			kaczuszka.setPosition(Vector2f(650.f, kaczuszka.getPosition().y));
+		}
+		kaczuszka.move(-przemieszczenie_x, 0.f);
 	}
 }
