@@ -23,7 +23,7 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 	
 	if (kierunek_x == 1)
 	{	
-		if (x >= 610)
+		if (x >= 605)
 		{
 			x=0.f-(kaczuszka.getSize().x);
 		}
@@ -31,7 +31,7 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 	}
 	if (kierunek_x == -1 && kierunek_y == 0)
 	{
-		if (x <= (0-kaczuszka.getSize().x)+40)
+		if (x <= (0-kaczuszka.getSize().x)+35)
 		{
 			x=650.f;
 		}
