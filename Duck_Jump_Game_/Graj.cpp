@@ -26,7 +26,7 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 		{
 			okno.close();
 		}
-		if (event_gra.key.code == Keyboard::Escape)
+		if (Keyboard::isKeyPressed(Keyboard::Escape))
 		{
 			czy_graj_wlaczone = 0;
 			break;
@@ -42,7 +42,7 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 			cout << "idziemy w prawo";
 			kaczuszka->ruch(1,0);
 		}
-		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && kaczuszka->czy_jest_na_ziemi())
+		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)))
 		{
 			cout << "skok";
 			kaczuszka->ruch(0,1);

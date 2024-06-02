@@ -7,6 +7,8 @@ class Kaczuszka
 	Vector2f rozmiary_kaczuszki{};
 	bool czy_na_ziemi=1;
 	bool czy_glowa_w_prawo = 1;
+	float rob = false;
+	bool faza1=1;
 public:
 	Kaczuszka();
 	virtual ~Kaczuszka();
