@@ -5,6 +5,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
+#include <chrono> // bibloteka czasowa
 
 using namespace sf;
 using namespace std;

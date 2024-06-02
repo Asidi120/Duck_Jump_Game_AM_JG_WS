@@ -1,5 +1,6 @@
 #pragma once
 #include "Gra.h"
+#include "Graj.h"
 class Kaczuszka
 {
 	RectangleShape kaczuszka;
@@ -10,11 +11,17 @@ class Kaczuszka
 	float rob = false;
 	float czas_skoku = 0;
 	float przyspieszenie_ziemskie = 0.3;
+	
+	int skok_wysokosc = 100, skok_aktuala_poz = 0, skok_kierunek = 5;
+
 public:
+	bool czy_skok = false;
 	Kaczuszka();
 	virtual ~Kaczuszka();
 	void rysuj_gracza(RenderWindow& okno);
 	void ruch(float kierunek_x,float kierunek_y);
 	bool czy_jest_na_ziemi();
+	long long czas_milisekundy();
+	void skok_kaczuchy();
 };
 
