@@ -11,6 +11,7 @@ public:
 	Kaczuszka();
 	virtual ~Kaczuszka();
 	void rysuj_gracza(RenderWindow& okno);
-	void ruch(float kierunek_x,float kierunek_y);
+	void ruch(float kierunek_x,float kierunek_y, float* x, float* y);
+	bool czy_jest_na_ziemi();
 };
 

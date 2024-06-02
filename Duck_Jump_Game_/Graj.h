@@ -2,10 +2,12 @@
 #include "Gra.h"
 #include "Menu.h"
 class Kaczuszka;
+class Klocki;
 class Graj: public Menu
 {
 	Clock czas_gry{};
 	Event event_gra{};
+	//Kaczuszka kaczuszka;
 public:
 	Graj();
 	virtual ~Graj();

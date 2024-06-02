@@ -5,6 +5,7 @@
 #include "Graj.h"
 #include "Postacie_sklep.h"
 #include "Kaczuszka.h"
+#include "Klocki.h"
 
 int main()
 {
@@ -16,6 +17,7 @@ int main()
     Postacie_sklep postacie_sklep;
     Graj graj;
     Kaczuszka kaczuszka;
+    Klocki klocki;
     gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj, &kaczuszka); //ustawienie wskaznikow 
     while (gra.czyGraOtwarta())
     {

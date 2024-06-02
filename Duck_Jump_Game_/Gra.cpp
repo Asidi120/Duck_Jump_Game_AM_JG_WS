@@ -5,6 +5,7 @@
 #include "Postacie_sklep.h"
 #include "Graj.h"
 #include "Kaczuszka.h"
+#include "Klocki.h"
 
 Gra::Gra() //kostruktor domyslny - tworzy okienko
 {  

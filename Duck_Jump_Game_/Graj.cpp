@@ -14,6 +14,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka)
 {
 	okno.draw(tlo);
 	okno.draw(tytul);
+	//okno.draw(podloga);//tu rysujemy podloge
 	kaczuszka->rysuj_gracza(okno);
 }
 
@@ -21,31 +22,30 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 {
 	while (okno.pollEvent(event_gra))
 	{
-		if (event_gra.type == Event::KeyPressed)
-		{
-			if (event_gra.key.code == Keyboard::D || event_gra.key.code == Keyboard::Right)
-			{
-				cout << "idziemy w prawo";
-					kaczuszka->ruch(1,0);
-			}
-			if (event_gra.key.code == Keyboard::A || event_gra.key.code==Keyboard::Left)
-			{
-				cout << "idziemy w lewo";
-					kaczuszka->ruch(-1, 0);
-			}
-			if (event_gra.key.code == Keyboard::Space || event_gra.key.code==Keyboard::W || event_gra.key.code==Keyboard::Up)
-			{
-				cout << "skok";
-			}
-			if (event_gra.key.code == Keyboard::Escape)
-			{
-				czy_graj_wlaczone = 0;
-				break;
-			}
-		}
 		if (event_gra.type == Event::Closed)
 		{
 			okno.close();
 		}
+		if (event_gra.key.code == Keyboard::Escape)
+		{
+			czy_graj_wlaczone = 0;
+			break;
+		}
 	}
+		if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
+		{
+			cout << "idziemy w lewo";
+			kaczuszka->ruch(-1, 0);
+		}
+		if (Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D))
+		{
+			cout << "idziemy w prawo";
+			kaczuszka->ruch(1,0);
+		}
+		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && kaczuszka->czy_jest_na_ziemi())
+		{
+			cout << "skok";
+			kaczuszka->ruch(0,1);
+		}	
 }
+

@@ -16,19 +16,16 @@ void Kaczuszka::rysuj_gracza(RenderWindow& okno)
 	okno.draw(kaczuszka);
 }
 
-void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
+void Kaczuszka::ruch(float kierunek_x, float kierunek_y,float* x, float* y)
 {
-	float przemieszczenie_x = 12.f;
-	if (kierunek_x == 1 && kierunek_y == 0)
+	float przemieszczenie_x = 6.f;
+	
+	if (kierunek_x == 1)
 	{
+		*x = kaczuszka.getPosition().x + przemieszczenie_x;
 		if (kaczuszka.getPosition().x >= 610)
 		{
 			kaczuszka.setPosition(Vector2f((0.f-(kaczuszka.getSize().x)), kaczuszka.getPosition().y));
-			kaczuszka.move(przemieszczenie_x, 0.f);
-		}
-		else
-		{
-			kaczuszka.move(przemieszczenie_x, 0.f);
 		}
 	}
 	if (kierunek_x == -1 && kierunek_y == 0)
@@ -39,4 +36,25 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 		}
 		kaczuszka.move(-przemieszczenie_x, 0.f);
 	}
+	if (kierunek_x == 0 && kierunek_y == 1)
+	{
+		if (kaczuszka.getPosition().x <= (0 - kaczuszka.getSize().x) + 40)
+		{
+			kaczuszka.setPosition(Vector2f(650.f, kaczuszka.getPosition().y));
+		}
+	}
+}
+
+bool Kaczuszka::czy_jest_na_ziemi()
+{
+	if (kaczuszka.getPosition().x == 1) //tu ma byc podloga i klocki
+	{
+		czy_na_ziemi = 1;
+	}
+	else
+	{
+		czy_na_ziemi = 0;
+	}
+
+	return czy_na_ziemi;
 }
