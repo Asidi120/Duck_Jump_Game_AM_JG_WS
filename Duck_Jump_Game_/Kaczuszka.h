@@ -8,7 +8,8 @@ class Kaczuszka
 	bool czy_na_ziemi=1;
 	bool czy_glowa_w_prawo = 1;
 	float rob = false;
-	bool faza1=1;
+	float czas_skoku = 0;
+	float przyspieszenie_ziemskie = 0.3;
 public:
 	Kaczuszka();
 	virtual ~Kaczuszka();
