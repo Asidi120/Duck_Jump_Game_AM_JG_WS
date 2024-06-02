@@ -4,6 +4,7 @@
 class Kaczuszka;
 class Graj: public Menu
 {
+	Clock czas_gry{};
 	Event event_gra{};
 public:
 	Graj();

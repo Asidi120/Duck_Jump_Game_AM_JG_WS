@@ -18,7 +18,7 @@ void Kaczuszka::rysuj_gracza(RenderWindow& okno)
 
 void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 {
-	int przemieszczenie_x = 1;
+	float przemieszczenie_x = 10.0f;
 	if (kierunek_x == 1 && kierunek_y == 0)
 	{
 		kaczuszka.move(przemieszczenie_x, 0.0f);
