@@ -12,7 +12,7 @@ class Kaczuszka
 	float czas_skoku = 0;
 	float przyspieszenie_ziemskie = 0.3;
 	
-	int skok_wysokosc = 100, skok_aktuala_poz = 0, skok_kierunek = 5;
+	int skok_wysokosc = 150, skok_aktuala_poz = 0, skok_kierunek = skok_wysokosc/20;
 
 public:
 	bool czy_skok = false;

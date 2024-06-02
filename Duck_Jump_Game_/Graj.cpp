@@ -53,7 +53,7 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 		}	
 		if (kaczuszka->czy_skok)
 		{
-			//if (czas_milisekundy()-czas_czekania>=1)
+			if (czas_milisekundy()-czas_czekania>=10)
 			{
 				czas_czekania = czas_milisekundy();
 
