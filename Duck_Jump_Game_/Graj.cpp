@@ -17,7 +17,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka)
 	kaczuszka->rysuj_gracza(okno);
 }
 
-void Graj::co_sie_dzieje_w_grze(RenderWindow& okno)
+void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 {
 	while (okno.pollEvent(event_gra))
 	{
@@ -26,10 +26,18 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno)
 			if (event_gra.key.code == Keyboard::D || event_gra.key.code == Keyboard::Right)
 			{
 				cout << "idziemy w prawo";
+				for (int i = 0; i < 10; i++)
+				{
+					kaczuszka->ruch(1,0);
+				}
 			}
 			if (event_gra.key.code == Keyboard::A || event_gra.key.code==Keyboard::Left)
 			{
 				cout << "idziemy w lewo";
+				for (int i = 0; i < 10; i++)
+				{
+					kaczuszka->ruch(-1, 0);
+				}
 			}
 			if (event_gra.key.code == Keyboard::Space || event_gra.key.code==Keyboard::W || event_gra.key.code==Keyboard::Up)
 			{
