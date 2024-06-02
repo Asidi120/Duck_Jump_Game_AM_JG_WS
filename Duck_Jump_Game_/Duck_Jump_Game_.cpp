@@ -4,6 +4,7 @@
 #include "Zasady.h"
 #include "Graj.h"
 #include "Postacie_sklep.h"
+#include "Kaczuszka.h"
 
 int main()
 {
@@ -14,11 +15,11 @@ int main()
     Zasady zasady;
     Postacie_sklep postacie_sklep;
     Graj graj;
-    gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj); //ustawienie wskaznikow 
+    Kaczuszka kaczuszka;
+    gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj, &kaczuszka); //ustawienie wskaznikow 
     while (gra.czyGraOtwarta())
     {
         gra.aktualizuj();
     }
-    delete okno;
     return 0;
 }

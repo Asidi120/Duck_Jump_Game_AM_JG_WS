@@ -4,6 +4,7 @@
 #include "Zasady.h"
 #include "Postacie_sklep.h"
 #include "Graj.h"
+#include "Kaczuszka.h"
 
 Gra::Gra() //kostruktor domyslny - tworzy okienko
 {  
@@ -25,14 +26,16 @@ Gra::~Gra() //dekstruktor - usuwa wszystkie wskazniki
     delete zasady ;
     delete postacie_sklep;
     delete graj;
+    delete kaczuszka;
 }
-void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj)
+void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka)
 {
     this->menu = menu;
     this->zasady = zasady;
     this->postacie_sklep = postacie_sklep;
     this->graj = graj;
     this->ustawienia = ustawienia;
+    this->kaczuszka = kaczuszka;
 }
 
 const bool Gra::czyGraOtwarta() const
@@ -74,13 +77,13 @@ void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_skle
         okno.display();
     }
 }
-void graj_sie_rysuje(RenderWindow& okno, Graj* graj)
+void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka)
 {
     graj->czy_graj_wlaczone = 1;
     while (graj->czy_graj_wlaczone == 1)
     {
         okno.clear();
-        graj->rysuj_gra(okno);
+        graj->rysuj_graj(okno,kaczuszka);
         graj->co_sie_dzieje_w_grze(okno);
         okno.display();
     }
@@ -143,7 +146,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     if (menu->ktory_teraz() == 0) //przycisk graj
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do postaci)
-                        graj_sie_rysuje(*okno, graj);
+                        graj_sie_rysuje(*okno, graj,kaczuszka);
                         menu->czy_menu_otwarte = 1;
                     }
                     break;

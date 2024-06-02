@@ -1,5 +1,5 @@
 #include "Graj.h"
-
+#include "Kaczuszka.h"
 Graj::Graj()
 {
 	tytul.setFont(czcionka);
@@ -10,10 +10,11 @@ Graj::Graj()
 
 Graj::~Graj() {}
 
-void Graj::rysuj_gra(RenderWindow& okno)
+void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka)
 {
 	okno.draw(tlo);
 	okno.draw(tytul);
+	kaczuszka->rysuj_gracza(okno);
 }
 
 void Graj::co_sie_dzieje_w_grze(RenderWindow& okno)
@@ -39,6 +40,10 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno)
 				czy_graj_wlaczone = 0;
 				break;
 			}
+		}
+		if (event_gra.type == Event::Closed)
+		{
+			okno.close();
 		}
 	}
 }
