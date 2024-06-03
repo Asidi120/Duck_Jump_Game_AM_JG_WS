@@ -43,7 +43,7 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 			cout << "idziemy w prawo";
 			kaczuszka->ruch(1,0);
 		}
-		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space))&&(czas_milisekundy() - czas_przycisku>80))
+		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>80))
 		{
 			czas_przycisku = czas_milisekundy();
 			cout << "Current time in milliseconds is: "<< czas_milisekundy() << endl;
