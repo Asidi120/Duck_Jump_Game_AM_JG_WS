@@ -43,7 +43,7 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 			cout << "idziemy w prawo";
 			kaczuszka->ruch(1,0);
 		}
-		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>80))
+		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>200))
 		{
 			czas_przycisku = czas_milisekundy();
 			cout << "Current time in milliseconds is: "<< czas_milisekundy() << endl;
@@ -51,16 +51,15 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 			//kaczuszka->ruch(0,1);
 			kaczuszka->czy_skok = true;
 		}	
+
 		if (kaczuszka->czy_skok)
 		{
-			if (czas_milisekundy()-czas_czekania>=10)
-			{
-				czas_czekania = czas_milisekundy();
-
 				kaczuszka->skok_kaczuchy();
-			}
-
 		}
+		//if (1/*czy na ziemi */)
+		//{
+		//	cout << " czy jest na ziemi" << endl;// czy na zuiemi
+		//}
 }
 
 long long Graj::czas_milisekundy()

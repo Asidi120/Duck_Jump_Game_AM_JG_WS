@@ -36,7 +36,7 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 		}
 		x+= przemieszczenie_x;
 	}
-	if (kierunek_x == -1 && kierunek_y == 0)
+	if (kierunek_x == -1 )
 	{
 		if (x <= (0-kaczuszka.getSize().x)+35)
 		{
@@ -46,7 +46,7 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 	}
 	if (czy_na_ziemi && kierunek_y == 1) // Zainicjuj skok
 	{
-		czas_skoku = 0.00001;
+		//czas_skoku = 0.00001;
 		rob = true;
 		czy_na_ziemi = false;
 		//y = 0.001;
@@ -62,22 +62,7 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 		
 	}
 
-	//if (czy_jest_na_ziemi()==1 && kierunek_y == 1)
-	//{
-	//	if (y + 0.2 <= podloga)
-	//	{
-	//		czy_na_ziemi = 0;
-	//		if (wysokosc_skok > y)
-	//		{
-	//			dy -= 0.2;
-	//			y -= dy;
-	//		}
-	//	}
-	//	if (y>=podloga)
-	//	{
-	//		czy_na_ziemi = 1;
-	//	}
-	//}
+
 	kaczuszka.setPosition(x, y);
 }
 
@@ -95,37 +80,25 @@ bool Kaczuszka::czy_jest_na_ziemi()
 	return czy_na_ziemi;
 }
 
-long long Kaczuszka::czas_milisekundy()
-{
-	// Get the current time from the system clock
-	auto now = chrono::system_clock::now();
-	// Convert the current time to time since epoch
-	auto duration = now.time_since_epoch();
-	// Convert duration to milliseconds
-	auto milliseconds = chrono::duration_cast<chrono::milliseconds>(duration).count();
-	return milliseconds;
 
-}
 
 void Kaczuszka::skok_kaczuchy()
 {
-	if (czy_skok)
-	{
-		skok_aktuala_poz = skok_aktuala_poz + skok_kierunek;// zwiekszam pozycje skoku
-		if (skok_aktuala_poz >= skok_wysokosc) // szczyt skok
+		skok_aktuala_poz = skok_aktuala_poz + skok_stopien * skok_kierunek ;// zwiekszam pozycje skoku
+		if (skok_aktuala_poz >= skok_wysokosc_skoku) // szczyt skok i nastepuje zmiana kierunku y
 		{
-			skok_kierunek = skok_kierunek * -1;
+			skok_kierunek =  -1;
 		}
-		if (skok_aktuala_poz <= 0) // koniec skoku
+		if (skok_aktuala_poz <= 0) // koniec skoku i nastepuje zmiana kierunku y oraz zatrzymanie skoku
 		{
-			skok_kierunek = skok_kierunek * -1;
+			skok_kierunek = 1;
 			czy_skok = false;
 		}
-		float y = kaczuszka.getPosition().y - skok_kierunek;
-		//cout << "poz y= " << skok_aktuala_poz  << " y= "<< y << endl;
+		// zmiana szybkosci skoku wraz z jego przebiegiem
+		skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;
+		float y = kaczuszka.getPosition().y - skok_stopien * skok_kierunek;
 		kaczuszka.setPosition(kaczuszka.getPosition().x, y);
 
-	}
 
 
 }
