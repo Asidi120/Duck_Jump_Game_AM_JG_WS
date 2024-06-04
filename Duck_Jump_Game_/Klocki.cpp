@@ -6,7 +6,7 @@ Klocki::Klocki()
 	rozmiary_podlogi = podloga.getSize();
 	podloga.setPosition(Vector2f(static_cast<float>((650 - rozmiary_podlogi.x) / 2), float(900 - rozmiary_podlogi.y+8)));
 	podloga.setFillColor(Color::Black);
-	tekstura_podloga.loadFromFile("podloga_tekst.jpg");
+	tekstura_podloga.loadFromFile("podloga_tekst.png");
 	tekstura_podloga.setSmooth(1);
 	podloga.setTexture(&tekstura_podloga);
 	

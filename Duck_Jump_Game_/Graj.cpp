@@ -16,10 +16,8 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka)
 	okno.draw(tlo);
 	okno.draw(tytul);
 	kloce.rys_podloga(okno);
-
 	kloce.rys_klocki(okno);
 	kaczuszka->rysuj_gracza(okno);
-	
 }
 
 void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
