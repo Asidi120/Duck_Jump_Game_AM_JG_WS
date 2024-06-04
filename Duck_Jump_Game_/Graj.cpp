@@ -1,5 +1,6 @@
 #include "Graj.h"
 #include "Kaczuszka.h"
+#include "Klocki.h"
 Graj::Graj()
 {
 	tytul.setFont(czcionka);
@@ -14,8 +15,11 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka)
 {
 	okno.draw(tlo);
 	okno.draw(tytul);
-	//okno.draw(podloga);//tu rysujemy podloge
+	kloce.rys_podloga(okno);
+
+	kloce.rys_klocki(okno);
 	kaczuszka->rysuj_gracza(okno);
+	
 }
 
 void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
@@ -35,20 +39,15 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 
 		if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
 		{
-			cout << "idziemy w lewo";
 			kaczuszka->ruch(-1, 0);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D))
 		{
-			cout << "idziemy w prawo";
 			kaczuszka->ruch(1,0);
 		}
 		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>200))
 		{
 			czas_przycisku = czas_milisekundy();
-			cout << "Current time in milliseconds is: "<< czas_milisekundy() << endl;
-			cout << "skok" ;
-			//kaczuszka->ruch(0,1);
 			kaczuszka->czy_skok = true;
 		}	
 
@@ -56,10 +55,6 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 		{
 				kaczuszka->skok_kaczuchy();
 		}
-		//if (1/*czy na ziemi */)
-		//{
-		//	cout << " czy jest na ziemi" << endl;// czy na zuiemi
-		//}
 }
 
 long long Graj::czas_milisekundy()
@@ -72,4 +67,12 @@ long long Graj::czas_milisekundy()
 	auto milliseconds = chrono::duration_cast<chrono::milliseconds>(duration).count();
 	return milliseconds;
 
+}
+
+void Graj::ustaw_czas()
+{
+	czas = czas_gry.getElapsedTime();
+	int minuty = static_cast<int>(czas.asSeconds()) / 60; //sekundy
+	int sekundy = static_cast<int>(czas.asSeconds()) % 60; //minuty
+	cout << "czas: min:"<<minuty<<" czas sec: "<<sekundy<<endl;
 }

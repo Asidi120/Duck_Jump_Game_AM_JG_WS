@@ -7,6 +7,7 @@
 #include "Kaczuszka.h"
 #include "Klocki.h"
 
+
 Gra::Gra() //kostruktor domyslny - tworzy okienko
 {  
     okno=new RenderWindow(VideoMode(650,900), "Duck Jump", Style::Titlebar | Style::Close);
@@ -84,6 +85,7 @@ void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka)
     while (graj->czy_graj_wlaczone == 1)
     {
         okno.clear();
+        graj->ustaw_czas();
         graj->rysuj_graj(okno,kaczuszka);
         graj->co_sie_dzieje_w_grze(okno,kaczuszka);
         okno.display();
@@ -146,7 +148,8 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     }
                     if (menu->ktory_teraz() == 0) //przycisk graj
                     {
-                        menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do postaci)
+                        menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do gry)
+                        graj->czas_gry.restart();
                         graj_sie_rysuje(*okno, graj,kaczuszka);
                         menu->czy_menu_otwarte = 1;
                     }

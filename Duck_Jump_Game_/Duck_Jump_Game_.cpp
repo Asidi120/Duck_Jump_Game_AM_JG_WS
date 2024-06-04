@@ -6,9 +6,11 @@
 #include "Postacie_sklep.h"
 #include "Kaczuszka.h"
 #include "Klocki.h"
+#include <ctime>
 
 int main()
 {
+    srand(static_cast<unsigned>(time(NULL)));
     Gra gra; //konstruktor tworzy okno
     RenderWindow* okno = gra.wskdookna(); //ustawienie wskaznika do okna
     Menu menu;

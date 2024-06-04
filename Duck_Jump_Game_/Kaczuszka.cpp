@@ -1,4 +1,5 @@
 #include "Kaczuszka.h"
+#define Ilosc_klockow 4
 
 
 Kaczuszka::Kaczuszka()
@@ -46,23 +47,8 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 	}
 	if (czy_na_ziemi && kierunek_y == 1) // Zainicjuj skok
 	{
-		//czas_skoku = 0.00001;
-		rob = true;
 		czy_na_ziemi = false;
-		//y = 0.001;
 	}
-
-	if(rob) // Wykonaj skok
-	{
-		//cout << y;
-		
-		
-		
-		
-		
-	}
-
-
 	kaczuszka.setPosition(x, y);
 }
 
