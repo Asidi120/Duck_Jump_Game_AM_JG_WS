@@ -27,26 +27,25 @@ Klocki::~Klocki() {}
 
 void Klocki::ruch_klockow() 
 {
-	for (int i=0; i < Ilosc_Klockow_wys; i++)
+	for (int k = 0; k < 10; k++)
 	{
-		klocki[i][j].move(0, -1);
+		for (int i=0; i < Ilosc_Klockow_wys; i++)
+		{
+			klocki[i][k].move(0, 0.5);
+		}
 	}
+	
 }
 
 void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 {
-	//while(j<10)
+	if(j<10)
 	{
 		for(int i = 0; i < Ilosc_Klockow_wys; i++)
 		{
-			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 50.f);
-			okno.draw(klocki[i][j]);
+			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
 		}
 		graj.czy_rysowac_klocki = 0;
-		if (200 <= klocki[0][j].getPosition().y)
-		{
-			j++;
-		}
 	}
 }
 

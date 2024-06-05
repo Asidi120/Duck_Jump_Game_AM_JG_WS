@@ -1,19 +1,19 @@
 #pragma once
 #include "Gra.h"
-#define Ilosc_Klockow 3
+#define Ilosc_Klockow 2
 class Klocki
 {
 	RectangleShape podloga;
 	Texture tekstura_podloga;
 	Texture tekstura_klocki;
 	Vector2f rozmiary_podlogi{};
-	RectangleShape klocki[3][10];
 	Vector2f rozmiar_klockow;
-	int Ilosc_Klockow_wys=3;
+	int Ilosc_Klockow_wys=2;
 	Clock czas_gen{};
 	Clock czas_przyspieszania{};
-	int j = 0;
 public:
+	int j = 0;
+	RectangleShape klocki[2][10];
 	Klocki();
 	virtual ~Klocki();
 	void ruch_klockow();

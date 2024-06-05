@@ -13,7 +13,6 @@ class Kaczuszka
 
 public:
 	bool czy_skok = false;
-//	int skok_opoznienie = 4;
 	Kaczuszka();
 	virtual ~Kaczuszka();
 	void rysuj_gracza(RenderWindow& okno);

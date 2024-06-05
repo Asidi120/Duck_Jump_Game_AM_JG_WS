@@ -16,10 +16,24 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	okno.draw(tlo);
 	okno.draw(tytul);
 	kloce.rys_podloga(okno);
-	//if (graj->czy_rysowac_klocki)
+	if(czy_rysowac_klocki) //czemu do cholery rysuje sie jeden dodatkowy klocek, trzeba poprawic
 	{
 		kloce.rys_klocki(okno,*graj);
 	}
+	for (int k = 0; k < 10; k++)
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			okno.draw(kloce.klocki[i][k]);
+		}
+	}
+	kloce.ruch_klockow();
+	if (200 <= kloce.klocki[0][kloce.j].getPosition().y)
+	{
+		czy_rysowac_klocki = 1;
+		kloce.j++;
+	}
+	
 	kaczuszka->rysuj_gracza(okno);
 }
 
