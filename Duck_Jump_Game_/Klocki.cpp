@@ -1,5 +1,6 @@
 #include "Klocki.h"
-
+#include "Graj.h"
+class Graj;
 Klocki::Klocki()
 {
 	podloga.setSize(Vector2f(650.f, 175.0f));
@@ -9,13 +10,17 @@ Klocki::Klocki()
 	tekstura_podloga.loadFromFile("podloga_tekst.png");
 	tekstura_podloga.setSmooth(1);
 	podloga.setTexture(&tekstura_podloga);
-	
-	for (int i = 0; i < Ilosc_Klockow; i++)
+	tekstura_klocki.loadFromFile("materac_testura.png");
+	for (int k = 0; k < 10; k++)
 	{
-		klocki[i].setSize(Vector2f(130.0f, 50.0f));
-		klocki[i].setFillColor(Color::Black);
+		for (int i = 0; i < Ilosc_Klockow; i++)
+		{
+		klocki[i][k].setSize(Vector2f(140.0f, 50.0f));
+		klocki[i][k].setTexture(&tekstura_klocki);
+		}
 	}
-	rozmiar_klockow = klocki[0].getSize();
+	
+	rozmiar_klockow = klocki[0][0].getSize();
 }
 
 Klocki::~Klocki() {}
@@ -24,16 +29,25 @@ void Klocki::ruch_klockow()
 {
 	for (int i=0; i < Ilosc_Klockow_wys; i++)
 	{
-		klocki[i].move(0,-1);
+		klocki[i][j].move(0, -1);
 	}
 }
 
-void Klocki::rys_klocki(RenderWindow& okno)
+void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 {
-	
-	klocki[0].setPosition(300, 50.f);
-	//static_cast<float>(rand() % static_cast<int>(900))
-	okno.draw(klocki[0]);
+	//while(j<10)
+	{
+		for(int i = 0; i < Ilosc_Klockow_wys; i++)
+		{
+			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 50.f);
+			okno.draw(klocki[i][j]);
+		}
+		graj.czy_rysowac_klocki = 0;
+		if (200 <= klocki[0][j].getPosition().y)
+		{
+			j++;
+		}
+	}
 }
 
 void Klocki::rys_podloga(RenderWindow& okno)

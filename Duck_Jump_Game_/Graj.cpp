@@ -11,12 +11,15 @@ Graj::Graj()
 
 Graj::~Graj() {}
 
-void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka)
+void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 {
 	okno.draw(tlo);
 	okno.draw(tytul);
 	kloce.rys_podloga(okno);
-	kloce.rys_klocki(okno);
+	//if (graj->czy_rysowac_klocki)
+	{
+		kloce.rys_klocki(okno,*graj);
+	}
 	kaczuszka->rysuj_gracza(okno);
 }
 
@@ -67,10 +70,12 @@ long long Graj::czas_milisekundy()
 
 }
 
-void Graj::ustaw_czas()
+int Graj::ustaw_czas()
 {
 	czas = czas_gry.getElapsedTime();
 	int minuty = static_cast<int>(czas.asSeconds()) / 60; //sekundy
 	int sekundy = static_cast<int>(czas.asSeconds()) % 60; //minuty
+	int mikrosekundy = static_cast<int>(czas.asMicroseconds());
 	cout << "czas: min:"<<minuty<<" czas sec: "<<sekundy<<endl;
+	return mikrosekundy;
 }

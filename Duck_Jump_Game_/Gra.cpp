@@ -86,7 +86,7 @@ void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka)
     {
         okno.clear();
         graj->ustaw_czas();
-        graj->rysuj_graj(okno,kaczuszka);
+        graj->rysuj_graj(okno,kaczuszka,graj);
         graj->co_sie_dzieje_w_grze(okno,kaczuszka);
         okno.display();
     }
