@@ -3,17 +3,15 @@
 #define Ilosc_Klockow 2
 class Klocki
 {
-	RectangleShape podloga;
 	Texture tekstura_podloga;
 	Texture tekstura_klocki;
-	Vector2f rozmiary_podlogi{};
-	Vector2f rozmiar_klockow;
 	int Ilosc_Klockow_wys=2;
-	Clock czas_gen{};
 	Clock czas_przyspieszania{};
 	int losowanie{};
-	
 public:
+	Vector2f rozmiary_podlogi{};
+	Vector2f rozmiar_klockow;
+	RectangleShape podloga;
 	int j = 0;
 	RectangleShape klocki[2][10];
 	Klocki();

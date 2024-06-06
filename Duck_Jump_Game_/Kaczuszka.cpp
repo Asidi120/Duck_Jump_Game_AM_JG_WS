@@ -45,8 +45,22 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 	kaczuszka.setPosition(x, y);
 }
 
-bool Kaczuszka::czy_jest_na_ziemi()
+bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
 {
+	czy_na_ziemi = 0;
+	for (int i = 1; i < 2; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
+			if (kaczuszka.getPosition().y+kaczuszka.getSize().y == wsp_klockow[i][j].y && (wsp_klockow[i][j].x+kloce->rozmiar_klockow.x>=kaczuszka.getPosition().x && wsp_klockow[i][j].x-rozmiary_kaczuszki.x<=kaczuszka.getPosition().x))
+			{
+				czy_na_ziemi = 1;
+				break;
+			}
+		}
+	}
+	cout<<"y: " << kloce->klocki[0][0].getPosition().y << "x: " << kloce->klocki[0][0].getPosition().x<<endl;
 	return czy_na_ziemi;
 }
 

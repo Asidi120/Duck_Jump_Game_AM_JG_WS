@@ -34,7 +34,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 		czy_rysowac_klocki = 1;
 		kloce.j++;
 	}
-	
+	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->rysuj_gracza(okno);
 }
 
