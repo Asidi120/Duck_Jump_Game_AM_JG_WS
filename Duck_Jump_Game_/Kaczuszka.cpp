@@ -99,3 +99,11 @@ void Kaczuszka::skok_kaczuchy()
 		float y = kaczuszka.getPosition().y - skok_stopien * skok_kierunek;
 		kaczuszka.setPosition(kaczuszka.getPosition().x, y);
 }
+
+void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
+{
+	if (czy_jest_na_ziemi(kloce))
+	{
+		kaczuszka.move(0,0.5);
+	}
+}
