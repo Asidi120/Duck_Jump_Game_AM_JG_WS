@@ -70,8 +70,9 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
 		for (int j = 0; j < 10; j++)
 		{
 			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
-			if (kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j))
+			if (kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1)
 			{
+				//kaczuszka.setPosition(kaczuszka.getPosition().x, wsp_klockow[i][j].y+5);
 				czy_na_ziemi = 1;
 				break;
 			}
@@ -93,6 +94,7 @@ void Kaczuszka::skok_kaczuchy()
 		{
 			skok_kierunek = 1;
 			czy_skok = false;
+			skok_aktuala_poz = -20;
 		}
 		// zmiana szybkosci skoku wraz z jego przebiegiem
 		skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;
