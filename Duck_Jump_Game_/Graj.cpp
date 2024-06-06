@@ -28,7 +28,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 		}
 	}
 	kloce.ruch_klockow();
-	if (200 <= kloce.klocki[0][kloce.j].getPosition().y)
+	if (205 <= kloce.klocki[0][kloce.j].getPosition().y)
 	{
 		czy_rysowac_klocki = 1;
 		kloce.j++;

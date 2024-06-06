@@ -11,6 +11,8 @@ class Klocki
 	int Ilosc_Klockow_wys=2;
 	Clock czas_gen{};
 	Clock czas_przyspieszania{};
+	int losowanie;
+	int ile;
 public:
 	int j = 0;
 	RectangleShape klocki[2][10];

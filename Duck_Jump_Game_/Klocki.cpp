@@ -39,9 +39,18 @@ void Klocki::ruch_klockow()
 
 void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 {
-	if(j<10)
+	if (j < 10)
 	{
-		for(int i = 0; i < Ilosc_Klockow_wys; i++)
+		losowanie = rand() % 5;
+		if (losowanie==4)
+		{
+			ile = 2;
+		}
+		else
+		{
+			ile = 1;
+		}
+		for(int i = 0; i < ile; i++)
 		{
 			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
 		}
