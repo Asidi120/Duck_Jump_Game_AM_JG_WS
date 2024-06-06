@@ -11,12 +11,13 @@ class Klocki
 	int Ilosc_Klockow_wys=2;
 	Clock czas_gen{};
 	Clock czas_przyspieszania{};
-	int losowanie;
-	int ile;
+	int losowanie{};
+	
 public:
 	int j = 0;
 	RectangleShape klocki[2][10];
 	Klocki();
+	int ile{};
 	virtual ~Klocki();
 	void ruch_klockow();
 	void rys_klocki(RenderWindow& okno,Graj& graj);

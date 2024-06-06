@@ -20,6 +20,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	{
 		kloce.rys_klocki(okno,*graj);
 	}
+	okno.draw(kloce.klocki[0][0]);
 	for (int k = 0; k < 10; k++)
 	{
 		for (int i = 0; i < 2; i++)

@@ -21,12 +21,6 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 {
 	float przemieszczenie_x = 6;
 	float x= kaczuszka.getPosition().x, y= kaczuszka.getPosition().y;
-	float wysokosc_skok=100,dy=0;
-	float podloga = 900-150;
-	float grawitacja = 0.2;
-	float skok_y = 0;
-	int skok_kier = -1;
-	long long przerwa = 0;
 	
 	if (kierunek_x == 1)
 	{	

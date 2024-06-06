@@ -9,7 +9,7 @@ class Kaczuszka
 	bool czy_na_ziemi=1;
 	bool czy_glowa_w_prawo = 1;
 	float rob = false;
-	int skok_wysokosc_skoku = 200, skok_aktuala_poz = 0, skok_stopien = 15, skok_kierunek=1;
+	int skok_wysokosc_skoku = 220, skok_aktuala_poz = 0, skok_stopien = 15, skok_kierunek=1;
 
 public:
 	bool czy_skok = false;

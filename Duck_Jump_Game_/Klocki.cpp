@@ -50,9 +50,14 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 		{
 			ile = 1;
 		}
-		for(int i = 0; i < ile; i++)
+		klocki[0][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
+		for(int i = 1; i < ile; i++)
 		{
 			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
+			while (abs(klocki[i][j].getPosition().x -klocki[i -1][j].getPosition().x)<=rozmiar_klockow.x)
+			{
+				klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
+			}
 		}
 		graj.czy_rysowac_klocki = 0;
 	}
