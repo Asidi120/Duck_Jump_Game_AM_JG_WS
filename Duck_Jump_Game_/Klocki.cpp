@@ -47,6 +47,10 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 		}
 		graj.czy_rysowac_klocki = 0;
 	}
+	else
+	{
+		j = 0;
+	}
 }
 
 void Klocki::rys_podloga(RenderWindow& okno)
