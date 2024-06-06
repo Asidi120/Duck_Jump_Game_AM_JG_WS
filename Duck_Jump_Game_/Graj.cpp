@@ -91,6 +91,6 @@ int Graj::ustaw_czas()
 	int minuty = static_cast<int>(czas.asSeconds()) / 60; //sekundy
 	int sekundy = static_cast<int>(czas.asSeconds()) % 60; //minuty
 	int mikrosekundy = static_cast<int>(czas.asMicroseconds());
-	cout << "czas: min:"<<minuty<<" czas sec: "<<sekundy<<endl;
+	//cout << "czas: min:"<<minuty<<" czas sec: "<<sekundy<<endl;
 	return mikrosekundy;
 }
