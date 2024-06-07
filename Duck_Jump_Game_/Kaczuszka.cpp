@@ -62,6 +62,16 @@ bool Kaczuszka::kaczuszka_x(int i, int j, Klocki* kloce)
 	return wynik;
 }
 
+bool Kaczuszka::czy_podloga(Klocki* kloce)
+{
+	bool wynik;
+	float dolna_krawedz_kaczuszki = kaczuszka.getPosition().y + kaczuszka.getSize().y;
+	float gorna_krawedz_podlogi = kloce->podloga.getPosition().y + 20;
+	wynik = (dolna_krawedz_kaczuszki >= gorna_krawedz_podlogi - (eps + 10)) && (dolna_krawedz_kaczuszki <= gorna_krawedz_podlogi + (eps + 10));
+	cout << "podloga: " << wynik << endl;
+	return false;
+}
+
 bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
 {
 	czy_na_ziemi = 0;
@@ -70,7 +80,7 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
 		for (int j = 0; j < 10; j++)
 		{
 			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
-			if (kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1)
+			if ((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || czy_podloga(kloce))
 			{
 				//kaczuszka.setPosition(kaczuszka.getPosition().x, wsp_klockow[i][j].y+5);
 				czy_na_ziemi = 1;
@@ -98,8 +108,9 @@ void Kaczuszka::skok_kaczuchy()
 		}
 		// zmiana szybkosci skoku wraz z jego przebiegiem
 		skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;
-		float y = kaczuszka.getPosition().y - skok_stopien * skok_kierunek;
-		kaczuszka.setPosition(kaczuszka.getPosition().x, y);
+		kaczuszka.move(0, -skok_stopien * skok_kierunek);
+		//float y = kaczuszka.getPosition().y - skok_stopien * skok_kierunek;
+		//kaczuszka.setPosition(kaczuszka.getPosition().x, y);
 }
 
 void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)

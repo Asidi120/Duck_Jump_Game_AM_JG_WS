@@ -26,5 +26,6 @@ public:
 	bool czy_jest_na_ziemi(Klocki* kloce);
 	void skok_kaczuchy();
 	void ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce);
+	bool czy_podloga(Klocki* kloce);
 };
 
