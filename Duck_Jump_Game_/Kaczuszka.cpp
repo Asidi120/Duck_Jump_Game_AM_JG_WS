@@ -49,16 +49,16 @@ bool Kaczuszka::kaczuszka_y(int i, int j)
 {
 	bool wynik;
 	float dolna_krawedz_kaczuszki = kaczuszka.getPosition().y + kaczuszka.getSize().y;
-	float gorna_krawedz_klocka = wsp_klockow[i][j].y;
+	float gorna_krawedz_klocka = wsp_klockow[i][j].y+20;
 	wynik=(dolna_krawedz_kaczuszki >= gorna_krawedz_klocka - eps) && (dolna_krawedz_kaczuszki <= gorna_krawedz_klocka + eps);
-	cout << "Kaczuszka y: "<<wynik<<endl;
+	//cout << "Kaczuszka y: "<<wynik<<endl;
 	return wynik;
 }
 bool Kaczuszka::kaczuszka_x(int i, int j, Klocki* kloce)
 {
 	bool wynik;
 	wynik = wsp_klockow[i][j].x + kloce->rozmiar_klockow.x >= kaczuszka.getPosition().x && wsp_klockow[i][j].x - rozmiary_kaczuszki.x <= kaczuszka.getPosition().x;
-	cout << "Kaczuszka x: " << wynik<<endl;
+	//cout << "Kaczuszka x: " << wynik<<endl;
 	return wynik;
 }
 
@@ -68,8 +68,8 @@ bool Kaczuszka::czy_podloga(Klocki* kloce)
 	float dolna_krawedz_kaczuszki = kaczuszka.getPosition().y + kaczuszka.getSize().y;
 	float gorna_krawedz_podlogi = kloce->podloga.getPosition().y + 20;
 	wynik = (dolna_krawedz_kaczuszki >= gorna_krawedz_podlogi - (eps + 10)) && (dolna_krawedz_kaczuszki <= gorna_krawedz_podlogi + (eps + 10));
-	cout << "podloga: " << wynik << endl;
-	return false;
+	//cout << "podloga: " << wynik << endl;
+	return wynik;
 }
 
 bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
@@ -80,43 +80,58 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
 		for (int j = 0; j < 10; j++)
 		{
 			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
-			if ((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || czy_podloga(kloce))
+			if (((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok==false)) || czy_podloga(kloce))
 			{
-				//kaczuszka.setPosition(kaczuszka.getPosition().x, wsp_klockow[i][j].y+5);
 				czy_na_ziemi = 1;
 				break;
 			}
 		}
 	}
-	//cout<<"y: " << kloce->klocki[0][0].getPosition().y << "x: " << kloce->klocki[0][0].getPosition().x<<endl;
-	cout <<"Czy na ziemi: "<< czy_na_ziemi<<endl;
+	//cout <<"Czy na ziemi: "<< czy_na_ziemi<<endl;
 	return czy_na_ziemi;
 }
 
 void Kaczuszka::skok_kaczuchy()
 {
-		skok_aktuala_poz = skok_aktuala_poz + skok_stopien * skok_kierunek ;// zwiekszam pozycje skoku
+		//cout << "aktualna pozycja: " << skok_aktuala_poz<<endl;
 		if (skok_aktuala_poz >= skok_wysokosc_skoku) // szczyt skok i nastepuje zmiana kierunku y
 		{
 			skok_kierunek =  -1;
 		}
-		if (skok_aktuala_poz <= 0 || czy_na_ziemi==1) // koniec skoku i nastepuje zmiana kierunku y oraz zatrzymanie skoku
+		if ((czy_na_ziemi == 1 && skok_kierunek == -1)) // koniec skoku i nastepuje zmiana kierunku y oraz zatrzymanie skoku
 		{
 			skok_kierunek = 1;
 			czy_skok = false;
 			skok_aktuala_poz = -20;
+			cout << "Kolejny skok\n";
 		}
-		// zmiana szybkosci skoku wraz z jego przebiegiem
-		skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;
+		skok_aktuala_poz = skok_aktuala_poz + skok_stopien * skok_kierunek ;// zwiekszam pozycje skoku
+		skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;// zmiana szybkosci skoku wraz z jego przebiegiem
+		cout << skok_stopien << " stopien\n";
+		if (czy_skok == false && czy_na_ziemi == 1)
+		{
+			kaczuszka.move(0, skok_stopien * skok_kierunek);
+		}
 		kaczuszka.move(0, -skok_stopien * skok_kierunek);
-		//float y = kaczuszka.getPosition().y - skok_stopien * skok_kierunek;
-		//kaczuszka.setPosition(kaczuszka.getPosition().x, y);
 }
 
 void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
 {
 	if (czy_jest_na_ziemi(kloce))
 	{
-		kaczuszka.move(0,0.5);
+		if (czy_podloga(kloce))
+		{
+			kaczuszka.move(0, 0.09);
+		}
+		else
+		{
+			kaczuszka.move(0,0.5);
+		}
+	}
+	if (!czy_jest_na_ziemi(kloce) && czy_skok==false)
+	{
+		skok_aktuala_poz = 220;
+		skok_stopien = 1;
+		czy_skok = true;
 	}
 }

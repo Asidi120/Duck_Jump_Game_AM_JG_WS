@@ -19,7 +19,6 @@ Klocki::Klocki()
 		klocki[i][k].setTexture(&tekstura_klocki);
 		}
 	}
-	
 	rozmiar_klockow = klocki[0][0].getSize();
 }
 
@@ -32,7 +31,7 @@ void Klocki::ruch_klockow()
 		for (int i=0; i < Ilosc_Klockow_wys; i++)
 		{
 			klocki[i][k].move(0, 0.5);
-			//podloga.move(0, 0.025);
+			podloga.move(0, 0.004);
 		}
 	}
 	
