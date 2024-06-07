@@ -25,10 +25,13 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			okno.draw(kloce.klocki[i][k]);
+			if (kloce.klocki[i][k].getPosition().y <= 900)
+			{
+				okno.draw(kloce.klocki[i][k]);
+			}
 		}
 	}
-	kloce.ruch_klockow();
+	kloce.ruch_klockow(*graj);
 	kaczuszka->ruch_gdy_na_ziemi(okno,&kloce);
 	if (205 <= kloce.klocki[0][kloce.j].getPosition().y)
 	{
@@ -38,6 +41,10 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->rysuj_gracza(okno);
 	//kaczuszka->przesuwanie_o_200_pikseli_w_dol(okno, &kloce); trzeba jeszcze dostosowac pojawianie sie pontonow :D
+	if (kaczuszka->kaczuszka.getPosition().y >= 900)
+	{
+		cout << "GAME OVER";
+	}
 }
 
 void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)

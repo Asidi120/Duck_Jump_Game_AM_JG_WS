@@ -6,7 +6,6 @@ Klocki::Klocki()
 	podloga.setSize(Vector2f(650.f, 175.0f));
 	rozmiary_podlogi = podloga.getSize();
 	podloga.setPosition(Vector2f(static_cast<float>((650 - rozmiary_podlogi.x) / 2), float(900 - rozmiary_podlogi.y+8)));
-	podloga.setFillColor(Color::Black);
 	tekstura_podloga.loadFromFile("podloga_tekst.png");
 	tekstura_podloga.setSmooth(1);
 	podloga.setTexture(&tekstura_podloga);
@@ -24,14 +23,14 @@ Klocki::Klocki()
 
 Klocki::~Klocki() {}
 
-void Klocki::ruch_klockow() 
+void Klocki::ruch_klockow(Graj& graj) 
 {
 	for (int k = 0; k < 10; k++)
 	{
 		for (int i=0; i < Ilosc_Klockow_wys; i++)
 		{
 			klocki[i][k].move(0, 0.5);
-			podloga.move(0, 0.004);
+			podloga.move(0,  0.004);
 		}
 	}
 	
@@ -69,5 +68,8 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) // nie wiem jeszcze co t
 
 void Klocki::rys_podloga(RenderWindow& okno)
 {
-	okno.draw(podloga);
+	if (podloga.getPosition().y <= 900)
+	{
+		okno.draw(podloga);
+	}		
 }
