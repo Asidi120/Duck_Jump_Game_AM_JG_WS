@@ -37,7 +37,7 @@ void Klocki::ruch_klockow()
 	
 }
 
-void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
+void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) // nie wiem jeszcze co tu dac 
 {
 	if (j < 10)
 	{
@@ -50,13 +50,13 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 		{
 			ile = 1;
 		}
-		klocki[0][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
+		klocki[0][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f/*klocki[0][j - 1].getPosition().y - 200.f*/);
 		for(int i = 1; i < ile; i++)
 		{
-			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
+			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f/*klocki[0][j - 1].getPosition().y - 200.f*/);
 			while (abs(klocki[i][j].getPosition().x -klocki[i -1][j].getPosition().x)<=rozmiar_klockow.x)
 			{
-				klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f);
+				klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f/*klocki[0][j-1].getPosition().y-200.f*/);
 			}
 		}
 		graj.czy_rysowac_klocki = 0;

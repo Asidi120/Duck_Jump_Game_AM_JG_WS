@@ -37,6 +37,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	}
 	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->rysuj_gracza(okno);
+	//kaczuszka->przesuwanie_o_200_pikseli_w_dol(okno, &kloce); trzeba jeszcze dostosowac pojawianie sie pontonow :D
 }
 
 void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
