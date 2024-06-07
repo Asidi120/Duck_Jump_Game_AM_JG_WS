@@ -12,7 +12,7 @@ class Kaczuszka
 	float rob = false;
 	int skok_wysokosc_skoku = 220, skok_aktuala_poz = 0, skok_stopien = 15;
 	Vector2f wsp_klockow[2][10]{}; //pozycja klockow
-	float eps = 12;
+	float eps = 8;
 public:
 	RectangleShape kaczuszka;
 	int skok_kierunek=1;

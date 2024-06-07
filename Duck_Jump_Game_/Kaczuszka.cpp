@@ -103,7 +103,10 @@ void Kaczuszka::skok_kaczuchy()
 			skok_aktuala_poz = -20;
 		}
 		skok_aktuala_poz = skok_aktuala_poz + skok_stopien * skok_kierunek ;// zwiekszam pozycje skoku
-		skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;// zmiana szybkosci skoku wraz z jego przebiegiem
+		if ((skok_stopien <= 21 && skok_kierunek==-1) || skok_kierunek==1)
+		{
+			skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;// zmiana szybkosci skoku wraz z jego przebiegiem
+		}
 		if (czy_skok == false && czy_na_ziemi == 1)
 		{
 			kaczuszka.move(0, skok_stopien * skok_kierunek);
