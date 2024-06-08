@@ -142,7 +142,7 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
 	}
 }
 
-void Kaczuszka::przesuwanie_o_200_pikseli_w_dol(RenderWindow& okno, Klocki* kloce) //za szybko sie przesowA
+void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce) //za szybko sie przesowA
 {
 	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 500)
 	{

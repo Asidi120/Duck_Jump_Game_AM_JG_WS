@@ -38,12 +38,15 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 		czy_rysowac_klocki = 1;
 		kloce.j++;
 	}
+	kaczuszka->przesuwanie_o_50_pikseli_w_dol(okno, &kloce);
 	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->rysuj_gracza(okno);
-	kaczuszka->przesuwanie_o_200_pikseli_w_dol(okno, &kloce); //trzeba jeszcze dostosowac pojawianie sie pontonow :D
+	
 	if (kaczuszka->kaczuszka.getPosition().y >= 900)
 	{
 		cout << "GAME OVER";
+		czy_graj_wlaczone = 0;
+		//czy_wyniki_wlaczone=1;
 	}
 }
 

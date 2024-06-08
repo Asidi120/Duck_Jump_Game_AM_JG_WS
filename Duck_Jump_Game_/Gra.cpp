@@ -6,7 +6,26 @@
 #include "Graj.h"
 #include "Kaczuszka.h"
 #include "Klocki.h"
-
+void ustaw(Kaczuszka* kaczuszka, Graj* graj)
+{
+    if (!graj->czy_graj_wlaczone)
+    {
+        graj->kloce.pierwszy_rzad = 1;
+        //czy_wyniki_wlaczone=1;
+        for (int k = 0; k < 10; k++)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                if (graj->kloce.klocki[i][k].getPosition().y <= 900)
+                {
+                    graj->kloce.klocki[i][k].setPosition(650.f, 900.f);
+                }
+            }
+        }
+        graj->kloce.podloga.setPosition(Vector2f(static_cast<float>((650 - graj->kloce.rozmiary_podlogi.x) / 2), float(900 - graj->kloce.rozmiary_podlogi.y + 8)));
+        kaczuszka->kaczuszka.setPosition(Vector2f(static_cast<float>((650 - kaczuszka->kaczuszka.getSize().x) / 2), float(900 - kaczuszka->kaczuszka.getSize().y - 150)));
+    }
+}
 
 Gra::Gra() //kostruktor domyslny - tworzy okienko
 {  
@@ -81,6 +100,7 @@ void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_skle
 }
 void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka)
 {
+    ustaw(kaczuszka, graj);
     graj->czy_graj_wlaczone = 1;
     while (graj->czy_graj_wlaczone == 1)
     {

@@ -33,11 +33,11 @@ void Klocki::ruch_klockow(Graj& graj)
 			podloga.move(0,  0.004);
 		}
 	}
-	
 }
 
 void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) // nie wiem jeszcze co tu dac 
 {
+	if (j == 10) j = 0;
 	if (j < 10)
 	{
 		losowanie = rand() % 5;
@@ -49,21 +49,40 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) // nie wiem jeszcze co t
 		{
 			ile = 1;
 		}
-
-		klocki[0][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f/*klocki[0][(j - 1)%10].getPosition().y - 200.f*/);
-		for(int i = 1; i < ile; i++)
+		if (pierwszy_rzad)
 		{
-			klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f/*klocki[0][(j - 1)%10].getPosition().y - 200.f*/);
-			while (abs(klocki[i][j].getPosition().x -klocki[i -1][j].getPosition().x)<=rozmiar_klockow.x)
+			koordynaty_y = 0.f;
+			
+		}
+		else
+		{
+			if (j == 0)
 			{
-				klocki[i][j].setPosition(static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)), 0.f/*klocki[0][(j - 1)%10].getPosition().y-200.f*/);
+				koordynaty_y = klocki[0][9].getPosition().y - 200.f;
+			}
+			else
+			{
+				koordynaty_y=klocki[0][(j - 1) % 10].getPosition().y - 200.f;
 			}
 		}
+		koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1));
+		klocki[0][j].setPosition(koordynaty_x, koordynaty_y);
+		for(int i = 1; i < ile; i++)
+		{
+			koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1));
+			klocki[i][j].setPosition(koordynaty_x, koordynaty_y);
+
+			while (abs(klocki[i][j].getPosition().x -klocki[i -1][j].getPosition().x)<=rozmiar_klockow.x)
+			{
+				koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1));
+				klocki[i][j].setPosition(koordynaty_x, koordynaty_y);
+			}
+		}
+		if (j == 1)
+		{
+			pierwszy_rzad = 0;
+		}
 		graj.czy_rysowac_klocki = 0;
-	}
-	else
-	{
-		j = 0;
 	}
 }
 

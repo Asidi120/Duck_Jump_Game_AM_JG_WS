@@ -8,7 +8,10 @@ class Klocki
 	int Ilosc_Klockow_wys=2;
 	Clock czas_przyspieszania{};
 	int losowanie{};
+	float koordynaty_y = 0;
+	float koordynaty_x = 0;
 public:
+	bool pierwszy_rzad=1;
 	Vector2f rozmiary_podlogi{};
 	Vector2f rozmiar_klockow;
 	RectangleShape podloga;
