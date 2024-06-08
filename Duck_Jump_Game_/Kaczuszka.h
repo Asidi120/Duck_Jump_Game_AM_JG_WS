@@ -12,7 +12,11 @@ class Kaczuszka
 	float rob = false;
 	int skok_wysokosc_skoku = 220, skok_aktuala_poz = 0, skok_stopien = 15;
 	Vector2f wsp_klockow[2][10]{}; //pozycja klockow
-	float eps = 12;
+	float eps = 8;
+	float punkty = 0;
+	int ktore_j = 0;
+	Vector2f wsp_kaczuszki{};
+	IntRect zmiana_kaczki;
 public:
 	RectangleShape kaczuszka;
 	int skok_kierunek=1;
@@ -28,5 +32,6 @@ public:
 	void ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce);
 	void przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce);
 	bool czy_podloga(Klocki* kloce);
+	float punkty_liczenie(Klocki* kloce);
 };
 

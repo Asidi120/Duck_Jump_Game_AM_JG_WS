@@ -16,11 +16,11 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	okno.draw(tlo); //rysuje tlo, tytul i podloge
 	okno.draw(tytul);
 	kloce.rys_podloga(okno);
+	kaczuszka->punkty_liczenie(&kloce);
 	if(czy_rysowac_klocki) 
 	{
 		kloce.rys_klocki(okno,*graj); //ustawia pozycje klockow
 	}
-	okno.draw(kloce.klocki[0][0]); //he
 	for (int k = 0; k < 10; k++)
 	{
 		for (int i = 0; i < 2; i++)
@@ -42,7 +42,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->rysuj_gracza(okno);
 	
-	if (kaczuszka->kaczuszka.getPosition().y >= 900) //koniev gry gdy kaczucha spadnie
+	if (kaczuszka->kaczuszka.getPosition().y >= 900) //koniec gry gdy kaczucha spadnie
 	{
 		cout << "GAME OVER";
 		czy_graj_wlaczone = 0;
@@ -64,7 +64,6 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 			break;
 		}
 	}
-
 		if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) //ruch w lewo
 		{
 			kaczuszka->ruch(-1, 0);

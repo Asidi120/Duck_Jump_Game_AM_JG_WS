@@ -8,6 +8,7 @@ Kaczuszka::Kaczuszka()
 	kaczuszka.setPosition(Vector2f(static_cast<float>((650-rozmiary_kaczuszki.x)/2),float(900-rozmiary_kaczuszki.y-150)));
 	tekstura_kaczuszka.loadFromFile("kaczucha.png");
 	kaczuszka.setTexture(&tekstura_kaczuszka);
+	//zmiana_kaczki.=rozmiary_kaczuszki/3
 }
 
 Kaczuszka::~Kaczuszka() {}
@@ -77,6 +78,8 @@ bool Kaczuszka::czy_podloga(Klocki* kloce) //wykrywa kiedy kaczuszka jest na pod
 	return wynik;
 }
 
+
+
 bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest na klockach tylko wtedy jak spada z tolerancja
 {
 	czy_na_ziemi = 0;
@@ -85,6 +88,10 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest 
 		for (int j = 0; j < 10; j++)
 		{
 			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
+			if ((kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && skok_kierunek == -1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok == false))
+			{
+				kloce->ktory_teraz = j + int(kloce->licznik_rzedow_pontonow/10)*10;
+			}
 			if (((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok==false)) || czy_podloga(kloce)) //spada || nie skacze || jest na podlodze
 			{
 				czy_na_ziemi = 1;
@@ -108,7 +115,7 @@ void Kaczuszka::skok_kaczuchy() //kinda he
 			skok_aktuala_poz = -20;
 		}
 		skok_aktuala_poz = skok_aktuala_poz + skok_stopien * skok_kierunek ;// zwiekszam pozycje skoku
-		if ((skok_stopien <= 18 && skok_kierunek==-1) || skok_kierunek==1)
+		if ((skok_stopien <= 12 && skok_kierunek==-1) || skok_kierunek==1)
 		{
 			skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;// zmiana szybkosci skoku wraz z jego przebiegiem
 		}
@@ -150,9 +157,20 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 		{
 			for (int i = 0; i < 2; i++)
 			{
-				kloce->klocki[i][k].move(0, 10);
+				kloce->klocki[i][k].move(0, 3);
 			}
 		}
 
 	}
+}
+
+float Kaczuszka::punkty_liczenie(Klocki* kloce)
+{
+	if(czy_na_ziemi==1 && ktore_j<kloce->ktory_teraz)
+	{
+		punkty = (kloce->ktory_teraz+1) * 100;
+	}
+	ktore_j = kloce->ktory_teraz;
+	cout << "Punkty: " << punkty<<endl;
+	return punkty;
 }

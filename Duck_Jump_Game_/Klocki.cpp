@@ -40,6 +40,7 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 	if (j == 10) j = 0;
 	if (j < 10)
 	{
+		licznik_rzedow_pontonow++;
 		losowanie = rand() % 5; //20% szans ze beda 2 pontony
 		if (losowanie==4)
 		{
