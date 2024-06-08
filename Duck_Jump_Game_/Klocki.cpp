@@ -51,8 +51,7 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) // nie wiem jeszcze co t
 		}
 		if (pierwszy_rzad)
 		{
-			koordynaty_y = 0.f;
-			
+			koordynaty_y = 0.f;	
 		}
 		else
 		{
@@ -62,17 +61,17 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) // nie wiem jeszcze co t
 			}
 			else
 			{
-				koordynaty_y=klocki[0][(j - 1) % 10].getPosition().y - 200.f;
+				koordynaty_y=klocki[0][j - 1].getPosition().y - 200.f;
 			}
 		}
-		koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1));
-		klocki[0][j].setPosition(koordynaty_x, koordynaty_y);
-		for(int i = 1; i < ile; i++)
+		//koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1));
+		//klocki[0][j].setPosition(koordynaty_x, koordynaty_y);
+		for(int i = 0; i < ile; i++)
 		{
 			koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1));
 			klocki[i][j].setPosition(koordynaty_x, koordynaty_y);
 
-			while (abs(klocki[i][j].getPosition().x -klocki[i -1][j].getPosition().x)<=rozmiar_klockow.x)
+			while (i>0 && (abs(klocki[i][j].getPosition().x -klocki[i-1][j].getPosition().x)<=rozmiar_klockow.x))
 			{
 				koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1));
 				klocki[i][j].setPosition(koordynaty_x, koordynaty_y);

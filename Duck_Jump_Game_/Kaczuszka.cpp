@@ -116,9 +116,9 @@ void Kaczuszka::skok_kaczuchy()
 		}
 		if (czy_skok == false && czy_na_ziemi == 1)
 		{
-			kaczuszka.move(0, skok_stopien * skok_kierunek);
+			kaczuszka.move(0, float(skok_stopien * skok_kierunek));
 		}
-		kaczuszka.move(0, -skok_stopien * skok_kierunek);
+		kaczuszka.move(0, float(- skok_stopien * skok_kierunek));
 }
 
 void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
@@ -127,11 +127,11 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
 	{
 		if (czy_podloga(kloce))
 		{
-			kaczuszka.move(0, 0.09);
+			kaczuszka.move(0, 0.09f);
 		}
 		else
 		{
-			kaczuszka.move(0,0.5);
+			kaczuszka.move(0,0.5f);
 		}
 	}
 	if (!czy_jest_na_ziemi(kloce) && czy_skok==false)
@@ -146,13 +146,13 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 {
 	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 500)
 	{
-		kaczuszka.move(0, 50);
-		kloce->podloga.move(0, 50);
+		kaczuszka.move(0, 10);
+		kloce->podloga.move(0,10);
 		for (int k = 0; k < 10; k++)
 		{
 			for (int i = 0; i < 2; i++)
 			{
-				kloce->klocki[i][k].move(0, 50);
+				kloce->klocki[i][k].move(0, 10);
 			}
 		}
 

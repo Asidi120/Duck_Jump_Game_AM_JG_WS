@@ -13,6 +13,7 @@ class Graj: public Menu
 	long long czas_przycisku = 0; // czas przerwy miedzy przyciskami
 	long long czas_czekania = 0; // czas nieokreslony
 public:
+	float punkty=0;
 	Klocki kloce;
 	Clock czas_gry{};
 	bool czy_rysowac_klocki=1;
