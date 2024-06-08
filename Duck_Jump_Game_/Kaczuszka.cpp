@@ -51,7 +51,10 @@ bool Kaczuszka::kaczuszka_y(int i, int j)
 	float dolna_krawedz_kaczuszki = kaczuszka.getPosition().y + kaczuszka.getSize().y;
 	float gorna_krawedz_klocka = wsp_klockow[i][j].y+20;
 	wynik=(dolna_krawedz_kaczuszki >= gorna_krawedz_klocka - eps) && (dolna_krawedz_kaczuszki <= gorna_krawedz_klocka + eps);
-	//cout << "Kaczuszka y: "<<wynik<<endl;
+	if (wynik == 1)
+	{
+		kaczuszka.setPosition(kaczuszka.getPosition().x, gorna_krawedz_klocka-kaczuszka.getSize().y);
+	}
 	return wynik;
 }
 bool Kaczuszka::kaczuszka_x(int i, int j, Klocki* kloce)
@@ -68,6 +71,10 @@ bool Kaczuszka::czy_podloga(Klocki* kloce)
 	float dolna_krawedz_kaczuszki = kaczuszka.getPosition().y + kaczuszka.getSize().y;
 	float gorna_krawedz_podlogi = kloce->podloga.getPosition().y + 20;
 	wynik = (dolna_krawedz_kaczuszki >= gorna_krawedz_podlogi - (eps+8)) && (dolna_krawedz_kaczuszki <= gorna_krawedz_podlogi + (eps+8));
+	if (wynik == 1)
+	{
+		kaczuszka.setPosition(kaczuszka.getPosition().x, gorna_krawedz_podlogi - kaczuszka.getSize().y);
+	}
 	return wynik;
 }
 
@@ -103,7 +110,7 @@ void Kaczuszka::skok_kaczuchy()
 			skok_aktuala_poz = -20;
 		}
 		skok_aktuala_poz = skok_aktuala_poz + skok_stopien * skok_kierunek ;// zwiekszam pozycje skoku
-		if ((skok_stopien <= 21 && skok_kierunek==-1) || skok_kierunek==1)
+		if ((skok_stopien <= 18 && skok_kierunek==-1) || skok_kierunek==1)
 		{
 			skok_stopien = ((skok_wysokosc_skoku / 10) - (skok_aktuala_poz / 10)) + 1;// zmiana szybkosci skoku wraz z jego przebiegiem
 		}
