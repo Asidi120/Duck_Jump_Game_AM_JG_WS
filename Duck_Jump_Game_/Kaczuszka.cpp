@@ -45,7 +45,7 @@ void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
 	kaczuszka.setPosition(x, y);
 }
 
-bool Kaczuszka::kaczuszka_y(int i, int j)
+bool Kaczuszka::kaczuszka_y(int i, int j) //wykrywa kiedy kaczuszka jest na klockach wzgl y
 {
 	bool wynik;
 	float dolna_krawedz_kaczuszki = kaczuszka.getPosition().y + kaczuszka.getSize().y;
@@ -57,15 +57,14 @@ bool Kaczuszka::kaczuszka_y(int i, int j)
 	}
 	return wynik;
 }
-bool Kaczuszka::kaczuszka_x(int i, int j, Klocki* kloce)
+bool Kaczuszka::kaczuszka_x(int i, int j, Klocki* kloce) //wykrywa kiedy kaczuszka jest na klockach wzgl x
 {
 	bool wynik;
 	wynik = wsp_klockow[i][j].x + kloce->rozmiar_klockow.x >= kaczuszka.getPosition().x && wsp_klockow[i][j].x - rozmiary_kaczuszki.x <= kaczuszka.getPosition().x;
-	//cout << "Kaczuszka x: " << wynik<<endl;
 	return wynik;
 }
 
-bool Kaczuszka::czy_podloga(Klocki* kloce)
+bool Kaczuszka::czy_podloga(Klocki* kloce) //wykrywa kiedy kaczuszka jest na podlodze z tolerancja 
 {
 	bool wynik;
 	float dolna_krawedz_kaczuszki = kaczuszka.getPosition().y + kaczuszka.getSize().y;
@@ -78,7 +77,7 @@ bool Kaczuszka::czy_podloga(Klocki* kloce)
 	return wynik;
 }
 
-bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
+bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest na klockach tylko wtedy jak spada z tolerancja
 {
 	czy_na_ziemi = 0;
 	for (int i = 0; i < 2; i++)
@@ -86,18 +85,17 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce)
 		for (int j = 0; j < 10; j++)
 		{
 			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
-			if (((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok==false)) || czy_podloga(kloce))
+			if (((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok==false)) || czy_podloga(kloce)) //spada || nie skacze || jest na podlodze
 			{
 				czy_na_ziemi = 1;
 				break;
 			}
 		}
 	}
-	//cout <<"Czy na ziemi: "<< czy_na_ziemi<<endl;
 	return czy_na_ziemi;
 }
 
-void Kaczuszka::skok_kaczuchy()
+void Kaczuszka::skok_kaczuchy() //kinda he
 {
 		if (skok_aktuala_poz >= skok_wysokosc_skoku) // szczyt skok i nastepuje zmiana kierunku y
 		{
@@ -127,11 +125,11 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
 	{
 		if (czy_podloga(kloce))
 		{
-			kaczuszka.move(0, 0.09f);
+			kaczuszka.move(0, 0.09f); //na podlodze kaczuszka porusza sie tak jak podloga (troche wolniej od klockow)
 		}
 		else
 		{
-			kaczuszka.move(0,0.5f);
+			kaczuszka.move(0,0.5f); //kaczuszka porusza sie w dol tak jak klocki 
 		}
 	}
 	if (!czy_jest_na_ziemi(kloce) && czy_skok==false)
@@ -142,9 +140,9 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
 	}
 }
 
-void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce) //za szybko sie przesowA
+void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce) 
 {
-	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 500)
+	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 500) //przesuwanie kiedy kaczucha jest w polowie wysokosci okienka
 	{
 		kaczuszka.move(0, 10);
 		kloce->podloga.move(0,10);

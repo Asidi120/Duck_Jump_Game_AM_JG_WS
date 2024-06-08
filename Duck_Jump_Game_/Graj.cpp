@@ -1,7 +1,7 @@
 #include "Graj.h"
 #include "Kaczuszka.h"
 #include "Klocki.h"
-Graj::Graj()
+Graj::Graj() //ustawia napis gra
 {
 	tytul.setFont(czcionka);
 	tytul.setFillColor(Color::Magenta);
@@ -13,25 +13,25 @@ Graj::~Graj() {}
 
 void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 {
-	okno.draw(tlo);
+	okno.draw(tlo); //rysuje tlo, tytul i podloge
 	okno.draw(tytul);
 	kloce.rys_podloga(okno);
-	if(czy_rysowac_klocki) //czemu do cholery rysuje sie jeden dodatkowy klocek, trzeba poprawic
+	if(czy_rysowac_klocki) 
 	{
-		kloce.rys_klocki(okno,*graj);
+		kloce.rys_klocki(okno,*graj); //ustawia pozycje klockow
 	}
-	okno.draw(kloce.klocki[0][0]);
+	okno.draw(kloce.klocki[0][0]); //he
 	for (int k = 0; k < 10; k++)
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			if (kloce.klocki[i][k].getPosition().y <= 900)
+			if (kloce.klocki[i][k].getPosition().y <= 900) //rysuje klocki
 			{
 				okno.draw(kloce.klocki[i][k]);
 			}
 		}
 	}
-	kloce.ruch_klockow(*graj);
+	kloce.ruch_klockow(*graj); //ruch klockow
 	kaczuszka->ruch_gdy_na_ziemi(okno,&kloce);
 	if (205 <= kloce.klocki[0][kloce.j].getPosition().y)
 	{
@@ -42,7 +42,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->rysuj_gracza(okno);
 	
-	if (kaczuszka->kaczuszka.getPosition().y >= 900)
+	if (kaczuszka->kaczuszka.getPosition().y >= 900) //koniev gry gdy kaczucha spadnie
 	{
 		cout << "GAME OVER";
 		czy_graj_wlaczone = 0;
@@ -54,26 +54,26 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 {
 	while (okno.pollEvent(event_gra))
 	{
-		if (event_gra.type == Event::Closed)
+		if (event_gra.type == Event::Closed) //przycisk x zamyka gre
 		{
 			okno.close();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::Escape))
+		if (Keyboard::isKeyPressed(Keyboard::Escape)) //przycisk esc pozwala wrocic do menu
 		{
 			czy_graj_wlaczone = 0;
 			break;
 		}
 	}
 
-		if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
+		if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) //ruch w lewo
 		{
 			kaczuszka->ruch(-1, 0);
 		}
-		if (Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D))
+		if (Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D)) //ruch w prawo
 		{
 			kaczuszka->ruch(1,0);
 		}
-		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>200))
+		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>200)) //skok przy czym nie wykryje kolejnego nacisniecia przez 200milisekund
 		{
 			czas_przycisku = czas_milisekundy();
 			kaczuszka->czy_skok = true;
