@@ -23,5 +23,6 @@ public:
 	void co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka);
 	long long czas_milisekundy();
 	int ustaw_czas();
+	bool czy_pryspieszyc();
 };
 

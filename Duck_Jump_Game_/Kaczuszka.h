@@ -17,6 +17,7 @@ class Kaczuszka
 	int ktore_j = 0;
 	Vector2f wsp_kaczuszki{};
 	IntRect zmiana_kaczki;
+	float predkosc_kaczuchy = 0.5f;
 public:
 	RectangleShape kaczuszka;
 	int skok_kierunek=1;
@@ -29,8 +30,8 @@ public:
 	bool kaczuszka_x(int i, int j, Klocki* kloce);
 	bool czy_jest_na_ziemi(Klocki* kloce);
 	void skok_kaczuchy();
-	void ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce);
-	void przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce);
+	void ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce, Graj* graj);
+	void przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce, Graj* graj);
 	bool czy_podloga(Klocki* kloce);
 	float punkty_liczenie(Klocki* kloce);
 };

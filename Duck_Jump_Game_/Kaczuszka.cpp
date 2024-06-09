@@ -8,7 +8,7 @@ Kaczuszka::Kaczuszka()
 	kaczuszka.setPosition(Vector2f(static_cast<float>((650-rozmiary_kaczuszki.x)/2),float(900-rozmiary_kaczuszki.y-150)));
 	tekstura_kaczuszka.loadFromFile("kaczucha.png");
 	kaczuszka.setTexture(&tekstura_kaczuszka);
-	//zmiana_kaczki.=rozmiary_kaczuszki/3
+	kaczuszka.setTextureRect(IntRect(0, 0, 18, 24));
 }
 
 Kaczuszka::~Kaczuszka() {}
@@ -90,7 +90,11 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest 
 			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
 			if ((kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && skok_kierunek == -1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok == false))
 			{
-				kloce->ktory_teraz = j + int(kloce->licznik_rzedow_pontonow/10)*10;
+				if ((j + int(kloce->licznik_rzedow_pontonow / 10) * 10) > int(kloce->ktory_teraz))
+				{
+					kloce->ktory_teraz = j + (int(kloce->licznik_rzedow_pontonow/10)*10);
+					cout << kloce->ktory_teraz << endl;;
+				}
 			}
 			if (((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok==false)) || czy_podloga(kloce)) //spada || nie skacze || jest na podlodze
 			{
@@ -126,8 +130,12 @@ void Kaczuszka::skok_kaczuchy() //kinda he
 		kaczuszka.move(0, float(- skok_stopien * skok_kierunek));
 }
 
-void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
+void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce,Graj* graj)
 {
+	if (graj->czy_pryspieszyc())
+	{
+		predkosc_kaczuchy += 0.00067;
+	}
 	if (czy_jest_na_ziemi(kloce))
 	{
 		if (czy_podloga(kloce))
@@ -136,7 +144,7 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
 		}
 		else
 		{
-			kaczuszka.move(0,0.5f); //kaczuszka porusza sie w dol tak jak klocki 
+			kaczuszka.move(0,predkosc_kaczuchy); //kaczuszka porusza sie w dol tak jak klocki 
 		}
 	}
 	if (!czy_jest_na_ziemi(kloce) && czy_skok==false)
@@ -147,9 +155,9 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce)
 	}
 }
 
-void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce) 
+void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce, Graj* graj)
 {
-	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 500) //przesuwanie kiedy kaczucha jest w polowie wysokosci okienka
+	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 300) //przesuwanie kiedy kaczucha jest w polowie wysokosci okienka
 	{
 		kaczuszka.move(0, 10);
 		kloce->podloga.move(0,10);
@@ -168,7 +176,7 @@ float Kaczuszka::punkty_liczenie(Klocki* kloce)
 {
 	if(czy_na_ziemi==1 && ktore_j<kloce->ktory_teraz)
 	{
-		punkty = (kloce->ktory_teraz+1) * 100;
+		punkty = (kloce->ktory_teraz+1) * 86;
 	}
 	ktore_j = kloce->ktory_teraz;
 	cout << "Punkty: " << punkty<<endl;

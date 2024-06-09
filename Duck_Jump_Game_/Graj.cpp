@@ -32,13 +32,13 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 		}
 	}
 	kloce.ruch_klockow(*graj); //ruch klockow
-	kaczuszka->ruch_gdy_na_ziemi(okno,&kloce);
+	kaczuszka->ruch_gdy_na_ziemi(okno,&kloce,graj);
 	if (205 <= kloce.klocki[0][kloce.j].getPosition().y)
 	{
 		czy_rysowac_klocki = 1;
 		kloce.j++;
 	}
-	kaczuszka->przesuwanie_o_50_pikseli_w_dol(okno, &kloce);
+	kaczuszka->przesuwanie_o_50_pikseli_w_dol(okno, &kloce, graj);
 	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->rysuj_gracza(okno);
 	
@@ -99,9 +99,15 @@ long long Graj::czas_milisekundy()
 int Graj::ustaw_czas()
 {
 	czas = czas_gry.getElapsedTime();
-	int minuty = static_cast<int>(czas.asSeconds()) / 60; //sekundy
-	int sekundy = static_cast<int>(czas.asSeconds()) % 60; //minuty
-	int mikrosekundy = static_cast<int>(czas.asMicroseconds());
-	//cout << "czas: min:"<<minuty<<" czas sec: "<<sekundy<<endl;
-	return mikrosekundy;
+	int sekundy = static_cast<int>(czas.asSeconds()); //sekundy w grze
+	return sekundy;
+}
+
+bool Graj::czy_pryspieszyc()
+{
+	if (ustaw_czas() % 4 == 0)
+	{
+		return true;
+	}
+	return false;
 }

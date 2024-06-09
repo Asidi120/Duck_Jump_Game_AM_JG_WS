@@ -25,11 +25,15 @@ Klocki::~Klocki() {}
 
 void Klocki::ruch_klockow(Graj& graj)  //klocki oraz podloga poruszaja sie w dol
 {
+	if (predkosc_klockow)
+	{
+		predkosc_klockow +=0.00067;
+	}
 	for (int k = 0; k < 10; k++)
 	{
 		for (int i=0; i < Ilosc_Klockow_wys; i++)
 		{
-			klocki[i][k].move(0, 0.5);
+			klocki[i][k].move(0, predkosc_klockow);
 			podloga.move(0,  0.004);
 		}
 	}
