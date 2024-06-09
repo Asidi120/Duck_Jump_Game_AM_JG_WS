@@ -8,7 +8,6 @@ Kaczuszka::Kaczuszka()
 	kaczuszka.setPosition(Vector2f(static_cast<float>((650-rozmiary_kaczuszki.x)/2),float(900-rozmiary_kaczuszki.y-150)));
 	tekstura_kaczuszka.loadFromFile("kaczucha.png");
 	kaczuszka.setTexture(&tekstura_kaczuszka);
-	kaczuszka.setTextureRect(sf::IntRect(0, 0, 18, 24));
 }
 
 Kaczuszka::~Kaczuszka() {}
