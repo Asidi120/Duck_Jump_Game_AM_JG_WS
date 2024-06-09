@@ -4,9 +4,10 @@
 Graj::Graj() //ustawia napis gra
 {
 	tytul.setFont(czcionka);
-	tytul.setFillColor(Color::Magenta);
-	tytul.setString("GRA");
+	tytul.setFillColor(Color::Black);
+	tytul.setString("Punkty: 0");
 	tytul.setCharacterSize(40);
+	tekstura_tla.setRepeated(1);
 }
 
 Graj::~Graj() {}
@@ -15,6 +16,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 {
 	okno.draw(tlo); //rysuje tlo, tytul i podloge
 	okno.draw(tytul);
+	tytul.setString("Punkty: "+ to_string(int(kaczuszka->punkty_liczenie(&kloce))));
 	kloce.rys_podloga(okno);
 	kaczuszka->punkty_liczenie(&kloce);
 	if(czy_rysowac_klocki) 

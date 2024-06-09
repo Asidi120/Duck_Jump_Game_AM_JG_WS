@@ -9,9 +9,9 @@ protected:
 	Text tytul;
 	Texture tekstura_tla;
 	Texture menu_tekst;
-	Sprite tlo;
 	Sprite warstwa;
 public:
+	Sprite tlo;
 	Text menu[5];
 	bool czy_menu_otwarte = 1;
 	int wybrany_obiekt = 0;

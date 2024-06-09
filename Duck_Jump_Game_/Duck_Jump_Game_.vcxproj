@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animacja.cpp" />
+    <ClCompile Include="Chlebek.cpp" />
     <ClCompile Include="Duck_Jump_Game_.cpp" />
     <ClCompile Include="Gra.cpp" />
     <ClCompile Include="Kaczuszka.cpp" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animacja.h" />
+    <ClInclude Include="Chlebek.h" />
     <ClInclude Include="Duck_Jump_Game_.h" />
     <ClInclude Include="Gra.h" />
     <ClInclude Include="Kaczuszka.h" />

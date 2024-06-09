@@ -17,10 +17,10 @@ class Kaczuszka
 	int ktore_j = 0;
 	Vector2f wsp_kaczuszki{};
 	IntRect zmiana_kaczki;
-	float predkosc_kaczuchy = 0.5f;
 	bool czy_mozna_liczyc_rzad_pkt[10] = { 1,1,1,1,1,1,1,1,1,1 };
 	int ktory_rzad=0;
 public:
+	float predkosc_kaczuchy = 0.5f;
 	RectangleShape kaczuszka;
 	int skok_kierunek=1;
 	bool czy_skok = false;

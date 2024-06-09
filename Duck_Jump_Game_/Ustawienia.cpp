@@ -7,7 +7,7 @@ Ustawienia::Ustawienia() //tu ustawiamy wszystkie napisy w ustawieniach
 	tytul.setFillColor(Color::Magenta);
 	tytul.setString("Ustawienia");
 	tytul.setCharacterSize(40);
-	tytul.setPosition(Vector2f(180, 150));
+	tytul.setPosition(Vector2f(210, 150));
 	if (!buformuzyki.loadFromFile("muzyka_menu.wav")) //wyrzuca blad na konsolce jesli muzyka sie nie zaladuje
 	{
 		cout << "Blad ladowania muzyki" << endl;
@@ -25,13 +25,13 @@ Ustawienia::Ustawienia() //tu ustawiamy wszystkie napisy w ustawieniach
 	}
 	ustawienia_napisy[0].setFillColor(Color::Red);
 	ustawienia_napisy[0].setCharacterSize(28);
-	ustawienia_napisy[0].setPosition(Vector2f(300, 350));
+	ustawienia_napisy[0].setPosition(Vector2f(210, 350));
 	ustawienia_napisy[0].setFont(czcionka);
 
 	ustawienia_napisy[1].setString("Wyjscie do menu");
 	ustawienia_napisy[1].setFillColor(Color::Black);
 	ustawienia_napisy[1].setCharacterSize(28);
-	ustawienia_napisy[1].setPosition(Vector2f(200, 450));
+	ustawienia_napisy[1].setPosition(Vector2f(205, 480));
 	ustawienia_napisy[1].setFont(czcionka);
 
 	wybrany_obiekt = 0;
@@ -70,6 +70,7 @@ void Ustawienia::co_sie_dzieje_w_ustawieniach(RenderWindow& okno)
 						muzyka = 1;
 						ustawienia_napisy[0].setString("Muzyka: <TAK>");
 						dzwiek_menu.play();
+						dzwiek_menu.setLoop(1);
 					}
 				}
 				if (event_muzyka.key.code == Keyboard::Left)

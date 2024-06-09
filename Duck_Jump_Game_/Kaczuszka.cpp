@@ -153,7 +153,7 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce,Graj* graj)
 {
 	if (graj->czy_pryspieszyc())
 	{
-		predkosc_kaczuchy += 0.0003;
+		predkosc_kaczuchy += 0.0003f;
 	}
 	if (czy_jest_na_ziemi(kloce))
 	{
@@ -187,7 +187,6 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 				kloce->klocki[i][k].move(0, 3);
 			}
 		}
-
 	}
 }
 
@@ -195,9 +194,8 @@ float Kaczuszka::punkty_liczenie(Klocki* kloce)
 {
 	if(czy_na_ziemi==1 && ktore_j<kloce->ktory_teraz)
 	{
-		punkty = (kloce->ktory_teraz+1) * 86;
+		punkty = int(kloce->ktory_teraz+1) * 86;
 	}
 	ktore_j = kloce->ktory_teraz;
-	cout << "Punkty: " << punkty<<endl;
 	return punkty;
 }

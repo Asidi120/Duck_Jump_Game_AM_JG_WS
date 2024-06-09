@@ -27,14 +27,15 @@ void Klocki::ruch_klockow(Graj& graj)  //klocki oraz podloga poruszaja sie w dol
 {
 	if (predkosc_klockow)
 	{
-		predkosc_klockow +=0.0003;
+		predkosc_klockow +=0.0003f;
 	}
 	for (int k = 0; k < 10; k++)
 	{
 		for (int i=0; i < Ilosc_Klockow_wys; i++)
 		{
 			klocki[i][k].move(0, predkosc_klockow);
-			podloga.move(0,  0.004);
+			podloga.move(0,  0.004f);
+			//graj.tlo.move(0, predkosc_klockow/21);
 		}
 	}
 }
@@ -44,7 +45,6 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 	if (j == 10) j = 0;
 	if (j < 10)
 	{
-		licznik_rzedow_pontonow++;
 		losowanie = rand() % 5; //20% szans ze beda 2 pontony
 		if (losowanie==4)
 		{

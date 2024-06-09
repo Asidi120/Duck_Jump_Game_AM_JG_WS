@@ -7,8 +7,6 @@ class Klocki;
 class Graj: public Menu
 {
 	Time czas{};
-	Clock czas_gen{};
-	Clock czas_przyspieszania{};
 	Event event_gra{};
 	long long czas_przycisku = 0; // czas przerwy miedzy przyciskami
 	long long czas_czekania = 0; // czas nieokreslony
