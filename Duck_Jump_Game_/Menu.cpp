@@ -1,7 +1,7 @@
 #include "Menu.h"
 #include "Gra.h"
 
-Menu::Menu(): wybrany_obiekt(0)
+Menu::Menu(): wybrany_obiekt(0) //tworzy menu
 {
 	if (!czcionka.loadFromFile("GloriaHallelujah-Regular.ttf"))
 	{
