@@ -18,6 +18,8 @@ class Kaczuszka
 	Vector2f wsp_kaczuszki{};
 	IntRect zmiana_kaczki;
 	float predkosc_kaczuchy = 0.5f;
+	bool czy_mozna_liczyc_rzad_pkt[10] = { 1,1,1,1,1,1,1,1,1,1 };
+	int ktory_rzad=0;
 public:
 	RectangleShape kaczuszka;
 	int skok_kierunek=1;
@@ -33,6 +35,7 @@ public:
 	void ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce, Graj* graj);
 	void przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce, Graj* graj);
 	bool czy_podloga(Klocki* kloce);
+	void liczenie_punktow(Klocki* kloce);
 	float punkty_liczenie(Klocki* kloce);
 };
 

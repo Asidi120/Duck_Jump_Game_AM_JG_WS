@@ -78,7 +78,33 @@ bool Kaczuszka::czy_podloga(Klocki* kloce) //wykrywa kiedy kaczuszka jest na pod
 	return wynik;
 }
 
+void Kaczuszka::liczenie_punktow(Klocki* kloce)
+{
+		if (czy_na_ziemi && czy_podloga(kloce) == 0)
+		{
+			if (ktory_rzad == 0)
+			{
+				for (int k = 1; k < 6; k++)
+				{
+					czy_mozna_liczyc_rzad_pkt[k] = 1;
+				}
+			}
+			if (ktory_rzad == 5)
+			{
+				for (int k = 6; k < 10; k++)
+				{
+					czy_mozna_liczyc_rzad_pkt[k] = 1;
+				}
+				czy_mozna_liczyc_rzad_pkt[0] = 1;
+			}
+			if (czy_mozna_liczyc_rzad_pkt[ktory_rzad] == 1)
+			{
+				czy_mozna_liczyc_rzad_pkt[ktory_rzad] = 0;
+				kloce->ktory_teraz++;
+			}
+		}
 
+}
 
 bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest na klockach tylko wtedy jak spada z tolerancja
 {
@@ -88,17 +114,10 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest 
 		for (int j = 0; j < 10; j++)
 		{
 			wsp_klockow[i][j] = kloce->klocki[i][j].getPosition();
-			if ((kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && skok_kierunek == -1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok == false))
-			{
-				if ((j + int(kloce->licznik_rzedow_pontonow / 10) * 10) > int(kloce->ktory_teraz))
-				{
-					kloce->ktory_teraz = j + (int(kloce->licznik_rzedow_pontonow/10)*10);
-					cout << kloce->ktory_teraz << endl;;
-				}
-			}
 			if (((kaczuszka_x(i,j,kloce) && kaczuszka_y(i,j) && skok_kierunek==-1) || (kaczuszka_x(i, j, kloce) && kaczuszka_y(i, j) && czy_skok==false)) || czy_podloga(kloce)) //spada || nie skacze || jest na podlodze
 			{
 				czy_na_ziemi = 1;
+				ktory_rzad = j;
 				break;
 			}
 		}
@@ -134,7 +153,7 @@ void Kaczuszka::ruch_gdy_na_ziemi(RenderWindow& okno, Klocki* kloce,Graj* graj)
 {
 	if (graj->czy_pryspieszyc())
 	{
-		predkosc_kaczuchy += 0.00067;
+		predkosc_kaczuchy += 0.0003;
 	}
 	if (czy_jest_na_ziemi(kloce))
 	{

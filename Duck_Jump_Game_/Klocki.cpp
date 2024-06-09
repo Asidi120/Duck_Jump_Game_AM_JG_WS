@@ -27,7 +27,7 @@ void Klocki::ruch_klockow(Graj& graj)  //klocki oraz podloga poruszaja sie w dol
 {
 	if (predkosc_klockow)
 	{
-		predkosc_klockow +=0.00067;
+		predkosc_klockow +=0.0003;
 	}
 	for (int k = 0; k < 10; k++)
 	{
