@@ -44,12 +44,16 @@ void Klocki::ruch_klockow(Graj& graj)  //klocki oraz podloga poruszaja sie w dol
 
 void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) 
 {
-	if (j == 10) j = 0;
+	if (j == 10)
+	{
+		j = 0;
+		chlebek.czy_rysowac = 1;
+	}
 	if (j < 10)
 	{
 		if (j == 0)
 		{
-			chlebek.losowanie = rand() % 10; //losowanie rzedu pojawienia sie chlebka
+			chlebek.losowanie = rand() % 6; //losowanie rzedu pojawienia sie chlebka
 		}
 		losowanie = rand() % 5; //20% szans ze beda 2 pontony
 		if (losowanie==4)

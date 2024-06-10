@@ -125,6 +125,18 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest 
 	return czy_na_ziemi;
 }
 
+void Kaczuszka::czy_dotyka_chlebka(Klocki* kloce)
+{
+	bool pozycja_x = kloce->chlebek.chlebek.getPosition().x <= kaczuszka.getPosition().x + rozmiary_kaczuszki.x && kloce->chlebek.chlebek.getPosition().x + kloce->chlebek.rozmiary_chlebek.x >= kaczuszka.getPosition().x;
+	bool pozycja_y = kaczuszka.getPosition().y+rozmiary_kaczuszki.y>= kloce->chlebek.chlebek.getPosition().y && kloce->chlebek.chlebek.getPosition().y+ kloce->chlebek.rozmiary_chlebek.y>= kaczuszka.getPosition().y;
+	if (pozycja_x && pozycja_y && kloce->chlebek.czy_rysowac)
+	{
+		kloce->chlebek.czy_rysowac = 0;
+		kloce->chlebek.ilosc_zdobytych_chlebkow++;
+		cout << kloce->chlebek.ilosc_zdobytych_chlebkow << endl;
+	}
+}
+
 void Kaczuszka::skok_kaczuchy() //kinda he
 {
 		if (skok_aktuala_poz >= skok_wysokosc_skoku) // szczyt skok i nastepuje zmiana kierunku y

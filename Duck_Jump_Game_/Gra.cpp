@@ -15,6 +15,8 @@ void ustaw(Kaczuszka* kaczuszka, Graj* graj)
         graj->kloce.ktory_teraz = 0;
         graj->kloce.predkosc_klockow=0.5f;
         kaczuszka->predkosc_kaczuchy = 0.5f;
+        graj->kloce.chlebek.predkosc_chlebka = 0.5f;
+        kaczuszka->punkty = 0;
         for (int k = 0; k < 10; k++)
         {
             for (int i = 0; i < 2; i++)

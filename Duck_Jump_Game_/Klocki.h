@@ -2,6 +2,7 @@
 #include "Gra.h"
 #include "Chlebek.h"
 #define Ilosc_Klockow 2
+class Kaczuszka;
 class Klocki
 {
 	Texture tekstura_podloga;

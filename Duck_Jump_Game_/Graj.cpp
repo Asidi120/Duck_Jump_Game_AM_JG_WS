@@ -36,6 +36,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	if (kloce.chlebek.czy_rysowac)
 	{
 		kloce.chlebek.rys_chlebek(okno);
+		kaczuszka->czy_dotyka_chlebka(&kloce);
 	}
 	kloce.ruch_klockow(*graj); //ruch klockow
 	kaczuszka->ruch_gdy_na_ziemi(okno,&kloce,graj);

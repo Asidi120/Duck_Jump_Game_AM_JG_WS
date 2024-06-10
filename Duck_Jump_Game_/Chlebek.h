@@ -4,8 +4,8 @@ class Chlebek
 {
 protected:
 	Texture tekstura_chlebek;
-	int ilosc_zdobytych_chlebkow{};
 public:
+	int ilosc_zdobytych_chlebkow{};
 	float predkosc_chlebka = 0.5f;
 	int czy_rysowac = 1;
 	Vector2f rozmiary_chlebek{};
