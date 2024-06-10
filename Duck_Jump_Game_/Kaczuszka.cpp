@@ -187,6 +187,7 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 				kloce->klocki[i][k].move(0, 3);
 			}
 		}
+		kloce->chlebek.chlebek.move(0, 3);
 	}
 }
 

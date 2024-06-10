@@ -25,6 +25,7 @@ void ustaw(Kaczuszka* kaczuszka, Graj* graj)
                 }
             }
         }
+        graj->kloce.chlebek.chlebek.setPosition(650.f, 900.f);
         graj->kloce.podloga.setPosition(Vector2f(static_cast<float>((650 - graj->kloce.rozmiary_podlogi.x) / 2), float(900 - graj->kloce.rozmiary_podlogi.y + 8)));
         kaczuszka->kaczuszka.setPosition(Vector2f(static_cast<float>((650 - kaczuszka->kaczuszka.getSize().x) / 2), float(900 - kaczuszka->kaczuszka.getSize().y - 150)));
     }
