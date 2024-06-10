@@ -13,6 +13,7 @@ Ustawienia::Ustawienia() //tu ustawiamy wszystkie napisy w ustawieniach
 		cout << "Blad ladowania muzyki" << endl;
 	}
 	dzwiek_menu.setBuffer(buformuzyki);
+	dzwiek_menu.setLoop(1); //zapetla muzyke
 	if (muzyka == 1) //wlaczenie muzyki
 	{
 		ustawienia_napisy[0].setString("Muzyka: <TAK>");

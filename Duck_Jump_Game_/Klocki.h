@@ -11,8 +11,8 @@ class Klocki
 	int losowanie{};
 	float koordynaty_y = 0;
 	float koordynaty_x = 0;
-	Chlebek chlebek;
 public:
+	Chlebek chlebek;
 	float predkosc_klockow = 0.5;
 	float ktory_teraz = -1;
 	bool pierwszy_rzad=1;
