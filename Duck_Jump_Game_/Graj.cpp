@@ -1,6 +1,7 @@
 #include "Graj.h"
 #include "Kaczuszka.h"
 #include "Klocki.h"
+#include "Animacja.h"
 Graj::Graj() //ustawia napis gra
 {
 	tytul.setFont(czcionka);
@@ -48,6 +49,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	kaczuszka->przesuwanie_o_50_pikseli_w_dol(okno, &kloce, graj);
 	kaczuszka->czy_jest_na_ziemi(&kloce);
 	kaczuszka->liczenie_punktow(&kloce);
+	kaczuszka->zmiana_obrazka(*graj);
 	kaczuszka->rysuj_gracza(okno);
 	
 	if (kaczuszka->kaczuszka.getPosition().y >= 900) //koniec gry gdy kaczucha spadnie

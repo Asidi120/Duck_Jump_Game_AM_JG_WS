@@ -2,10 +2,11 @@
 #include "Gra.h"
 #include "Graj.h"
 #include "Klocki.h"
+#include "Animacja.h"
 class Klocki;
+class Animacja;
 class Kaczuszka
 {
-	Texture tekstura_kaczuszka;
 	Vector2f rozmiary_kaczuszki{};
 	bool czy_na_ziemi=1;
 	bool czy_glowa_w_prawo = 1;
@@ -19,11 +20,14 @@ class Kaczuszka
 	bool czy_mozna_liczyc_rzad_pkt[10] = { 1,1,1,1,1,1,1,1,1,1 };
 	int ktory_rzad=0;
 public:
+	Animacja animacja;
+	Texture tekstura_kaczuszka;
 	float punkty = 0;
 	float predkosc_kaczuchy = 0.5f;
 	RectangleShape kaczuszka;
 	int skok_kierunek=1;
 	bool czy_skok = false;
+	void zmiana_obrazka(Graj& graj);
 	Kaczuszka();
 	virtual ~Kaczuszka();
 	void rysuj_gracza(RenderWindow& okno);

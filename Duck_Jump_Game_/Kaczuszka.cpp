@@ -1,6 +1,15 @@
 #include "Kaczuszka.h"
 #define Ilosc_klockow 4
 
+void Kaczuszka::zmiana_obrazka(Graj& graj)
+{
+	if (animacja.czy_zmienic(graj))
+	{
+		kaczuszka.setTextureRect(IntRect(animacja.i * animacja.szerokosc_obrazka % animacja.ilosc_obrazkow, animacja.i * animacja.wysokosc_obrazka,60,60));
+		animacja.i++;
+	}
+}
+
 Kaczuszka::Kaczuszka()
 {
 	kaczuszka.setSize(Vector2f(60.0f,80.0f));
@@ -209,6 +218,6 @@ float Kaczuszka::punkty_liczenie(Klocki* kloce)
 	{
 		punkty = int(kloce->ktory_teraz+1) * 86;
 	}
-	ktore_j = kloce->ktory_teraz;
+	ktore_j = int(kloce->ktory_teraz);
 	return punkty;
 }
