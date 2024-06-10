@@ -93,14 +93,14 @@ void zasady_sie_rysuja(RenderWindow& okno, Zasady* zasady)
         okno.display();
     }
 }
-void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_sklep)
+void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_sklep,Klocki* kloce,Kaczuszka* kaczuszka)
 {
     postacie_sklep->czy_postacie_sklep_wlaczone = 1;
     while (postacie_sklep->czy_postacie_sklep_wlaczone == 1)
     {
         okno.clear();
         postacie_sklep->rysuj_postacie_sklep(okno);
-        postacie_sklep->co_sie_dzieje_w_sklepie(okno);
+        postacie_sklep->co_sie_dzieje_w_sklepie(okno,kloce,kaczuszka);
         okno.display();
     }
 }
@@ -169,7 +169,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     if (menu->ktory_teraz() == 1) //przycisk postacie
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do postaci)
-                        postacie_sklep_sie_rysuje(*okno, postacie_sklep);
+                        postacie_sklep_sie_rysuje(*okno, postacie_sklep,&graj->kloce,kaczuszka);
                         menu->czy_menu_otwarte = 1;
                     }
                     if (menu->ktory_teraz() == 0) //przycisk graj

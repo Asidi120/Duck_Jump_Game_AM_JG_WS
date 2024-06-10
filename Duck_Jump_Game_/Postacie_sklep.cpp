@@ -31,25 +31,60 @@ void Postacie_sklep::rysuj_postacie_sklep(RenderWindow& okno)
 	}
 }
 
-void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno)
+void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,Kaczuszka* kaczuszka)
 {
 	while (okno.pollEvent(event_postacie))
 	{
+		if (event_postacie.type == Event::Closed) //przycisk x zamyka gre
+		{
+			okno.close();
+		}
 		if (event_postacie.type == Event::KeyPressed)
 		{
-			if (event_postacie.key.code == Keyboard::Right)
-			{
-				cout << "Strzalka w prawo";
-			}
-			if (event_postacie.key.code == Keyboard::Left)
-			{
-				cout << "Strzlakwa w lewo";
-			}
 			if (event_postacie.key.code == Keyboard::Escape)
 			{
 				czy_postacie_sklep_wlaczone = 0;
 				break;
 			}
+			if (event_postacie.key.code == Keyboard::Right)
+			{
+				if (wybrana < 3)
+				{
+					cout << "Strzalka w prawo";
+					wybrana++;
+				}
+			}
+			if (event_postacie.key.code == Keyboard::Left)
+			{
+				if (wybrana > 0)
+				{
+					cout << "Strzlakwa w lewo";
+					wybrana--;
+				}
+			}
+			if (event_postacie.key.code == Keyboard::Enter)
+			{
+				if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 15 && wybrana == 1)
+				{
+					klocki->chlebek.ilosc_zdobytych_chlebkow -= 15;
+					//zmiana tesktury kaczuszka->kaczuszka.setTexture()
+				}
+				else if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 15 && wybrana==2)
+				{
+					klocki->chlebek.ilosc_zdobytych_chlebkow -= 15;
+					//zmiana tesktury kaczuszka->kaczuszka.setTexture()
+				}
+				else if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 15 && wybrana == 3)
+				{
+					klocki->chlebek.ilosc_zdobytych_chlebkow -= 15;
+					//zmiana tesktury kaczuszka->kaczuszka.setTexture()
+				}
+				else
+				{
+					cout << "Za malo monet, przykro mi\n";
+				}
+			}
 		}
-	}
+		}
+	
 }

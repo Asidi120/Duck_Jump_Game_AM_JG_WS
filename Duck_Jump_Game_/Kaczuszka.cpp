@@ -5,7 +5,7 @@ void Kaczuszka::zmiana_obrazka(Graj& graj)
 {
 	if (animacja.czy_zmienic(graj))
 	{
-		kaczuszka.setTextureRect(IntRect(animacja.i * animacja.szerokosc_obrazka % animacja.ilosc_obrazkow, animacja.i * animacja.wysokosc_obrazka,60,60));
+		//kaczuszka.setTextureRect(IntRect(animacja.i * animacja.szerokosc_obrazka % animacja.ilosc_obrazkow, animacja.i * animacja.wysokosc_obrazka,60,60));
 		animacja.i++;
 	}
 }
