@@ -8,12 +8,14 @@ class Klocki;
 class Kaczuszka;
 class Postacie_sklep: public Menu
 {
-	RectangleShape postacie_sklep_tekst[IloscNapisowPostacie];
+	Texture tekstury_kaczki[IloscNapisowPostacie];
 	Event event_postacie{};
-	float szerokosc = 100;
+	float szerokosc = 70;
 	int ilosc_kaczuszek_do_kupienia=3;
 	int wybrana = 0;
 public:
+	Texture tekstury_kaczki_swiatlo[IloscNapisowPostacie];
+	RectangleShape postacie_sklep_tekst[IloscNapisowPostacie];
 	bool czy_postacie_sklep_wlaczone = 0;
 	Postacie_sklep();
 	virtual ~Postacie_sklep();

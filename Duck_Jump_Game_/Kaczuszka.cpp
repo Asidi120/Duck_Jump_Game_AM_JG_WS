@@ -6,7 +6,7 @@ void Kaczuszka::zmiana_obrazka(Graj& graj)
 	if (animacja.czy_zmienic(graj))
 	{
 		animacja.aktualna_klatka = (animacja.aktualna_klatka + 1) % animacja.ilosc_obrazkow;
-		kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * animacja.szerokosc_obrazka, 0, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
+		kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * animacja.szerokosc_obrazka, 6, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
 		animacja.i++;
 	}
 }
@@ -18,8 +18,13 @@ Kaczuszka::Kaczuszka()
 	kaczuszka.setPosition(Vector2f(static_cast<float>((650-rozmiary_kaczuszki.x)/2),float(900-rozmiary_kaczuszki.y-150)));
 	tekstura_kaczuszka.loadFromFile("kaczucha_prawo.png");
 	tekstura_kaczuszka_lewo.loadFromFile("kaczucha.png");
+	tekstura_kaczuszka_K.loadFromFile("kaczucha_prawo_Kuba.png");
+	tekstura_kaczuszka_lewo_K.loadFromFile("kaczucha_Kuba.png");
+	tekstura_kaczuszka_W.loadFromFile("kaczucha_prawo_Weronika.png");
+	tekstura_kaczuszka_lewo_W.loadFromFile("kaczucha_Weronika.png");
+	tekstura_kaczuszka_A.loadFromFile("kaczucha_prawo_Agnieszka.png");
+	tekstura_kaczuszka_lewo_A.loadFromFile("kaczucha_Agnieszka.png");
 	kaczuszka.setTexture(&tekstura_kaczuszka);
-	kaczuszka.setTextureRect(IntRect(0, 0, 18, 24));
 }
 
 Kaczuszka::~Kaczuszka() {}

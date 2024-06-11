@@ -20,9 +20,16 @@ class Kaczuszka
 	bool czy_mozna_liczyc_rzad_pkt[10] = { 1,1,1,1,1,1,1,1,1,1 };
 	int ktory_rzad=0;
 public:
+	int ktora_tekstura = 0;
 	Animacja animacja;
 	Texture tekstura_kaczuszka;
 	Texture tekstura_kaczuszka_lewo;
+	Texture tekstura_kaczuszka_A;
+	Texture tekstura_kaczuszka_lewo_A;
+	Texture tekstura_kaczuszka_K;
+	Texture tekstura_kaczuszka_lewo_K;
+	Texture tekstura_kaczuszka_W;
+	Texture tekstura_kaczuszka_lewo_W;
 	float punkty = 0;
 	float predkosc_kaczuchy = 0.5f;
 	RectangleShape kaczuszka;

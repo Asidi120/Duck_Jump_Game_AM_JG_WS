@@ -96,6 +96,7 @@ void zasady_sie_rysuja(RenderWindow& okno, Zasady* zasady)
 void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_sklep,Klocki* kloce,Kaczuszka* kaczuszka)
 {
     postacie_sklep->czy_postacie_sklep_wlaczone = 1;
+    postacie_sklep->postacie_sklep_tekst[0].setTexture(&postacie_sklep->tekstury_kaczki_swiatlo[0]);
     while (postacie_sklep->czy_postacie_sklep_wlaczone == 1)
     {
         okno.clear();

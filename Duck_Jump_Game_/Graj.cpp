@@ -77,13 +77,43 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 		if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) //ruch w lewo
 		{
 			kaczuszka->ruch(-1, 0);
-			kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_lewo);
+			if (kaczuszka->ktora_tekstura==0)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_lewo);
+			}
+			if (kaczuszka->ktora_tekstura == 1)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_lewo_A);
+			}
+			if (kaczuszka->ktora_tekstura == 2)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_lewo_K);
+			}
+			if (kaczuszka->ktora_tekstura == 3)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_lewo_W);
+			}
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D)) //ruch w prawo
 		{
 			kaczuszka->ruch(1,0);
 			kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka);
-
+			if (kaczuszka->ktora_tekstura == 0)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka);
+			}
+			if (kaczuszka->ktora_tekstura == 1)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_A);
+			}
+			if (kaczuszka->ktora_tekstura == 2)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_K);
+			}
+			if (kaczuszka->ktora_tekstura == 3)
+			{
+				kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_W);
+			}
 		}
 		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>200)) //skok przy czym nie wykryje kolejnego nacisniecia przez 200milisekund
 		{
