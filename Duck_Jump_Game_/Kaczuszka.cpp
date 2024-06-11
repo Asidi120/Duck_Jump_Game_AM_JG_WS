@@ -6,7 +6,25 @@ void Kaczuszka::zmiana_obrazka(Graj& graj)
 	if (animacja.czy_zmienic(graj))
 	{
 		animacja.aktualna_klatka = (animacja.aktualna_klatka + 1) % animacja.ilosc_obrazkow;
-		kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * animacja.szerokosc_obrazka, 6, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
+		if (ktora_tekstura == 2)
+		{
+			animacja.wysokosc_obrazka = 29;
+			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * animacja.szerokosc_obrazka,0, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
+			kaczuszka.setSize(Vector2f(60, 96));
+		}
+		else if(ktora_tekstura == 1)
+		{
+			animacja.wysokosc_obrazka = 29;
+			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * animacja.szerokosc_obrazka, 0, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
+			kaczuszka.setSize(Vector2f(60, 96));
+		}
+		else
+		{
+			animacja.wysokosc_obrazka = 23;
+			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * (animacja.szerokosc_obrazka+1), 6, animacja.szerokosc_obrazka+1, animacja.wysokosc_obrazka));
+			kaczuszka.setSize(Vector2f(60, 80));
+			
+		}
 		animacja.i++;
 	}
 }
@@ -77,7 +95,7 @@ bool Kaczuszka::kaczuszka_y(int i, int j) //wykrywa kiedy kaczuszka jest na kloc
 bool Kaczuszka::kaczuszka_x(int i, int j, Klocki* kloce) //wykrywa kiedy kaczuszka jest na klockach wzgl x
 {
 	bool wynik;
-	wynik = wsp_klockow[i][j].x + kloce->rozmiar_klockow.x >= kaczuszka.getPosition().x && wsp_klockow[i][j].x - rozmiary_kaczuszki.x <= kaczuszka.getPosition().x;
+	wynik = wsp_klockow[i][j].x + kloce->rozmiar_klockow.x >= kaczuszka.getPosition().x+20 && wsp_klockow[i][j].x - rozmiary_kaczuszki.x <= kaczuszka.getPosition().x-20;
 	return wynik;
 }
 

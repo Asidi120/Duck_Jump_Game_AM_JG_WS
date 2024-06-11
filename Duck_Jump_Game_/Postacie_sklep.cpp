@@ -49,6 +49,9 @@ void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,
 			if (event_postacie.key.code == Keyboard::Escape)
 			{
 				czy_postacie_sklep_wlaczone = 0;
+				postacie_sklep_tekst[0].setTexture(&tekstury_kaczki[2]);
+				postacie_sklep_tekst[1].setTexture(&tekstury_kaczki[1]);
+				postacie_sklep_tekst[2].setTexture(&tekstury_kaczki[2]);
 				break;
 			}
 			if (event_postacie.key.code == Keyboard::Right)
@@ -105,10 +108,10 @@ void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,
 			}
 			if (event_postacie.key.code == Keyboard::Enter)
 			{
-				if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 15 && wybrana == 0)
+				if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 0 && wybrana == 0)
 				{
 					kaczuszka->ktora_tekstura = 1;
-					klocki->chlebek.ilosc_zdobytych_chlebkow -= 15;
+					klocki->chlebek.ilosc_zdobytych_chlebkow -= 0;
 					kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_A);
 				}
 				else if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 0 && wybrana==1)
@@ -117,10 +120,10 @@ void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,
 					klocki->chlebek.ilosc_zdobytych_chlebkow -= 0;
 					kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_K);
 				}
-				else if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 15 && wybrana == 2)
+				else if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 0 && wybrana == 2)
 				{
 					kaczuszka->ktora_tekstura = 3;
-					klocki->chlebek.ilosc_zdobytych_chlebkow -= 15;
+					klocki->chlebek.ilosc_zdobytych_chlebkow -= 0;
 					kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_W);
 				}
 				else
