@@ -7,7 +7,7 @@ Menu::Menu(): wybrany_obiekt(0) //tworzy menu
 	{
 		cout << "Blad czcionki" << endl;
 	}
-	if (!tekstura_tla.loadFromFile("chmurki2.png", IntRect(0, 0, 1000, 1000)))
+	if (!tekstura_tla.loadFromFile("tlo_tekst.png", IntRect(0, 0, 1000, 1000)))
 	{
 		cout << "Blad ladowania tla" << endl;
 	}

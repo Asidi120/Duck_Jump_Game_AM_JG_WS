@@ -58,7 +58,6 @@ void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,
 			{
 				if (wybrana < 2)
 				{
-					cout << "Strzalka w prawo";
 					wybrana++;
 					if (wybrana == 0)
 					{
@@ -84,7 +83,6 @@ void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,
 			{
 				if (wybrana > 0)
 				{
-					cout << "Strzlakwa w lewo";
 					wybrana--;
 					if (wybrana == 0)
 					{

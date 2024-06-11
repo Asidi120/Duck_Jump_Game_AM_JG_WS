@@ -18,12 +18,17 @@ void Kaczuszka::zmiana_obrazka(Graj& graj)
 			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * animacja.szerokosc_obrazka, 0, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
 			kaczuszka.setSize(Vector2f(60, 96));
 		}
+		else if (ktora_tekstura == 3)
+		{
+			animacja.wysokosc_obrazka = 23;
+			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * (animacja.szerokosc_obrazka + 1), 6, animacja.szerokosc_obrazka + 1, animacja.wysokosc_obrazka));
+			kaczuszka.setSize(Vector2f(60, 80));
+		}
 		else
 		{
 			animacja.wysokosc_obrazka = 23;
-			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * (animacja.szerokosc_obrazka+1), 6, animacja.szerokosc_obrazka+1, animacja.wysokosc_obrazka));
+			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * (animacja.szerokosc_obrazka), 6, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
 			kaczuszka.setSize(Vector2f(60, 80));
-			
 		}
 		animacja.i++;
 	}
