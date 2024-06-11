@@ -7,8 +7,9 @@ Animacja::~Animacja() {}
 
 bool Animacja::czy_zmienic(Graj& graj)
 {
-	if (graj.czas_gry.getElapsedTime().asMilliseconds() >= 3)
+	if (czas_zmiany.getElapsedTime().asMilliseconds() >= 300)
 	{
+		czas_zmiany.restart();
 		return true;
 	}
 	return false;

@@ -10,13 +10,8 @@ Postacie_sklep::Postacie_sklep()
 	for (int i = 0; i < IloscNapisowPostacie; i++)
 	{
 		postacie_sklep_tekst[i].setFillColor(Color::Black);
-		postacie_sklep_tekst[i].setCharacterSize(28);
-		postacie_sklep_tekst[i].setPosition(Vector2f(200,wysokosc));
-		postacie_sklep_tekst[i].setFont(czcionka);
-		wysokosc += 80;
+		postacie_sklep_tekst[i].setPosition(Vector2f(szerokosc,500));
 	}
-	postacie_sklep_tekst[0].setString("1. linia");
-	postacie_sklep_tekst[1].setString("2. linia");
 }
 
 Postacie_sklep::~Postacie_sklep() {}

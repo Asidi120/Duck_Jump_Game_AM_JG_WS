@@ -8,9 +8,9 @@ class Klocki;
 class Kaczuszka;
 class Postacie_sklep: public Menu
 {
-	Text postacie_sklep_tekst[IloscNapisowPostacie]{};
+	RectangleShape postacie_sklep_tekst[IloscNapisowPostacie];
 	Event event_postacie{};
-	float wysokosc = 350;
+	float szerokosc = 100;
 	int ilosc_kaczuszek_do_kupienia=3;
 	int wybrana = 0;
 public:

@@ -5,9 +5,10 @@ class Kaczuszka;
 class Animacja
 {
 public:
-	float czas_zmiany=0.f;
-	const int ilosc_obrazkow=6, wysokosc_obrazka=30, szerokosc_obrazka=20;
+	const int ilosc_obrazkow=3, wysokosc_obrazka=24, szerokosc_obrazka=20;
 	int i{};
+	int aktualna_klatka{};
+	Clock czas_zmiany;
 	Animacja();
 	virtual ~Animacja();
 	bool czy_zmienic(Graj& graj);
