@@ -17,6 +17,7 @@ void ustaw(Kaczuszka* kaczuszka, Graj* graj)
         kaczuszka->predkosc_kaczuchy = 0.5f;
         graj->kloce.chlebek.predkosc_chlebka = 0.5f;
         kaczuszka->punkty = 0;
+        kaczuszka->przyspieszenie_skoku = 0;
         for (int k = 0; k < 10; k++)
         {
             for (int i = 0; i < 2; i++)

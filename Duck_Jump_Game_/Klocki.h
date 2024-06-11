@@ -25,7 +25,7 @@ public:
 	Klocki();
 	int ile{};
 	virtual ~Klocki();
-	void ruch_klockow(Graj& graj);
+	void ruch_klockow(Graj& graj, Kaczuszka& kaczuszka);
 	void rys_klocki(RenderWindow& okno,Graj& graj);
 	void rys_podloga(RenderWindow& okno);
 };

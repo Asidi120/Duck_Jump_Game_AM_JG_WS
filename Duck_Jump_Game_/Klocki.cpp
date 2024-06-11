@@ -1,5 +1,6 @@
 #include "Klocki.h"
 #include "Graj.h"
+#include "Kaczuszka.h"
 class Graj;
 Klocki::Klocki() //ustawia podloge i klocki (wielkosc, tekstura itd)
 {
@@ -23,12 +24,13 @@ Klocki::Klocki() //ustawia podloge i klocki (wielkosc, tekstura itd)
 
 Klocki::~Klocki() {}
 
-void Klocki::ruch_klockow(Graj& graj)  //klocki oraz podloga poruszaja sie w dol
+void Klocki::ruch_klockow(Graj& graj, Kaczuszka& kaczuszka)  //klocki oraz podloga poruszaja sie w dol
 {
 	if (graj.czy_pryspieszyc())
 	{
 		predkosc_klockow +=0.0003f;
 		chlebek.predkosc_chlebka += 0.0003f;
+		kaczuszka.przyspieszenie_skoku += 0.0003f;
 	}
 	for (int k = 0; k < 10; k++)
 	{

@@ -39,7 +39,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 		kloce.chlebek.rys_chlebek(okno);
 		kaczuszka->czy_dotyka_chlebka(&kloce);
 	}
-	kloce.ruch_klockow(*graj); //ruch klockow
+	kloce.ruch_klockow(*graj, *kaczuszka); //ruch klockow
 	kaczuszka->ruch_gdy_na_ziemi(okno,&kloce,graj);
 	if (205 <= kloce.klocki[0][kloce.j].getPosition().y)
 	{

@@ -22,6 +22,7 @@ class Kaczuszka
 	float podloga_y = 0;
 public:
 	int ktora_tekstura = 0;
+	float przyspieszenie_skoku{};
 	Animacja animacja;
 	Texture tekstura_kaczuszka;
 	Texture tekstura_kaczuszka_lewo;
