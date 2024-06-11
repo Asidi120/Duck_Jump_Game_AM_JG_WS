@@ -92,6 +92,12 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 			{
 				koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)); //ponowne losowanie pozycji x
 				klocki[i][j].setPosition(koordynaty_x, koordynaty_y);
+
+
+				if (j == chlebek.losowanie)
+				{
+					chlebek.chlebek.setPosition(koordynaty_x + 45, koordynaty_y - chlebek.rozmiary_chlebek.y + 20);
+				}
 			}
 		}
 		if (j == 1) //ustawienie pierwszego rzedu od nowej dawki klockow
