@@ -77,13 +77,13 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 		if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) //ruch w lewo
 		{
 			kaczuszka->ruch(-1, 0);
-			kaczuszka->kaczuszka.setScale(1.f, 1.f);
-			//kaczuszka->kaczuszka.setPosition(kaczuszka->kaczuszka.getPosition().x+kaczuszka->kaczuszka.getSize().x, kaczuszka->kaczuszka.getPosition().y);
+			kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_lewo);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D)) //ruch w prawo
 		{
 			kaczuszka->ruch(1,0);
-			kaczuszka->kaczuszka.setScale(-1.f, 1.f);
+			kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka);
+
 		}
 		if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && (czas_milisekundy() - czas_przycisku>200)) //skok przy czym nie wykryje kolejnego nacisniecia przez 200milisekund
 		{

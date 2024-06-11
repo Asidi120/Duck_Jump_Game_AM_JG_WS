@@ -16,7 +16,8 @@ Kaczuszka::Kaczuszka()
 	kaczuszka.setSize(Vector2f(60.0f,80.0f));
 	rozmiary_kaczuszki = kaczuszka.getSize();
 	kaczuszka.setPosition(Vector2f(static_cast<float>((650-rozmiary_kaczuszki.x)/2),float(900-rozmiary_kaczuszki.y-150)));
-	tekstura_kaczuszka.loadFromFile("kaczucha.png");
+	tekstura_kaczuszka.loadFromFile("kaczucha_prawo.png");
+	tekstura_kaczuszka_lewo.loadFromFile("kaczucha.png");
 	kaczuszka.setTexture(&tekstura_kaczuszka);
 	kaczuszka.setTextureRect(IntRect(0, 0, 18, 24));
 }

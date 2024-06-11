@@ -22,6 +22,7 @@ class Kaczuszka
 public:
 	Animacja animacja;
 	Texture tekstura_kaczuszka;
+	Texture tekstura_kaczuszka_lewo;
 	float punkty = 0;
 	float predkosc_kaczuchy = 0.5f;
 	RectangleShape kaczuszka;
