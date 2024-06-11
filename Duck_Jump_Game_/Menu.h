@@ -7,10 +7,10 @@ class Menu
 protected:
 	Font czcionka;
 	Text tytul;
-	Texture tekstura_tla;
 	Texture menu_tekst;
 	Sprite warstwa;
 public:
+	Texture tekstura_tla;
 	Sprite tlo;
 	Text menu[5];
 	bool czy_menu_otwarte = 1;

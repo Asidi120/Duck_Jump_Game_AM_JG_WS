@@ -231,6 +231,7 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 	{
 		kaczuszka.move(0, 10);
 		kloce->podloga.move(0,10);
+		//graj->tlo.setTextureRect(0,podloga_y,650,900);
 		for (int k = 0; k < 10; k++)
 		{
 			for (int i = 0; i < 2; i++)

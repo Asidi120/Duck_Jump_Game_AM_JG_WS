@@ -19,6 +19,7 @@ class Kaczuszka
 	IntRect zmiana_kaczki;
 	bool czy_mozna_liczyc_rzad_pkt[10] = { 1,1,1,1,1,1,1,1,1,1 };
 	int ktory_rzad=0;
+	float podloga_y = 0;
 public:
 	int ktora_tekstura = 0;
 	Animacja animacja;
