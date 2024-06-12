@@ -229,10 +229,17 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 {
 	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 300) //przesuwanie kiedy kaczucha jest w polowie wysokosci okienka
 	{
-		animacja.aktualna_klatka_tlo = (animacja.aktualna_klatka_tlo + 1) % animacja.ilosc_obrazkow_tlo;
 		kaczuszka.move(0, 10);
 		kloce->podloga.move(0,10);
-		graj->tlo.setTextureRect(IntRect(0,animacja.aktualna_klatka_tlo * (animacja.wysokosc_obrazka_tlo),650,900));
+		if (graj->tlo.getPosition().y >= -3600)
+		{
+			graj->tlo.move(0, -10);
+		}
+		else
+		{
+			graj->tlo.setPosition(0, 0);
+			graj->tlo.move(0, -10);
+		}
 		for (int k = 0; k < 10; k++)
 		{
 			for (int i = 0; i < 2; i++)

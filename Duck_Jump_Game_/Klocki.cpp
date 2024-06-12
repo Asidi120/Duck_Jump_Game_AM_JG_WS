@@ -40,7 +40,15 @@ void Klocki::ruch_klockow(Graj& graj, Kaczuszka& kaczuszka)  //klocki oraz podlo
 			podloga.move(0, 0.004f);
 		}
 	}
-	//graj.tlo.move(0, predkosc_klockow/21);
+	if (graj.tlo.getPosition().y >= -3600)
+	{
+		graj.tlo.move(0, -2*chlebek.predkosc_chlebka);
+	}
+	else
+	{
+		graj.tlo.setPosition(0, 0);
+		graj.tlo.move(0, -2*chlebek.predkosc_chlebka);
+	}
 	chlebek.chlebek.move(0, chlebek.predkosc_chlebka);
 }
 
