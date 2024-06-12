@@ -30,7 +30,7 @@ void Kaczuszka::zmiana_obrazka(Graj& graj)
 			kaczuszka.setTextureRect(IntRect(animacja.aktualna_klatka * (animacja.szerokosc_obrazka), 6, animacja.szerokosc_obrazka, animacja.wysokosc_obrazka));
 			kaczuszka.setSize(Vector2f(60, 80));
 		}
-		animacja.i++;
+		//animacja.i++;
 	}
 }
 
@@ -229,9 +229,10 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 {
 	if (czy_na_ziemi == 1 && kaczuszka.getPosition().y + rozmiary_kaczuszki.y <= 300) //przesuwanie kiedy kaczucha jest w polowie wysokosci okienka
 	{
+		animacja.aktualna_klatka_tlo = (animacja.aktualna_klatka_tlo + 1) % animacja.ilosc_obrazkow_tlo;
 		kaczuszka.move(0, 10);
 		kloce->podloga.move(0,10);
-		//graj->tlo.setTextureRect(0,podloga_y,650,900);
+		graj->tlo.setTextureRect(IntRect(0,animacja.aktualna_klatka_tlo * (animacja.wysokosc_obrazka_tlo),650,900));
 		for (int k = 0; k < 10; k++)
 		{
 			for (int i = 0; i < 2; i++)
