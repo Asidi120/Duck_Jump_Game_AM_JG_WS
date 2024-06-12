@@ -12,6 +12,7 @@ class Postacie_sklep: public Menu
 	Event event_postacie{};
 	float szerokosc = 70;
 	int ilosc_kaczuszek_do_kupienia=3;
+	Text tekst_postacie_sklep[IloscNapisowPostacie];
 public:
 	int wybrana = 0;
 	Texture tekstury_kaczki_swiatlo[IloscNapisowPostacie];
