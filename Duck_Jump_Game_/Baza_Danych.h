@@ -1,26 +1,27 @@
-#pragma once
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset.h>
-#include <cppconn/statement.h>
-#include <mysql_driver.h>
-#include <mysql_connection.h>
-#include "Gra.h"
-#include <memory>
+#include <sqlite3.h>
+#include <iostream>
 #include <string>
+#include "Gra.h"
 
-using namespace sql::mysql;
-class Baza_Danych
-{
+using namespace std;
+
+// Klasa Baza_Danych zarz¹dza wszystkimi operacjami na bazie danych
+class Baza_Danych {
 public:
-    Baza_Danych(const std::string& host, const std::string& uzytkownik, const std::string& haslo);
-    ~Baza_Danych();
-    void utworzBaze(const std::string& nazwaBazy);
-    void wybierzBaze(const std::string& nazwaBazy);
-    void utworzTabele();
+    Baza_Danych(const char* sciezka) : sciezka_do_bazy(sciezka) {
+        stworzBaze();
+        stworzTabele();
+    }
+
+    void wstawDane(const string& nazwa_gracza, int najlepszy_wynik, int chlebki);
+    void aktualizujDane(int id_gracza, int najlepszy_wynik, int chlebki);
+    void usunDane(int id_gracza);
+    void wybierzDane();
+
 private:
-    sql::mysql::MySQL_Driver* sterownik;
-    std::unique_ptr<sql::Connection> polaczenie;
-    std::unique_ptr<sql::Statement> polecenie;
+    const char* sciezka_do_bazy;
+    void stworzBaze();
+    void stworzTabele();
+    static int callback(void* NotUsed, int argc, char** argv, char** azColName);
 };
 

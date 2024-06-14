@@ -6,11 +6,14 @@
 #include "Postacie_sklep.h"
 #include "Kaczuszka.h"
 #include "Klocki.h"
+#include "Baza_Danych.h"
 #include <ctime>
 
 int main()
 {
     srand(static_cast<unsigned>(time(NULL)));
+    const char* sciezka = R"(GRACZE.db)";
+    Baza_Danych baza_danych(sciezka);
     Gra gra; //konstruktor tworzy okno
     RenderWindow* okno = gra.wskdookna(); //ustawienie wskaznika do okna
     Menu menu;
@@ -25,5 +28,6 @@ int main()
     {
         gra.aktualizuj();
     }
+    baza_danych.wybierzDane();
     return 0;
 }

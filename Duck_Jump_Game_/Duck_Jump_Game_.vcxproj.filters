@@ -51,6 +51,9 @@
     <ClCompile Include="Baza_Danych.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\sqlite-amalgamation-3460000\sqlite3.c">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gra.h">
@@ -89,5 +92,8 @@
     <ClInclude Include="Baza_Danych.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
