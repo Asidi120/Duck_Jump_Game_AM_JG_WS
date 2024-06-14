@@ -155,7 +155,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Downloads\sqlite-amalgamation-3460000\sqlite3.c" />
     <ClCompile Include="Animacja.cpp" />
     <ClCompile Include="Baza_Danych.cpp" />
     <ClCompile Include="Chlebek.cpp" />
@@ -166,6 +165,7 @@
     <ClCompile Include="Klocki.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Postacie_sklep.cpp" />
+    <ClCompile Include="sqlite3.c" />
     <ClCompile Include="Ustawienia.cpp" />
     <ClCompile Include="Zasady.cpp" />
   </ItemGroup>

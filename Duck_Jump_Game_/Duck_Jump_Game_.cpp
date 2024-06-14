@@ -23,7 +23,7 @@ int main()
     Graj graj;
     Kaczuszka kaczuszka;
     Klocki klocki;
-    gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj, &kaczuszka); //ustawienie wskaznikow 
+    gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj, &kaczuszka,&baza_danych); //ustawienie wskaznikow 
     while (gra.czyGraOtwarta())
     {
         gra.aktualizuj();

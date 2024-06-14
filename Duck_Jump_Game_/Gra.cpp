@@ -6,7 +6,8 @@
 #include "Graj.h"
 #include "Kaczuszka.h"
 #include "Klocki.h"
-void ustaw(Kaczuszka* kaczuszka, Graj* graj)
+#include "Baza_Danych.h"
+void ustaw(Kaczuszka* kaczuszka, Graj* graj,Baza_Danych* baza_danych)
 {
     if (!graj->czy_graj_wlaczone)
     {
@@ -55,8 +56,9 @@ Gra::~Gra() //dekstruktor - usuwa wszystkie wskazniki
     delete postacie_sklep;
     delete graj;
     delete kaczuszka;
+    delete baza_danych;
 }
-void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka)
+void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka,Baza_Danych* baza_danych)
 {
     this->menu = menu;
     this->zasady = zasady;
@@ -64,6 +66,7 @@ void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_skl
     this->graj = graj;
     this->ustawienia = ustawienia;
     this->kaczuszka = kaczuszka;
+    this->baza_danych = baza_danych;
 }
 
 const bool Gra::czyGraOtwarta() const
@@ -94,7 +97,7 @@ void zasady_sie_rysuja(RenderWindow& okno, Zasady* zasady)
         okno.display();
     }
 }
-void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_sklep,Klocki* kloce,Kaczuszka* kaczuszka)
+void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_sklep,Klocki* kloce,Kaczuszka* kaczuszka, Baza_Danych* baza_danych)
 {
     postacie_sklep->czy_postacie_sklep_wlaczone = 1;
     postacie_sklep->wybrana = 0;
@@ -102,14 +105,14 @@ void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_skle
     while (postacie_sklep->czy_postacie_sklep_wlaczone == 1)
     {
         okno.clear();
-        postacie_sklep->rysuj_postacie_sklep(okno);
+        postacie_sklep->rysuj_postacie_sklep(okno,baza_danych);
         postacie_sklep->co_sie_dzieje_w_sklepie(okno,kloce,kaczuszka);
         okno.display();
     }
 }
-void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka)
+void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_Danych* baza_danych)
 {
-    ustaw(kaczuszka, graj);
+    ustaw(kaczuszka, graj,baza_danych);
     graj->czy_graj_wlaczone = 1;
     while (graj->czy_graj_wlaczone == 1)
     {
@@ -172,14 +175,14 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     if (menu->ktory_teraz() == 1) //przycisk postacie
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do postaci)
-                        postacie_sklep_sie_rysuje(*okno, postacie_sklep,&graj->kloce,kaczuszka);
+                        postacie_sklep_sie_rysuje(*okno, postacie_sklep,&graj->kloce,kaczuszka,baza_danych);
                         menu->czy_menu_otwarte = 1;
                     }
                     if (menu->ktory_teraz() == 0) //przycisk graj
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do gry)
                         graj->czas_gry.restart();
-                        graj_sie_rysuje(*okno, graj,kaczuszka);
+                        graj_sie_rysuje(*okno, graj,kaczuszka, baza_danych);
                         menu->czy_menu_otwarte = 1;
                     }
                     break;

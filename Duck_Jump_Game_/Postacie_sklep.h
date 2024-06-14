@@ -20,7 +20,7 @@ public:
 	bool czy_postacie_sklep_wlaczone = 0;
 	Postacie_sklep();
 	virtual ~Postacie_sklep();
-	void rysuj_postacie_sklep(RenderWindow& okno);
+	void rysuj_postacie_sklep(RenderWindow& okno,Baza_Danych* baza_danych);
 	void co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki, Kaczuszka* kaczuszka);
 };
 

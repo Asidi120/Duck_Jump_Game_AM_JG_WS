@@ -30,7 +30,7 @@ Postacie_sklep::Postacie_sklep()
 
 Postacie_sklep::~Postacie_sklep() {}
 
-void Postacie_sklep::rysuj_postacie_sklep(RenderWindow& okno)
+void Postacie_sklep::rysuj_postacie_sklep(RenderWindow& okno, Baza_Danych* baza_danych)
 {
 	okno.draw(tlo);
 	okno.draw(tytul);
