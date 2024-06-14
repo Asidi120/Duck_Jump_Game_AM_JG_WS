@@ -25,12 +25,12 @@ void Baza_Danych::stworzTabele()
     exit = sqlite3_exec(baza, sql.c_str(), NULL, 0, &wiadomosc_bledu);
     if (exit!=SQLITE_OK) 
     {
-        cerr << "B³¹d w funkcji stworzTabele." << endl;
+        cerr << "Blad w funkcji stworzTabele." << endl;
         sqlite3_free(wiadomosc_bledu);
     }
     else 
     {
-        cout << "Tabela utworzona pomyœlnie." << endl;
+        cout << "Tabela utworzona pomyslnie." << endl;
     }
     sqlite3_close(baza);
 }
@@ -48,12 +48,12 @@ void Baza_Danych::wstawDane(const string& nazwa_gracza, int najlepszy_wynik, int
     exit = sqlite3_exec(baza, sql.c_str(), NULL, 0, &wiadomosc_bledu);
     if (exit != SQLITE_OK) 
     {
-        cerr << "B³¹d w funkcji wstawDane." << endl;
+        cerr << "Blad w funkcji wstawDane." << endl;
         sqlite3_free(wiadomosc_bledu);
     }
     else 
     {
-        cout << "Rekordy wstawione pomyœlnie!" << endl;
+        cout << "Rekordy wstawione pomyslnie." << endl;
     }
     sqlite3_close(baza);
 }
@@ -71,12 +71,12 @@ void Baza_Danych::aktualizujDane(int id_gracza, int najlepszy_wynik, int chlebki
     exit = sqlite3_exec(baza, sql.c_str(), NULL, 0, &wiadomosc_bledu);
     if (exit != SQLITE_OK) 
     {
-        cerr << "B³¹d w funkcji aktualizujDane." << endl;
+        cerr << "Blad w funkcji aktualizujDane." << endl;
         sqlite3_free(wiadomosc_bledu);
     }
     else 
     {
-        cout << "Rekordy zaktualizowane pomyœlnie!" << endl;
+        cout << "Rekordy zaktualizowane pomyslnie." << endl;
     }
     sqlite3_close(baza);
 }
@@ -93,12 +93,12 @@ void Baza_Danych::usunDane(int id_gracza)
     exit = sqlite3_exec(baza, sql.c_str(), callback, NULL, &wiadomosc_bledu);
     if (exit != SQLITE_OK) 
     {
-        cerr << "B³¹d w funkcji usunDane." << endl;
+        cerr << "Blad w funkcji usunDane." << endl;
         sqlite3_free(wiadomosc_bledu);
     }
     else 
     {
-        cout << "Rekordy usuniête pomyœlnie!" << endl;
+        cout << "Rekordy usuniête pomyslnie." << endl;
     }
     sqlite3_close(baza);
 }
@@ -118,7 +118,7 @@ void Baza_Danych::wybierzDane()
         sqlite3_free(wiadomosc_bledu);
     }
     else {
-        cout << "Rekordy wybrane pomyœlnie!" << endl;
+        cout << "Rekordy wybrane pomyœlnie." << endl;
     }
     sqlite3_close(baza);
 }

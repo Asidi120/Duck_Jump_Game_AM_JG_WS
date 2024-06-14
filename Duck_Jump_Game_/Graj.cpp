@@ -2,6 +2,7 @@
 #include "Kaczuszka.h"
 #include "Klocki.h"
 #include "Animacja.h"
+#include "Baza_Danych.h"
 Graj::Graj() //ustawia napis gra
 {
 	tytul.setFont(czcionka);
@@ -13,7 +14,7 @@ Graj::Graj() //ustawia napis gra
 
 Graj::~Graj() {}
 
-void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
+void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj,Baza_Danych* baza_danych)
 {
 	okno.draw(tlo); //rysuje tlo, tytul i podloge
 	okno.draw(tytul);
@@ -55,7 +56,9 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj)
 	if (kaczuszka->kaczuszka.getPosition().y >= 900) //koniec gry gdy kaczucha spadnie
 	{
 		cout << "GAME OVER";
+		cin >> nazwa_gracza;
 		czy_graj_wlaczone = 0;
+		baza_danych->wstawDane(nazwa_gracza,kaczuszka->punkty_liczenie(&kloce),kloce.chlebek.ilosc_zdobytych_chlebkow);
 		//czy_wyniki_wlaczone=1;
 	}
 }
