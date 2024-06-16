@@ -130,6 +130,7 @@ void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_D
     {
         wyniki->wynik_i_naj_wynik[0].setString("Twoj wynik: "+wyniki->wypisz_punkty(kaczuszka,&graj->kloce));
         wyniki->wynik_i_naj_wynik[1].setString("Najlepszy wynik: "+to_string(baza_danych->pobierzWynik(graj->nazwa_gracza)));
+        ustaw(kaczuszka, graj, baza_danych);
         okno.clear();
         wyniki->rysuj_wyniki(okno,baza_danych);
         wyniki->co_sie_dzieje_w_wynikach(okno,graj);
@@ -202,9 +203,8 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                 }
             break;
             }
-
         }
-    if (graj->czy_graj_wlaczone)
+    if (graj->czy_graj_wlaczone) //odpala graj ponownie po kliknieciu zagraj ponownie
     {
         graj_sie_rysuje(*okno, graj, kaczuszka, baza_danych, wyniki);
     }
