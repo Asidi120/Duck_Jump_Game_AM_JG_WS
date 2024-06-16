@@ -21,7 +21,6 @@ Wyniki::Wyniki()
 		wysokosc += 80;
 	}
 	tekst_wyniki[0].setFillColor(Color::Red);
-	wynik_i_naj_wynik[1].setString("Najlepszy wynik: ");
 	tekst_wyniki[0].setString("Zagraj ponownie");
 	tekst_wyniki[1].setString("Wyjdz");
 }

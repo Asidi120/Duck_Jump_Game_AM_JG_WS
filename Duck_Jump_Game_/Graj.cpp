@@ -57,12 +57,12 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj,Baza_D
 	if (kaczuszka->kaczuszka.getPosition().y >= 900) //koniec gry gdy kaczucha spadnie
 	{
 		cout << "GAME OVER";
-		//cin >> nazwa_gracza;
 		czy_graj_wlaczone = 0;
 		wyniki->czy_wyniki_wlaczone = 1;
-		//baza_danych->wstawLubAktualizujDane(nazwa_gracza,kaczuszka->punkty_liczenie(&kloce),kloce.chlebek.ilosc_zdobytych_chlebkow);
-		//cout << "Top 10 najlepszych wynikow:" << endl;
-		//baza_danych->wypiszTop10();
+		nazwa_gracza = baza_danych->pobierzOstatniegoGracza();
+		baza_danych->wstawLubAktualizujDane(nazwa_gracza,kaczuszka->punkty_liczenie(&kloce),kloce.chlebek.ilosc_zdobytych_chlebkow);
+		cout << "Top 10 najlepszych wynikow:" << endl;
+		baza_danych->wypiszTop10();
 	}
 }
 

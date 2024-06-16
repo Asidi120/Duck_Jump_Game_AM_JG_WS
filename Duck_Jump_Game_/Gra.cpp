@@ -129,6 +129,7 @@ void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_D
     while (wyniki->czy_wyniki_wlaczone)
     {
         wyniki->wynik_i_naj_wynik[0].setString("Twoj wynik: "+wyniki->wypisz_punkty(kaczuszka,&graj->kloce));
+        wyniki->wynik_i_naj_wynik[1].setString("Najlepszy wynik: "+to_string(baza_danych->pobierzWynik(graj->nazwa_gracza)));
         okno.clear();
         wyniki->rysuj_wyniki(okno,baza_danych);
         wyniki->co_sie_dzieje_w_wynikach(okno,graj);

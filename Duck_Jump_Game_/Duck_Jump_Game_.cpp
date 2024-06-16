@@ -30,6 +30,5 @@ int main()
     {
         gra.aktualizuj();
     }
-    baza_danych.wybierzDane();
     return 0;
 }

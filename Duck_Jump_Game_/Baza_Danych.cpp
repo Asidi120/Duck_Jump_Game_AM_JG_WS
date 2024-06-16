@@ -312,48 +312,6 @@ int Baza_Danych::pobierzWynik(const string& nazwa_gracza)
     return chlebki;
 }
 
-// Funkcja usuwaj¹ca dane z tabeli GRACZE
-void Baza_Danych::usunDane(int id_gracza) 
-{
-    sqlite3* baza;
-    char* wiadomosc_bledu;
-
-    string sql = "DELETE FROM GRACZE WHERE ID_GRACZA = " + to_string(id_gracza) + ";";
-
-    int exit = sqlite3_open(sciezka_do_bazy, &baza);
-    exit = sqlite3_exec(baza, sql.c_str(), callback, NULL, &wiadomosc_bledu);
-    if (exit != SQLITE_OK) 
-    {
-        cerr << "Blad w funkcji usunDane." << endl;
-        sqlite3_free(wiadomosc_bledu);
-    }
-    else 
-    {
-        cout << "Rekordy usuniete pomyslnie." << endl;
-    }
-    sqlite3_close(baza);
-}
-
-// Funkcja wybieraj¹ca dane z tabeli GRACZE
-void Baza_Danych::wybierzDane() 
-{
-    sqlite3* baza;
-    char* wiadomosc_bledu;
-
-    string sql = "SELECT * FROM GRACZE;";
-
-    int exit = sqlite3_open(sciezka_do_bazy, &baza);
-    exit = sqlite3_exec(baza, sql.c_str(), callback, NULL, &wiadomosc_bledu);
-    if (exit != SQLITE_OK) {
-        cerr << "Blad w funkcji wybierzDane." << endl;
-        sqlite3_free(wiadomosc_bledu);
-    }
-    else {
-        cout << "Rekordy wybrane pomyslnie." << endl;
-    }
-    sqlite3_close(baza);
-}
-
 // Funkcja zwrotna u¿ywana przez sqlite3_exec do przetwarzania wyników zapytañ
 int Baza_Danych::callback(void* baza, int argc, char** argv, char** azColName) 
 {

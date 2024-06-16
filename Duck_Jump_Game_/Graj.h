@@ -12,8 +12,8 @@ class Graj: public Menu
 	Event event_gra{};
 	long long czas_przycisku = 0; // czas przerwy miedzy przyciskami
 	long long czas_czekania = 0; // czas nieokreslony
-	string nazwa_gracza{};
 public:
+	string nazwa_gracza{};
 	Klocki kloce;
 	Clock czas_gry{};
 	bool czy_rysowac_klocki=1;

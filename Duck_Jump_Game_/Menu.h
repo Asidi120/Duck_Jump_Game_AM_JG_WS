@@ -10,6 +10,7 @@ protected:
 	Texture menu_tekst;
 	Sprite warstwa;
 public:
+	string nazwa_gracza{};
 	Texture tekstura_tla;
 	Sprite tlo;
 	Text menu[5];
