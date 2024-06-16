@@ -28,6 +28,7 @@ public:
     void wypiszTop10();
     void aktualizujDane(int id_gracza, int najlepszy_wynik, int chlebki);
     int pobierzChlebki(const string& nazwa_gracza);
+    int pobierzWynik(const string& nazwa_gracza);
     void usunDane(int id_gracza);
     void wybierzDane();
 };

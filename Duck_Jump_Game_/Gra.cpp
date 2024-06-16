@@ -203,7 +203,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
             }
 
         }
-        if (graj->czy_graj_wlaczone)
+    if (graj->czy_graj_wlaczone)
     {
         graj_sie_rysuje(*okno, graj, kaczuszka, baza_danych, wyniki);
     }

@@ -41,13 +41,13 @@ void Wyniki::co_sie_dzieje_w_wynikach(RenderWindow& okno,Graj* graj)
 					czy_wyniki_wlaczone = 0;
 					break;
 				}
-				if (wybrany_obiekt == 0 && event_wyniki.key.code == Keyboard::Enter) //wracamy do menu przyciskiem wyjdz
+				if (wybrany_obiekt == 0 && event_wyniki.key.code == Keyboard::Enter) //gramy ponownie przyciskiem
 				{
 					czy_wyniki_wlaczone = 0;
 					graj->czy_graj_wlaczone = 1;
 					break;
 				}
-				if (wybrany_obiekt == 1 && event_wyniki.key.code == Keyboard::Enter) //wracamy do menu przyciskiem wyjdz
+				if (wybrany_obiekt == 1 && event_wyniki.key.code == Keyboard::Enter) //wracamy do menu  przyciskiem wyjdz
 				{
 					czy_wyniki_wlaczone = 0;
 					break;
@@ -61,10 +61,12 @@ void Wyniki::co_sie_dzieje_w_wynikach(RenderWindow& okno,Graj* graj)
 				{
 					wybrany_obiekt = ruch_do_gory(2, tekst_wyniki, wybrany_obiekt);
 				}
-			if (event_wyniki.type == Event::Closed) //zamyka program przyciskiem x
-				okno.close();
+			
 		}
+		if (event_wyniki.type == Event::Closed) //zamyka program przyciskiem x			
+		okno.close();
 	}
+	
 }
 
 string Wyniki::wypisz_punkty(Kaczuszka* kaczuszka,Klocki* kloce)

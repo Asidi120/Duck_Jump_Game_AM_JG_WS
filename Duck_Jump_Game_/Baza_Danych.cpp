@@ -287,6 +287,30 @@ int Baza_Danych::pobierzChlebki(const string& nazwa_gracza)
     return chlebki;
 }
 
+int Baza_Danych::pobierzWynik(const string& nazwa_gracza)
+{
+    sqlite3* baza;
+    sqlite3_stmt* stmt;
+    int chlebki = 0;
+
+    string sql = "SELECT NAJLEPSZY_WYNIK FROM GRACZE WHERE NAZWA_GRACZA = ?;";
+
+    int exit = sqlite3_open(sciezka_do_bazy, &baza);
+    if (exit == SQLITE_OK) {
+        sqlite3_prepare_v2(baza, sql.c_str(), -1, &stmt, 0);
+        sqlite3_bind_text(stmt, 1, nazwa_gracza.c_str(), -1, SQLITE_STATIC);
+
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            chlebki = sqlite3_column_int(stmt, 0);
+        }
+        sqlite3_finalize(stmt);
+    }
+    else {
+        cerr << "Blad w funkcji pobierzWynik." << endl;
+    }
+    sqlite3_close(baza);
+    return chlebki;
+}
 
 // Funkcja usuwaj¹ca dane z tabeli GRACZE
 void Baza_Danych::usunDane(int id_gracza) 
