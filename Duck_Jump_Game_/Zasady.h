@@ -1,13 +1,13 @@
 #pragma once
 #include "Gra.h"
 #include "Menu.h"
-#define IloscNapisowZasady 10
+#define IloscNapisowZasady 7
 
 class Zasady : public Menu
 {
 	Text zasady_tekst[IloscNapisowZasady]{};
 	Event event_zasady{};
-	int wysokosc=350;
+	int wysokosc=310;
 public:
 	int wybrany_obiekt_zasady = 0;
 	bool czy_zasady_wlaczone = 0;

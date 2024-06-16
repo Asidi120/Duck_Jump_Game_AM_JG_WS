@@ -107,7 +107,6 @@ void Baza_Danych::wstawLubAktualizujDane(const string& nazwa_gracza, int najleps
         sqlite3_close(baza);
     }
 }
-
 void Baza_Danych::uzupelnijSkins(const string& nazwa_gracza, bool skin1, bool skin2, bool skin3) {
     sqlite3* baza;
     char* bladWiadomosc;
