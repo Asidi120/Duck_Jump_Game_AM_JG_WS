@@ -167,6 +167,7 @@
     <ClCompile Include="Postacie_sklep.cpp" />
     <ClCompile Include="sqlite3.c" />
     <ClCompile Include="Ustawienia.cpp" />
+    <ClCompile Include="Wyniki.cpp" />
     <ClCompile Include="Zasady.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +182,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Postacie_sklep.h" />
     <ClInclude Include="Ustawienia.h" />
+    <ClInclude Include="Wyniki.h" />
     <ClInclude Include="Zasady.h" />
   </ItemGroup>
   <ItemGroup>

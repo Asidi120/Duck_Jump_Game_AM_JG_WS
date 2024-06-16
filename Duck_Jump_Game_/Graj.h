@@ -5,6 +5,7 @@
 class Kaczuszka;
 class Klocki;
 class Baza_Danych;
+class Wyniki;
 class Graj: public Menu
 {
 	Time czas{};
@@ -19,7 +20,7 @@ public:
 	Graj();
 	virtual ~Graj();
 	bool czy_graj_wlaczone = 0;
-	void rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka, Graj *graj,Baza_Danych* baza_danych);
+	void rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka, Graj *graj,Baza_Danych* baza_danych,Wyniki* wyniki);
 	void co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka);
 	long long czas_milisekundy();
 	int ustaw_czas();

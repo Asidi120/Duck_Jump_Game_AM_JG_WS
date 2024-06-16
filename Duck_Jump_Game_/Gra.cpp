@@ -7,6 +7,7 @@
 #include "Kaczuszka.h"
 #include "Klocki.h"
 #include "Baza_Danych.h"
+#include "Wyniki.h"
 void ustaw(Kaczuszka* kaczuszka, Graj* graj,Baza_Danych* baza_danych)
 {
     if (!graj->czy_graj_wlaczone)
@@ -57,8 +58,9 @@ Gra::~Gra() //dekstruktor - usuwa wszystkie wskazniki
     delete graj;
     delete kaczuszka;
     delete baza_danych;
+    delete wyniki;
 }
-void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka,Baza_Danych* baza_danych)
+void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka,Baza_Danych* baza_danych, Wyniki* wyniki)
 {
     this->menu = menu;
     this->zasady = zasady;
@@ -67,6 +69,7 @@ void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_skl
     this->ustawienia = ustawienia;
     this->kaczuszka = kaczuszka;
     this->baza_danych = baza_danych;
+    this->wyniki = wyniki;
 }
 
 const bool Gra::czyGraOtwarta() const
@@ -110,16 +113,25 @@ void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_skle
         okno.display();
     }
 }
-void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_Danych* baza_danych)
+void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_Danych* baza_danych,Wyniki* wyniki)
 {
     ustaw(kaczuszka, graj,baza_danych);
     graj->czy_graj_wlaczone = 1;
+    wyniki->czy_wyniki_wlaczone = 0;
     while (graj->czy_graj_wlaczone == 1)
     {
         okno.clear();
         graj->ustaw_czas();
-        graj->rysuj_graj(okno,kaczuszka,graj,baza_danych);
+        graj->rysuj_graj(okno,kaczuszka,graj,baza_danych,wyniki);
         graj->co_sie_dzieje_w_grze(okno,kaczuszka);
+        okno.display();
+    }
+    while (wyniki->czy_wyniki_wlaczone)
+    {
+        wyniki->wynik_i_naj_wynik[0].setString("Twoj wynik: "+wyniki->wypisz_punkty(kaczuszka,&graj->kloce));
+        okno.clear();
+        wyniki->rysuj_wyniki(okno,baza_danych);
+        wyniki->co_sie_dzieje_w_wynikach(okno,graj);
         okno.display();
     }
 }
@@ -182,7 +194,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do gry)
                         graj->czas_gry.restart();
-                        graj_sie_rysuje(*okno, graj,kaczuszka, baza_danych);
+                        graj_sie_rysuje(*okno, graj,kaczuszka, baza_danych,wyniki);
                         menu->czy_menu_otwarte = 1;
                     }
                     break;
@@ -191,6 +203,11 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
             }
 
         }
+        if (graj->czy_graj_wlaczone)
+    {
+        graj_sie_rysuje(*okno, graj, kaczuszka, baza_danych, wyniki);
     }
+    }
+    
 }
 

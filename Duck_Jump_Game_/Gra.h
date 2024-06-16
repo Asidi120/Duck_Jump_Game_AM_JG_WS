@@ -17,6 +17,7 @@ class Postacie_sklep;
 class Graj;
 class Kaczuszka;
 class Baza_Danych;
+class Wyniki;
 class Gra
 {
 	Event evnt{};
@@ -28,13 +29,14 @@ class Gra
 	Graj* graj = nullptr;
 	Kaczuszka* kaczuszka = nullptr;
 	Baza_Danych* baza_danych = nullptr;
+	Wyniki* wyniki = nullptr;
 public:
 	RenderWindow* wskdookna() const; //wskaznik do okna
 	Gra(); //tworzymy w nim okienko
 	virtual~Gra();
 	const bool czyGraOtwarta() const; //potrzebne do petli w main, zwraca czy okno jest otwarte
 	void aktualizuj(); //pozwala zamykac okno iksem i klawiszem esc
-	void ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka,Baza_Danych* baza_danych);
+	void ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka,Baza_Danych* baza_danych,Wyniki* wyniki);
 
 };
 
