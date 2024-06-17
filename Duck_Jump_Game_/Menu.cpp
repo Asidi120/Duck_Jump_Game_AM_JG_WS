@@ -32,19 +32,22 @@ Menu::Menu(): wybrany_obiekt(0) //tworzy menu
 	
 	menu[0].setFillColor(Color::Red);
 	menu[0].setString("Graj");
-	menu[0].setPosition(Vector2f(295,350));
+	menu[0].setPosition(Vector2f(295,280));
 
-	menu[1].setString("Postacie");
-	menu[1].setPosition(Vector2f(270,450));
+	menu[1].setString("Nazwa gracza");
+	menu[1].setPosition(Vector2f(245, 380));
 
-	menu[2].setString("Ustawienia");
-	menu[2].setPosition(Vector2f(255,550));
+	menu[2].setString("Postacie");
+	menu[2].setPosition(Vector2f(270,480));
 
-	menu[3].setString("Zasady");
-	menu[3].setPosition(Vector2f(280,650));
+	menu[3].setString("Ustawienia");
+	menu[3].setPosition(Vector2f(255,580));
 
-	menu[4].setString("Wyjdz");
-	menu[4].setPosition(Vector2f(290, 750));
+	menu[4].setString("Zasady");
+	menu[4].setPosition(Vector2f(280,680));
+
+	menu[5].setString("Wyjdz");
+	menu[5].setPosition(Vector2f(290, 780));
 }
 Menu::~Menu() {}
 void Menu::rysuj_menu(RenderWindow& okno)

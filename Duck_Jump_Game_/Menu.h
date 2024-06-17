@@ -1,6 +1,6 @@
 #include "Gra.h"
 #pragma once
-#define Ilosc_Napisow 5
+#define Ilosc_Napisow 6
 
 class Menu
 {
@@ -13,7 +13,7 @@ public:
 	string nazwa_gracza{};
 	Texture tekstura_tla;
 	Sprite tlo;
-	Text menu[5];
+	Text menu[Ilosc_Napisow];
 	bool czy_menu_otwarte = 1;
 	int wybrany_obiekt = 0;
 	Menu();

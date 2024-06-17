@@ -8,6 +8,7 @@
 #include "Klocki.h"
 #include "Baza_Danych.h"
 #include "Wyniki.h"
+#include "Nazwa_gracza.h"
 #include <ctime>
 
 int main()
@@ -25,7 +26,8 @@ int main()
     Kaczuszka kaczuszka;
     Klocki klocki;
     Wyniki wyniki;
-    gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj, &kaczuszka, &baza_danych, &wyniki); //ustawienie wskaznikow 
+    Nazwa_gracza nazwa_gracza;
+    gra.ustaw(&menu, &ustawienia, &zasady, &postacie_sklep, &graj, &kaczuszka, &baza_danych, &wyniki, &nazwa_gracza); //ustawienie wskaznikow 
     while (gra.czyGraOtwarta())
     {
         gra.aktualizuj();

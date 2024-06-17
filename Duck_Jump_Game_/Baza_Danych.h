@@ -16,7 +16,7 @@ class Baza_Danych
 public:
     Baza_Danych(const char* sciezka) : sciezka_do_bazy(sciezka) {
         stworzBaze();
-        stworzTabele();
+        stworzTabele(); 
     }
 
     void wstawDane(const string& nazwa_gracza, int najlepszy_wynik, int chlebki);

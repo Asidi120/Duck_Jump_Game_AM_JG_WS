@@ -164,6 +164,7 @@
     <ClCompile Include="Graj.cpp" />
     <ClCompile Include="Klocki.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Nazwa_gracza.cpp" />
     <ClCompile Include="Postacie_sklep.cpp" />
     <ClCompile Include="sqlite3.c" />
     <ClCompile Include="Ustawienia.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Graj.h" />
     <ClInclude Include="Klocki.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Nazwa_gracza.h" />
     <ClInclude Include="Postacie_sklep.h" />
     <ClInclude Include="Ustawienia.h" />
     <ClInclude Include="Wyniki.h" />
