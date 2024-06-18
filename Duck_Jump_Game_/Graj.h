@@ -6,6 +6,7 @@ class Kaczuszka;
 class Klocki;
 class Baza_Danych;
 class Wyniki;
+class Nazwa_Gracza;
 class Graj: public Menu
 {
 	Time czas{};

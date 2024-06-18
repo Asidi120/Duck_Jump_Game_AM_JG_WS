@@ -4,6 +4,7 @@
 #include "Animacja.h"
 #include "Baza_Danych.h"
 #include "Wyniki.h"
+#include "Nazwa_gracza.h"
 Graj::Graj() //ustawia napis gra
 {
 	tytul.setFont(czcionka);
@@ -59,8 +60,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj,Baza_D
 		cout << "GAME OVER";
 		czy_graj_wlaczone = 0;
 		wyniki->czy_wyniki_wlaczone = 1;
-		nazwa_gracza = baza_danych->pobierzOstatniegoGracza();
-		baza_danych->wstawLubAktualizujDane(nazwa_gracza,kaczuszka->punkty_liczenie(&kloce),kloce.chlebek.ilosc_zdobytych_chlebkow);
+		baza_danych->wstawLubAktualizujDane(nazwa_gracza, kaczuszka->punkty_liczenie(&kloce), kloce.chlebek.ilosc_zdobytych_chlebkow);
 		cout << "Top 10 najlepszych wynikow:" << endl;
 		baza_danych->wypiszTop10();
 	}

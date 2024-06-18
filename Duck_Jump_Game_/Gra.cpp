@@ -116,8 +116,9 @@ void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_skle
         okno.display();
     }
 }
-void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_Danych* baza_danych,Wyniki* wyniki)
+void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_Danych* baza_danych,Wyniki* wyniki,Nazwa_gracza* nazwa_gracza)
 {
+    nazwa_gracza->zmiana_nazwy(graj);
     ustaw(kaczuszka, graj,baza_danych);
     graj->czy_graj_wlaczone = 1;
     wyniki->czy_wyniki_wlaczone = 0;
@@ -129,10 +130,10 @@ void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_D
         graj->co_sie_dzieje_w_grze(okno,kaczuszka);
         okno.display();
     }
+    wyniki->wynik_i_naj_wynik[0].setString("Twoj wynik: " + wyniki->wypisz_punkty(kaczuszka, &graj->kloce));
+    wyniki->wynik_i_naj_wynik[1].setString("Najlepszy wynik: " + to_string(baza_danych->pobierzWynik(graj->nazwa_gracza)));
     while (wyniki->czy_wyniki_wlaczone)
     {
-        wyniki->wynik_i_naj_wynik[0].setString("Twoj wynik: "+wyniki->wypisz_punkty(kaczuszka,&graj->kloce));
-        wyniki->wynik_i_naj_wynik[1].setString("Najlepszy wynik: "+to_string(baza_danych->pobierzWynik(graj->nazwa_gracza)));
         ustaw(kaczuszka, graj, baza_danych);
         okno.clear();
         wyniki->rysuj_wyniki(okno,baza_danych);
@@ -218,7 +219,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do gry)
                         graj->czas_gry.restart();
-                        graj_sie_rysuje(*okno, graj,kaczuszka, baza_danych,wyniki);
+                        graj_sie_rysuje(*okno, graj,kaczuszka, baza_danych,wyniki,nazwa_gracza);
                         menu->czy_menu_otwarte = 1;
                     }
                     break;
@@ -228,7 +229,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
         }
     if (graj->czy_graj_wlaczone) //odpala graj ponownie po kliknieciu zagraj ponownie
     {
-        graj_sie_rysuje(*okno, graj, kaczuszka, baza_danych, wyniki);
+        graj_sie_rysuje(*okno, graj, kaczuszka, baza_danych, wyniki,nazwa_gracza);
     }
     }
     

@@ -65,7 +65,6 @@ void Wyniki::co_sie_dzieje_w_wynikach(RenderWindow& okno,Graj* graj)
 		if (event_wyniki.type == Event::Closed) //zamyka program przyciskiem x			
 		okno.close();
 	}
-	
 }
 
 string Wyniki::wypisz_punkty(Kaczuszka* kaczuszka,Klocki* kloce)
