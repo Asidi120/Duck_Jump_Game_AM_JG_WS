@@ -19,11 +19,6 @@ Postacie_sklep::Postacie_sklep()
 		postacie_sklep_tekst[i].setSize(Vector2f(120.f,140.f));
 		postacie_sklep_tekst[i].setPosition(Vector2f(szerokosc, 400));
 		postacie_sklep_tekst[i].setTexture(&tekstury_kaczki[i]);
-		tekst_postacie_sklep[i].setFont(czcionka);
-		tekst_postacie_sklep[i].setFillColor(Color::Black);
-		tekst_postacie_sklep[i].setString("15 chlebków");
-		tekst_postacie_sklep[i].setCharacterSize(28);
-		tekst_postacie_sklep[i].setPosition(Vector2f(szerokosc-20, 560));
 		szerokosc += 200;
 	}
 }
@@ -37,7 +32,6 @@ void Postacie_sklep::rysuj_postacie_sklep(RenderWindow& okno, Baza_Danych* baza_
 	for (int i = 0; i < IloscNapisowPostacie; i++)
 	{
 		okno.draw(postacie_sklep_tekst[i]);
-		okno.draw(tekst_postacie_sklep[i]);
 	}
 }
 

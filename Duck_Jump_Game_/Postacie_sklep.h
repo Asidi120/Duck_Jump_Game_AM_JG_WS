@@ -6,7 +6,7 @@
 #define IloscNapisowPostacie 3
 class Klocki;
 class Kaczuszka;
-class Postacie_sklep: public Menu
+class Postacie_sklep: virtual public Menu
 {
 	Texture tekstury_kaczki[IloscNapisowPostacie];
 	Event event_postacie{};

@@ -3,7 +3,7 @@
 #include "Menu.h"
 #define IloscNapisowZasady 7
 
-class Zasady : public Menu
+class Zasady : virtual public Menu
 {
 	Text zasady_tekst[IloscNapisowZasady]{};
 	Event event_zasady{};

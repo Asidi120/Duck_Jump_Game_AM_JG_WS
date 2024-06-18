@@ -9,7 +9,6 @@ class Nazwa_gracza : public Menu
 	Event nazwa_gracza_event;
 public:
 	void zmiana_nazwy(Graj* graj);
-	//int wybrany_obiekt_nazwa_gracza = 0;
 	string nazwa_gracza_zmiana{};
 	string nowa_nazwa_gracza{};
 	Text nazwa_gracza_tekst[3];

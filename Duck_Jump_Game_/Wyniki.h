@@ -7,7 +7,7 @@ class Kaczuszka;
 class Klocki;
 class Baza_Danych;
 class Graj;
-;class Wyniki : public Menu
+;class Wyniki : virtual public Menu
 {
 	Text tekst_wyniki[2]{};
 	int wysokosc = 350;

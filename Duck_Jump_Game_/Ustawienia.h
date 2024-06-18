@@ -3,7 +3,7 @@
 #define IloscNapisowUstawienia 2
 
 #pragma once
-class Ustawienia:public Menu
+class Ustawienia: virtual public Menu
 {
 	Text ustawienia_napisy[IloscNapisowUstawienia]{};
 	bool muzyka=1;

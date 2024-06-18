@@ -7,12 +7,13 @@ class Klocki;
 class Baza_Danych;
 class Wyniki;
 class Nazwa_Gracza;
-class Graj: public Menu
+class Graj: virtual public Menu
 {
 	Time czas{};
 	Event event_gra{};
 	long long czas_przycisku = 0; // czas przerwy miedzy przyciskami
 	long long czas_czekania = 0; // czas nieokreslony
+	Text tekst_ilosc_chlebkow;
 public:
 	string nazwa_gracza{};
 	Klocki kloce;

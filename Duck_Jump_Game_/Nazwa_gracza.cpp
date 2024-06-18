@@ -2,7 +2,7 @@
 #include "Baza_Danych.h"
 
 
-string Nazwa_gracza::ustaw_nazwe_gracza(Baza_Danych* baza_danych)
+string Nazwa_gracza::ustaw_nazwe_gracza(Baza_Danych* baza_danych) //pobiera ostatniego gracza
 {
 	nazwa_gracza = baza_danych->pobierzOstatniegoGracza();
 	return nazwa_gracza;
@@ -23,7 +23,7 @@ Nazwa_gracza::Nazwa_gracza()
 	nazwa_gracza_tekst[1].setString("Zmien nazwe gracza: ");
 	nazwa_gracza_tekst[1].setFillColor(Color::Black);
 	nazwa_gracza_tekst[1].setCharacterSize(28);
-	nazwa_gracza_tekst[1].setPosition(Vector2f(150, 480));
+	nazwa_gracza_tekst[1].setPosition(Vector2f(80, 480));
 	nazwa_gracza_tekst[1].setFont(czcionka);
 
 	nazwa_gracza_tekst[2].setString("Wyjscie do menu");
@@ -49,7 +49,7 @@ void Nazwa_gracza::co_sie_dzieje_w_nazwa_gracza(RenderWindow& okno)
 {
 	while (okno.pollEvent(nazwa_gracza_event))
 	{
-		if (nazwa_gracza_event.type == sf::Event::TextEntered)
+		if (wybrany_obiekt == 1 && nazwa_gracza_event.type == sf::Event::TextEntered)
 		{
 			if (nazwa_gracza_event.text.unicode < 128)
 			{
