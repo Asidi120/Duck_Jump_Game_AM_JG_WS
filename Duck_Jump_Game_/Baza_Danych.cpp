@@ -222,7 +222,7 @@ void Baza_Danych::wypiszTop10()
     int exit = sqlite3_open(sciezka_do_bazy, &baza);
     exit = sqlite3_exec(baza, sql.c_str(), [](void*, int argc, char** argv, char** azColName) -> int {
         for (int i = 0; i < argc; i++) {
-            cout << azColName[i] << ": " << (argv[i] ? argv[i] : "NULL") << endl;
+            cout /*<< azColName[i] << ": "*/ << (argv[i] ? argv[i] : "NULL")<< endl;
         }
         cout << endl;
         return 0;
