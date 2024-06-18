@@ -15,7 +15,6 @@ Graj::Graj() //ustawia napis gra
 
 	tekst_ilosc_chlebkow.setFont(czcionka);
 	tekst_ilosc_chlebkow.setFillColor(Color::Black);
-	tekst_ilosc_chlebkow.setString("Chlebki: " + to_string(baza_danych->pobierz_chlebek);
 	tekst_ilosc_chlebkow.setCharacterSize(40);
 	tekst_ilosc_chlebkow.setPosition(450,0);
 }
@@ -26,6 +25,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj,Baza_D
 {
 	okno.draw(tlo); //rysuje tlo, tytul i podloge
 	okno.draw(tytul);
+	tekst_ilosc_chlebkow.setString("Chlebki:" + to_string(kloce.chlebek.ilosc_zdobytych_chlebkow + baza_danych->pobierzChlebki(nazwa_gracza)));
 	okno.draw(tekst_ilosc_chlebkow);
 	tytul.setString("Punkty: "+ to_string(int(kaczuszka->punkty_liczenie(&graj->kloce))));
 	tekst_ilosc_chlebkow.setString("Chlebki: " + to_string(kloce.chlebek.ilosc_zdobytych_chlebkow));
