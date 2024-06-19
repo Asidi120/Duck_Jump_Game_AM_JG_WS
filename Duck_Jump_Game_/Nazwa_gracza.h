@@ -6,7 +6,7 @@ class Baza_Danych;
 class Graj;
 class Nazwa_gracza : public Menu
 {
-	Event nazwa_gracza_event;
+	Event nazwa_gracza_event{};
 public:
 	void zmiana_nazwy(Graj* graj);
 	string nazwa_gracza_zmiana{};

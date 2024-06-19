@@ -26,7 +26,7 @@ Zasady::Zasady()
 
 Zasady::~Zasady() {}
 
-void Zasady::rysuj_zasady(RenderWindow& okno)
+void Zasady::rysuj_zasady(RenderWindow& okno) //rysuje zasady
 {
 	okno.draw(tlo);
 	okno.draw(tytul);
@@ -36,7 +36,7 @@ void Zasady::rysuj_zasady(RenderWindow& okno)
 	}
 }
 
-void Zasady::co_sie_dzieje_w_zasadach(RenderWindow& okno)
+void Zasady::co_sie_dzieje_w_zasadach(RenderWindow& okno) //sprawdza co sie teraz dzieje w okienku
 {
 	while (okno.pollEvent(event_zasady))
 	{

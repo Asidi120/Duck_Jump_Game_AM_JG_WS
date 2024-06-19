@@ -114,7 +114,7 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 		{
 			pierwszy_rzad = 0;
 		}
-		graj.czy_rysowac_klocki = 0; //he?
+		graj.czy_rysowac_klocki = 0; //chlebek juz jest narysowanych
 	}
 }
 

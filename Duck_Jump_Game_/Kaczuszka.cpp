@@ -1,7 +1,7 @@
 #include "Kaczuszka.h"
 #define Ilosc_klockow 4
 
-void Kaczuszka::zmiana_obrazka(Graj& graj)
+void Kaczuszka::zmiana_obrazka(Graj& graj) // animacja lacznie z zmiana skorki
 {
 	if (animacja.czy_zmienic(graj))
 	{
@@ -52,12 +52,12 @@ Kaczuszka::Kaczuszka()
 
 Kaczuszka::~Kaczuszka() {}
 
-void Kaczuszka::rysuj_gracza(RenderWindow& okno)
+void Kaczuszka::rysuj_gracza(RenderWindow& okno) //rysuje kaczke
 {
 	okno.draw(kaczuszka);
 }
 
-void Kaczuszka::ruch(float kierunek_x, float kierunek_y)
+void Kaczuszka::ruch(float kierunek_x, float kierunek_y) // ruch prawo lewo
 {
 	float przemieszczenie_x = 6;
 	float x= kaczuszka.getPosition().x, y= kaczuszka.getPosition().y;
@@ -117,7 +117,7 @@ bool Kaczuszka::czy_podloga(Klocki* kloce) //wykrywa kiedy kaczuszka jest na pod
 	return wynik;
 }
 
-void Kaczuszka::liczenie_punktow(Klocki* kloce)
+void Kaczuszka::liczenie_punktow(Klocki* kloce) // liczy ilosc punktow zdobyta przez gracza
 {
 		if (czy_na_ziemi && czy_podloga(kloce) == 0)
 		{
@@ -164,7 +164,7 @@ bool Kaczuszka::czy_jest_na_ziemi(Klocki* kloce) //wykrywa kiedy kaczuszka jest 
 	return czy_na_ziemi;
 }
 
-void Kaczuszka::czy_dotyka_chlebka(Klocki* kloce)
+void Kaczuszka::czy_dotyka_chlebka(Klocki* kloce) // czy kaczuszka dotyka chlebka
 {
 	bool pozycja_x = kloce->chlebek.chlebek.getPosition().x <= kaczuszka.getPosition().x + rozmiary_kaczuszki.x && kloce->chlebek.chlebek.getPosition().x + kloce->chlebek.rozmiary_chlebek.x >= kaczuszka.getPosition().x;
 	bool pozycja_y = kaczuszka.getPosition().y+rozmiary_kaczuszki.y>= kloce->chlebek.chlebek.getPosition().y && kloce->chlebek.chlebek.getPosition().y+ kloce->chlebek.rozmiary_chlebek.y>= kaczuszka.getPosition().y;
@@ -175,7 +175,7 @@ void Kaczuszka::czy_dotyka_chlebka(Klocki* kloce)
 	}
 }
 
-void Kaczuszka::skok_kaczuchy() //kinda he
+void Kaczuszka::skok_kaczuchy() //obsluguje skok kaczki
 {
 		if (skok_aktuala_poz >= skok_wysokosc_skoku) // szczyt skok i nastepuje zmiana kierunku y
 		{
@@ -250,7 +250,7 @@ void Kaczuszka::przesuwanie_o_50_pikseli_w_dol(RenderWindow& okno, Klocki* kloce
 	}
 }
 
-float Kaczuszka::punkty_liczenie(Klocki* kloce)
+float Kaczuszka::punkty_liczenie(Klocki* kloce) //potrzebna do liczenia punktow
 {
 	if(czy_na_ziemi==1 && ktore_j<kloce->ktory_teraz)
 	{

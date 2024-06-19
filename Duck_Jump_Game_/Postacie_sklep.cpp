@@ -25,6 +25,8 @@ Postacie_sklep::Postacie_sklep()
 
 Postacie_sklep::~Postacie_sklep() {}
 
+
+//rysuje sklep postaci
 void Postacie_sklep::rysuj_postacie_sklep(RenderWindow& okno, Baza_Danych* baza_danych)
 {
 	okno.draw(tlo);
@@ -35,6 +37,7 @@ void Postacie_sklep::rysuj_postacie_sklep(RenderWindow& okno, Baza_Danych* baza_
 	}
 }
 
+//sprawdza co sie dzieje w sklepie postaci (ktora postac sie wybralo itp)
 void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,Kaczuszka* kaczuszka)
 {
 	while (okno.pollEvent(event_postacie))
@@ -105,27 +108,20 @@ void Postacie_sklep::co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki,
 			}
 			if (event_postacie.key.code == Keyboard::Enter)
 			{
-				if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 0 && wybrana == 0)
+				if (wybrana == 0)
 				{
 					kaczuszka->ktora_tekstura = 1;
-					klocki->chlebek.ilosc_zdobytych_chlebkow -= 0;
 					kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_A);
 				}
-				else if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 0 && wybrana==1)
+				else if (wybrana==1)
 				{
 					kaczuszka->ktora_tekstura = 2;
-					klocki->chlebek.ilosc_zdobytych_chlebkow -= 0;
 					kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_K);
 				}
-				else if (klocki->chlebek.ilosc_zdobytych_chlebkow >= 0 && wybrana == 2)
+				else if (wybrana == 2)
 				{
 					kaczuszka->ktora_tekstura = 3;
-					klocki->chlebek.ilosc_zdobytych_chlebkow -= 0;
 					kaczuszka->kaczuszka.setTexture(&kaczuszka->tekstura_kaczuszka_W);
-				}
-				else
-				{
-					cout << "Za malo monet, przykro mi\n";
 				}
 			}
 		}

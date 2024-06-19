@@ -35,7 +35,7 @@ Nazwa_gracza::Nazwa_gracza()
 
 Nazwa_gracza::~Nazwa_gracza() {}
 
-void Nazwa_gracza::rysuj_nazwa_gracza(RenderWindow& okno)
+void Nazwa_gracza::rysuj_nazwa_gracza(RenderWindow& okno) // rysuje to co sie dzieje teraz w okienku
 {
 	okno.draw(tlo);
 	okno.draw(tytul);
@@ -108,7 +108,7 @@ void Nazwa_gracza::co_sie_dzieje_w_nazwa_gracza(RenderWindow& okno)
 	}
 }
 
-void Nazwa_gracza::zmiana_nazwy(Graj* graj)
+void Nazwa_gracza::zmiana_nazwy(Graj* graj) // zmienia nazwe gracza
 {
 	if (nazwa_gracza_zmiana.size() != 0)
 	{

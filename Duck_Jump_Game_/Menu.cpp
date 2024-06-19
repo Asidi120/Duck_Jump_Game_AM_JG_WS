@@ -50,6 +50,8 @@ Menu::Menu(): wybrany_obiekt(0) //tworzy menu
 	menu[5].setPosition(Vector2f(290, 780));
 }
 Menu::~Menu() {}
+
+//rysuje menu
 void Menu::rysuj_menu(RenderWindow& okno)
 {
 	okno.draw(tlo);
@@ -59,7 +61,7 @@ void Menu::rysuj_menu(RenderWindow& okno)
 		okno.draw(menu[i]);
 	}
 }
-
+//przesuwa kolor gry strzalka do gory
 int Menu::ruch_do_gory(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 {
 	if (wybrany_obiekt - 1 >= 0)
@@ -76,6 +78,8 @@ int Menu::ruch_do_gory(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 	}
 	return wybrany_obiekt;
 }
+
+//przesuwa kolor gry strzalka w dol
 int Menu::ruch_w_dol(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 {
 	if (wybrany_obiekt + 1 <= (ilosc_linijek-1))
@@ -93,6 +97,7 @@ int Menu::ruch_w_dol(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 	return wybrany_obiekt;
 }
 
+//sprawdza ktory obiekt jest teraz wybrany
 int Menu::ktory_teraz()
 {
 	return wybrany_obiekt;

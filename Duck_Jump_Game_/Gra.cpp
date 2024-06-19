@@ -9,7 +9,7 @@
 #include "Baza_Danych.h"
 #include "Wyniki.h"
 #include "Nazwa_gracza.h"
-
+//ustawia zmienne w odpowiednie miesce i wartosci po rozpoczenciu gry
 void ustaw(Kaczuszka* kaczuszka, Graj* graj,Baza_Danych* baza_danych)
 {
     if (!graj->czy_graj_wlaczone)
@@ -62,6 +62,7 @@ Gra::~Gra() //dekstruktor - usuwa wszystkie wskazniki
     delete baza_danych;
     delete wyniki;
 }
+//usuwa znaczniki
 void Gra::ustaw(Menu* menu, Ustawienia* ustawienia, Zasady* zasady, Postacie_sklep* postacie_sklep, Graj* graj, Kaczuszka* kaczuszka,Baza_Danych* baza_danych, Wyniki* wyniki, Nazwa_gracza* nazwa_gracza)
 {
     this->menu = menu;
@@ -79,6 +80,7 @@ const bool Gra::czyGraOtwarta() const
 {
     return  okno->isOpen();
 }
+// rysuje czesc z menu (wejscie do ustawien)
 void ustawienia_sie_rysuja(RenderWindow& okno, Ustawienia* ustawienia)
 {
     ustawienia->czy_ustawienia_wlaczone = 1;
@@ -91,7 +93,7 @@ void ustawienia_sie_rysuja(RenderWindow& okno, Ustawienia* ustawienia)
         okno.display();
     }
 }
-
+// rysuje czesc z menu (wejscie do zasad)
 void zasady_sie_rysuja(RenderWindow& okno, Zasady* zasady)
 {
     zasady->czy_zasady_wlaczone = 1;
@@ -103,6 +105,7 @@ void zasady_sie_rysuja(RenderWindow& okno, Zasady* zasady)
         okno.display();
     }
 }
+// rysuje czesc z menu (wejscie do sklepu postaci)
 void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_sklep,Klocki* kloce,Kaczuszka* kaczuszka, Baza_Danych* baza_danych)
 {
     postacie_sklep->czy_postacie_sklep_wlaczone = 1;
@@ -116,7 +119,8 @@ void postacie_sklep_sie_rysuje(RenderWindow& okno, Postacie_sklep* postacie_skle
         okno.display();
     }
 }
-void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_Danych* baza_danych,Wyniki* wyniki,Nazwa_gracza* nazwa_gracza)
+//rysuje gre
+void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_Danych* baza_danych,Wyniki* wyniki,Nazwa_gracza* nazwa_gracza) 
 {
     nazwa_gracza->zmiana_nazwy(graj);
     ustaw(kaczuszka, graj,baza_danych);
@@ -141,11 +145,11 @@ void graj_sie_rysuje(RenderWindow& okno, Graj* graj,Kaczuszka* kaczuszka, Baza_D
         okno.display();
     }
 }
-
-void nazwa_gracza_sie_rysuje(RenderWindow& okno, Nazwa_gracza* nazwa_gracza, Baza_Danych* baza_danych)
+// rysuje czesc z menu (wejscie do zmiany nazwy)
+void nazwa_gracza_sie_rysuje(RenderWindow& okno, Nazwa_gracza* nazwa_gracza, Baza_Danych* baza_danych) 
 {
     nazwa_gracza->czy_nazwa_gracza_wlaczone = 1;
-    nazwa_gracza->nazwa_gracza_tekst[0].setString("Nazwa gracza: " + nazwa_gracza->ustaw_nazwe_gracza(baza_danych)); //nie wyswietla 
+    nazwa_gracza->nazwa_gracza_tekst[0].setString("Nazwa gracza: " + nazwa_gracza->ustaw_nazwe_gracza(baza_danych));
     while (nazwa_gracza->czy_nazwa_gracza_wlaczone)
     {
         okno.clear();

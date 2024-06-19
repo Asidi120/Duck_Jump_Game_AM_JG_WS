@@ -25,10 +25,9 @@ Wyniki::Wyniki()
 	tekst_wyniki[1].setString("Wyjdz");
 }
 
-Wyniki::~Wyniki()
-{
+Wyniki::~Wyniki() {}
 
-}
+//sprawdza co sie dzieje w wynikach
 void Wyniki::co_sie_dzieje_w_wynikach(RenderWindow& okno,Graj* graj)
 {
 	while (okno.pollEvent(event_wyniki))
@@ -66,12 +65,12 @@ void Wyniki::co_sie_dzieje_w_wynikach(RenderWindow& okno,Graj* graj)
 		okno.close();
 	}
 }
-
+//wypisuje punkty gracza
 string Wyniki::wypisz_punkty(Kaczuszka* kaczuszka,Klocki* kloce)
 {
 	return to_string(int(kaczuszka->punkty_liczenie(kloce)));
 }
-
+//rysuje wyniki
 void Wyniki::rysuj_wyniki(RenderWindow& okno,Baza_Danych* baza_danych)
 {
 	okno.draw(tlo);

@@ -21,6 +21,7 @@ Graj::Graj() //ustawia napis gra
 
 Graj::~Graj() {}
 
+//tutaj odbywa rysowanie sie calej gry
 void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj,Baza_Danych* baza_danych,Wyniki* wyniki)
 {
 	okno.draw(tlo); //rysuje tlo, tytul i podloge
@@ -73,7 +74,7 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj,Baza_D
 		baza_danych->wypiszTop10();
 	}
 }
-
+//sprawdza czy cos sie dzieje w grze (przyciski)
 void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 {
 	while (okno.pollEvent(event_gra))
@@ -140,26 +141,23 @@ void Graj::co_sie_dzieje_w_grze(RenderWindow& okno,Kaczuszka* kaczuszka)
 				kaczuszka->skok_kaczuchy();
 		}
 }
-
+//czas przysiskania przycisku
 long long Graj::czas_milisekundy()
 {
-	// Get the current time from the system clock
-	auto now = chrono::system_clock::now();
-	// Convert the current time to time since epoch
-	auto duration = now.time_since_epoch();
-	// Convert duration to milliseconds
-	auto milliseconds = chrono::duration_cast<chrono::milliseconds>(duration).count();
-	return milliseconds;
+	auto teraz = chrono::system_clock::now();
+	auto trwanie = teraz.time_since_epoch();
+	auto milisekundy = chrono::duration_cast<chrono::milliseconds>(trwanie).count();
+	return milisekundy;
 
 }
-
+//czas gry potrzebny do przyspieszania blokow i animacji
 int Graj::ustaw_czas()
 {
 	czas = czas_gry.getElapsedTime();
 	int sekundy = static_cast<int>(czas.asSeconds()); //sekundy w grze
 	return sekundy;
 }
-
+//przyspieszanie blokow
 bool Graj::czy_pryspieszyc()
 {
 	if (ustaw_czas() % 4 == 0)

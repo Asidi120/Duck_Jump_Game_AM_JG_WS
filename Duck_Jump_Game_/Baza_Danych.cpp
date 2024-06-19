@@ -83,7 +83,8 @@ void Baza_Danych::wstawDane(const string& nazwa_gracza, int najlepszy_wynik, int
 // Funkcja wstawiaj¹ca nowe dane lub aktualizuj¹ca istniej¹ce
 void Baza_Danych::wstawLubAktualizujDane(const string& nazwa_gracza, int najlepszy_wynik, int chlebki) 
 {
-    if (czyGraczIstnieje(nazwa_gracza)) {
+    if (czyGraczIstnieje(nazwa_gracza)) 
+    {
         aktualizujDaneDlaGracza(nazwa_gracza, najlepszy_wynik, chlebki);
     }
     else {
@@ -100,7 +101,7 @@ void Baza_Danych::wstawLubAktualizujDane(const string& nazwa_gracza, int najleps
             sqlite3_free(bladWiadomosc);
         }
         else {
-            cout << "Rekord wstawiony pomyslnie!" << endl;
+            cout << "Rekord wstawiony pomyslnie." << endl;
         }
         sqlite3_close(baza);
     }
@@ -135,8 +136,9 @@ void Baza_Danych::aktualizujDaneDlaGracza(const string& nazwa_gracza, int najlep
     }
     sqlite3_close(baza);
 }
-
-string Baza_Danych::pobierzOstatniegoGracza() {
+//pobiera ostatnio wpisanego gracza w bazie danych
+string Baza_Danych::pobierzOstatniegoGracza() 
+{
     sqlite3* baza;
     sqlite3_stmt* stmt;
     string nazwa_gracza;
@@ -159,7 +161,7 @@ string Baza_Danych::pobierzOstatniegoGracza() {
     return nazwa_gracza;
 }
 
-
+//wypisuje top dziesiec najlepszych wynikow
 void Baza_Danych::wypiszTop10() 
 {
     sqlite3* baza;
@@ -186,7 +188,7 @@ void Baza_Danych::wypiszTop10()
 }
 
 
-// Funkcja aktualizuj¹ca dane w tabeli GRACZE
+// Funkcja aktualizuj¹ca dane w tabeli
 void Baza_Danych::aktualizujDane(int id_gracza, int najlepszy_wynik, int chlebki) 
 {
     sqlite3* baza;
@@ -208,7 +210,7 @@ void Baza_Danych::aktualizujDane(int id_gracza, int najlepszy_wynik, int chlebki
     }
     sqlite3_close(baza);
 }
-
+//pobiera ilosc zdobytych chlebkow danego gracza
 int Baza_Danych::pobierzChlebki(const string& nazwa_gracza) 
 {
     sqlite3* baza;
@@ -233,7 +235,7 @@ int Baza_Danych::pobierzChlebki(const string& nazwa_gracza)
     sqlite3_close(baza);
     return chlebki;
 }
-
+//pobiera najlepszy wynik gracza
 int Baza_Danych::pobierzWynik(const string& nazwa_gracza)
 {
     sqlite3* baza;

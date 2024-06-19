@@ -13,6 +13,7 @@ Chlebek::Chlebek()
 
 Chlebek::~Chlebek() {}
 
+//rysuje chlebek
 void Chlebek::rys_chlebek(RenderWindow& okno)
 {
 	okno.draw(chlebek);

@@ -49,7 +49,7 @@ void Ustawienia::rysuj_ustawienia(RenderWindow& okno) // rysuje tlo, tytul i wsz
 		okno.draw(ustawienia_napisy[i]);
 	}
 }
-
+//sprawdza co sie dzieje w ustawieniach (klawisze i muzyka)
 void Ustawienia::co_sie_dzieje_w_ustawieniach(RenderWindow& okno) 
 {
 	while (okno.pollEvent(event_muzyka))
