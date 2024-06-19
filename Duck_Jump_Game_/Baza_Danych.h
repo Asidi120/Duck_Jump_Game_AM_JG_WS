@@ -21,8 +21,6 @@ public:
 
     void wstawDane(const string& nazwa_gracza, int najlepszy_wynik, int chlebki);
     void wstawLubAktualizujDane(const string& nazwa_gracza, int najlepszy_wynik, int chlebki);
-    void uzupelnijSkins(const string& nazwa_gracza, bool skin1, bool skin2, bool skin3);
-    void pobierzSkins(const string& nazwa_gracza, bool& skin1, bool& skin2, bool& skin3);
     void aktualizujDaneDlaGracza(const string& nazwa_gracza, int najlepszy_wynik, int chlebki);
     string pobierzOstatniegoGracza();
     void wypiszTop10();

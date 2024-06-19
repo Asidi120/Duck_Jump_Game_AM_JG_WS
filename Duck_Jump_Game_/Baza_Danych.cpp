@@ -19,15 +19,12 @@ void Baza_Danych::stworzTabele()
         "ID_GRACZA INTEGER PRIMARY KEY AUTOINCREMENT, "
         "NAZWA_GRACZA TEXT NOT NULL, "
         "NAJLEPSZY_WYNIK INT NOT NULL, "
-        "CHLEBKI INT NOT NULL, "
-        "SKIN1 BOOLEAN NOT NULL DEFAULT 0, "
-        "SKIN2 BOOLEAN NOT NULL DEFAULT 0, "
-        "SKIN3 BOOLEAN NOT NULL DEFAULT 0);";
+        "CHLEBKI INT NOT NULL);";
 
     int exit = sqlite3_open(sciezka_do_bazy, &baza);
     exit = sqlite3_exec(baza, sql.c_str(), NULL, 0, &bladWiadomosc);
     if (exit != SQLITE_OK) {
-        cerr << "B³¹d w funkcji stworzTabele." << endl;
+        cerr << "Blad w funkcji stworzTabele." << endl;
         sqlite3_free(bladWiadomosc);
     }
     else {
@@ -38,7 +35,8 @@ void Baza_Danych::stworzTabele()
 
 
 // Funkcja sprawdzaj¹ca, czy gracz o danej nazwie ju¿ istnieje w bazie
-bool Baza_Danych::czyGraczIstnieje(const string& nazwa_gracza) {
+bool Baza_Danych::czyGraczIstnieje(const string& nazwa_gracza) 
+{
     sqlite3* baza;
     sqlite3_stmt* stmt;
     bool istnieje = false;
@@ -107,56 +105,6 @@ void Baza_Danych::wstawLubAktualizujDane(const string& nazwa_gracza, int najleps
         sqlite3_close(baza);
     }
 }
-void Baza_Danych::uzupelnijSkins(const string& nazwa_gracza, bool skin1, bool skin2, bool skin3) {
-    sqlite3* baza;
-    char* bladWiadomosc;
-
-    string sql = "UPDATE GRACZE SET SKIN1 = ?, SKIN2 = ?, SKIN3 = ? WHERE NAZWA_GRACZA = ?;";
-
-    int exit = sqlite3_open(sciezka_do_bazy, &baza);
-    if (exit == SQLITE_OK) {
-        sqlite3_stmt* stmt;
-        sqlite3_prepare_v2(baza, sql.c_str(), -1, &stmt, 0);
-        sqlite3_bind_int(stmt, 1, skin1);
-        sqlite3_bind_int(stmt, 2, skin2);
-        sqlite3_bind_int(stmt, 3, skin3);
-        sqlite3_bind_text(stmt, 4, nazwa_gracza.c_str(), -1, SQLITE_STATIC);
-
-        if (sqlite3_step(stmt) != SQLITE_DONE) {
-            cerr << "B³¹d w funkcji uzupelnijSkins." << endl;
-        }
-        else {
-            cout << "Rekord zaktualizowany pomyœlnie!" << endl;
-        }
-        sqlite3_finalize(stmt);
-    }
-    sqlite3_close(baza);
-}
-
-void Baza_Danych::pobierzSkins(const string& nazwa_gracza, bool& skin1, bool& skin2, bool& skin3) {
-    sqlite3* baza;
-    sqlite3_stmt* stmt;
-
-    string sql = "SELECT SKIN1, SKIN2, SKIN3 FROM GRACZE WHERE NAZWA_GRACZA = ?;";
-
-    int exit = sqlite3_open(sciezka_do_bazy, &baza);
-    if (exit == SQLITE_OK) {
-        sqlite3_prepare_v2(baza, sql.c_str(), -1, &stmt, 0);
-        sqlite3_bind_text(stmt, 1, nazwa_gracza.c_str(), -1, SQLITE_STATIC);
-
-        if (sqlite3_step(stmt) == SQLITE_ROW) {
-            skin1 = sqlite3_column_int(stmt, 0);
-            skin2 = sqlite3_column_int(stmt, 1);
-            skin3 = sqlite3_column_int(stmt, 2);
-        }
-        sqlite3_finalize(stmt);
-    }
-    else {
-        cerr << "B³¹d w funkcji pobierzSkins." << endl;
-    }
-    sqlite3_close(baza);
-}
-
 
 // Funkcja aktualizuj¹ca dane gracza
 void Baza_Danych::aktualizujDaneDlaGracza(const string& nazwa_gracza, int najlepszy_wynik, int chlebki) 
@@ -166,7 +114,7 @@ void Baza_Danych::aktualizujDaneDlaGracza(const string& nazwa_gracza, int najlep
 
     string sql = "UPDATE GRACZE SET "
         "NAJLEPSZY_WYNIK = MAX(NAJLEPSZY_WYNIK, ?), "
-        "CHLEBKI = CHLEBKI + ? "
+        "CHLEBKI = ?"
         "WHERE NAZWA_GRACZA = ?;";
 
     int exit = sqlite3_open(sciezka_do_bazy, &baza);

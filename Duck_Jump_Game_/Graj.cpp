@@ -25,10 +25,10 @@ void Graj::rysuj_graj(RenderWindow& okno, Kaczuszka* kaczuszka,Graj* graj,Baza_D
 {
 	okno.draw(tlo); //rysuje tlo, tytul i podloge
 	okno.draw(tytul);
-	tekst_ilosc_chlebkow.setString("Chlebki:" + to_string(kloce.chlebek.ilosc_zdobytych_chlebkow + baza_danych->pobierzChlebki(nazwa_gracza)));
+	tekst_ilosc_chlebkow.setString("Chlebki: " + to_string(kloce.chlebek.ilosc_zdobytych_chlebkow));
 	okno.draw(tekst_ilosc_chlebkow);
 	tytul.setString("Punkty: "+ to_string(int(kaczuszka->punkty_liczenie(&graj->kloce))));
-	tekst_ilosc_chlebkow.setString("Chlebki: " + to_string(kloce.chlebek.ilosc_zdobytych_chlebkow));
+	
 	kloce.rys_podloga(okno);
 	kaczuszka->punkty_liczenie(&kloce);
 	if(czy_rysowac_klocki) 

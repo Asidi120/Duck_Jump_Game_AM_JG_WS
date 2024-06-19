@@ -172,7 +172,6 @@ void Kaczuszka::czy_dotyka_chlebka(Klocki* kloce)
 	{
 		kloce->chlebek.czy_rysowac = 0;
 		kloce->chlebek.ilosc_zdobytych_chlebkow++;
-		cout << kloce->chlebek.ilosc_zdobytych_chlebkow << endl;
 	}
 }
 

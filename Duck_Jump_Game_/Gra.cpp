@@ -15,13 +15,13 @@ void ustaw(Kaczuszka* kaczuszka, Graj* graj,Baza_Danych* baza_danych)
     if (!graj->czy_graj_wlaczone)
     {
         graj->kloce.pierwszy_rzad = 1;
-        //czy_wyniki_wlaczone=1;
         graj->kloce.ktory_teraz = 0;
         graj->kloce.predkosc_klockow=0.5f;
         kaczuszka->predkosc_kaczuchy = 0.5f;
         graj->kloce.chlebek.predkosc_chlebka = 0.5f;
         kaczuszka->punkty = 0;
         kaczuszka->przyspieszenie_skoku = 0;
+        graj->kloce.chlebek.ilosc_zdobytych_chlebkow = baza_danych->pobierzChlebki(graj->nazwa_gracza);
         for (int k = 0; k < 10; k++)
         {
             for (int i = 0; i < 2; i++)
@@ -219,6 +219,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
                     {
                         menu->czy_menu_otwarte = 0; //ustawia ze menu nie ma sie juz rysowac (idziemy do gry)
                         graj->czas_gry.restart();
+                        system("cls");
                         graj_sie_rysuje(*okno, graj,kaczuszka, baza_danych,wyniki,nazwa_gracza);
                         menu->czy_menu_otwarte = 1;
                     }
@@ -229,6 +230,7 @@ void Gra::aktualizuj() //co robi okienko, czy zamyka sie, czy nie
         }
     if (graj->czy_graj_wlaczone) //odpala graj ponownie po kliknieciu zagraj ponownie
     {
+        system("cls");
         graj_sie_rysuje(*okno, graj, kaczuszka, baza_danych, wyniki,nazwa_gracza);
     }
     }
