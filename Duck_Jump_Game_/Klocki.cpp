@@ -1,5 +1,6 @@
 #include "Klocki.h"
 #include "Graj.h"
+#include "Kaczuszka.h"
 class Graj;
 Klocki::Klocki() //ustawia podloge i klocki (wielkosc, tekstura itd)
 {
@@ -23,24 +24,47 @@ Klocki::Klocki() //ustawia podloge i klocki (wielkosc, tekstura itd)
 
 Klocki::~Klocki() {}
 
-void Klocki::ruch_klockow(Graj& graj)  //klocki oraz podloga poruszaja sie w dol
+void Klocki::ruch_klockow(Graj& graj, Kaczuszka& kaczuszka)  //klocki oraz podloga poruszaja sie w dol
 {
+	if (graj.czy_pryspieszyc())
+	{
+		predkosc_klockow +=0.0003f;
+		chlebek.predkosc_chlebka += 0.0003f;
+		kaczuszka.przyspieszenie_skoku += 0.0003f;
+	}
 	for (int k = 0; k < 10; k++)
 	{
 		for (int i=0; i < Ilosc_Klockow_wys; i++)
 		{
-			klocki[i][k].move(0, 0.5);
-			podloga.move(0,  0.004);
+			klocki[i][k].move(0, predkosc_klockow);
+			podloga.move(0, 0.004f);
 		}
 	}
+	if (graj.tlo.getPosition().y >= -3600)
+	{
+		graj.tlo.move(0, -2*chlebek.predkosc_chlebka);
+	}
+	else
+	{
+		graj.tlo.setPosition(0, 0);
+		graj.tlo.move(0, -2*chlebek.predkosc_chlebka);
+	}
+	chlebek.chlebek.move(0, chlebek.predkosc_chlebka);
 }
 
 void Klocki::rys_klocki(RenderWindow& okno, Graj& graj) 
 {
-	if (j == 10) j = 0;
+	if (j == 10)
+	{
+		j = 0;
+		chlebek.czy_rysowac = 1;
+	}
 	if (j < 10)
 	{
-		licznik_rzedow_pontonow++;
+		if (j == 0)
+		{
+			chlebek.losowanie = rand() % 6; //losowanie rzedu pojawienia sie chlebka
+		}
 		losowanie = rand() % 5; //20% szans ze beda 2 pontony
 		if (losowanie==4)
 		{
@@ -70,18 +94,27 @@ void Klocki::rys_klocki(RenderWindow& okno, Graj& graj)
 		{
 			koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)); //losowanie pozycji x
 			klocki[i][j].setPosition(koordynaty_x, koordynaty_y);
-
+			if (j == chlebek.losowanie)
+			{
+				chlebek.chlebek.setPosition(koordynaty_x + 45, koordynaty_y - chlebek.rozmiary_chlebek.y+20);
+			}
 			while (i>0 && (abs(klocki[i][j].getPosition().x -klocki[i-1][j].getPosition().x)<=rozmiar_klockow.x)) //gdyby klocki nachodzily na siebie
 			{
 				koordynaty_x = static_cast<float>(rand() % static_cast<int>(650 - rozmiar_klockow.x + 1)); //ponowne losowanie pozycji x
 				klocki[i][j].setPosition(koordynaty_x, koordynaty_y);
+
+
+				if (j == chlebek.losowanie)
+				{
+					chlebek.chlebek.setPosition(koordynaty_x + 45, koordynaty_y - chlebek.rozmiary_chlebek.y + 20);
+				}
 			}
 		}
 		if (j == 1) //ustawienie pierwszego rzedu od nowej dawki klockow
 		{
 			pierwszy_rzad = 0;
 		}
-		graj.czy_rysowac_klocki = 0; //he?
+		graj.czy_rysowac_klocki = 0; //chlebek juz jest narysowanych
 	}
 }
 

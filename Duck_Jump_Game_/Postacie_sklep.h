@@ -1,17 +1,26 @@
 #pragma once
 #include "Gra.h"
 #include "Menu.h"
+#include "Klocki.h"
+#include "Kaczuszka.h"
 #define IloscNapisowPostacie 3
-class Postacie_sklep: public Menu
+class Klocki;
+class Kaczuszka;
+class Postacie_sklep: virtual public Menu
 {
-	Text postacie_sklep_tekst[IloscNapisowPostacie]{};
+	Texture tekstury_kaczki[IloscNapisowPostacie];
 	Event event_postacie{};
-	float wysokosc = 350;
+	float szerokosc = 70;
+	int ilosc_kaczuszek_do_kupienia=3;
+	Text tekst_postacie_sklep[IloscNapisowPostacie];
 public:
+	int wybrana = 0;
+	Texture tekstury_kaczki_swiatlo[IloscNapisowPostacie];
+	RectangleShape postacie_sklep_tekst[IloscNapisowPostacie];
 	bool czy_postacie_sklep_wlaczone = 0;
 	Postacie_sklep();
 	virtual ~Postacie_sklep();
-	void rysuj_postacie_sklep(RenderWindow& okno);
-	void co_sie_dzieje_w_sklepie(RenderWindow& okno);
+	void rysuj_postacie_sklep(RenderWindow& okno,Baza_Danych* baza_danych);
+	void co_sie_dzieje_w_sklepie(RenderWindow& okno, Klocki* klocki, Kaczuszka* kaczuszka);
 };
 

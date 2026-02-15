@@ -1,6 +1,8 @@
 #pragma once
 #include "Gra.h"
+#include "Chlebek.h"
 #define Ilosc_Klockow 2
+class Kaczuszka;
 class Klocki
 {
 	Texture tekstura_podloga;
@@ -11,7 +13,8 @@ class Klocki
 	float koordynaty_y = 0;
 	float koordynaty_x = 0;
 public:
-	float licznik_rzedow_pontonow = 0;
+	Chlebek chlebek;
+	float predkosc_klockow = 0.5;
 	float ktory_teraz = -1;
 	bool pierwszy_rzad=1;
 	Vector2f rozmiary_podlogi{};
@@ -22,7 +25,7 @@ public:
 	Klocki();
 	int ile{};
 	virtual ~Klocki();
-	void ruch_klockow(Graj& graj);
+	void ruch_klockow(Graj& graj, Kaczuszka& kaczuszka);
 	void rys_klocki(RenderWindow& okno,Graj& graj);
 	void rys_podloga(RenderWindow& okno);
 };

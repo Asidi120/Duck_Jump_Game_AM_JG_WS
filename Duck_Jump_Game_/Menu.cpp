@@ -1,13 +1,13 @@
 #include "Menu.h"
 #include "Gra.h"
 
-Menu::Menu(): wybrany_obiekt(0)
+Menu::Menu(): wybrany_obiekt(0) //tworzy menu
 {
 	if (!czcionka.loadFromFile("GloriaHallelujah-Regular.ttf"))
 	{
 		cout << "Blad czcionki" << endl;
 	}
-	if (!tekstura_tla.loadFromFile("chmurki2.png", IntRect(0, 0, 1000, 1000)))
+	if (!tekstura_tla.loadFromFile("tlo_tekst.png"))
 	{
 		cout << "Blad ladowania tla" << endl;
 	}
@@ -17,6 +17,7 @@ Menu::Menu(): wybrany_obiekt(0)
 	}
 	tekstura_tla.isSmooth();
 	tlo.setTexture(tekstura_tla);
+	menu_tekst.isSmooth();
 	warstwa.setTexture(menu_tekst);
 	warstwa.setScale(0.6f, 0.8f);
 	warstwa.setPosition(Vector2f(25, 80));
@@ -31,21 +32,26 @@ Menu::Menu(): wybrany_obiekt(0)
 	
 	menu[0].setFillColor(Color::Red);
 	menu[0].setString("Graj");
-	menu[0].setPosition(Vector2f(295,350));
+	menu[0].setPosition(Vector2f(295,280));
 
-	menu[1].setString("Postacie");
-	menu[1].setPosition(Vector2f(270,450));
+	menu[1].setString("Nazwa gracza");
+	menu[1].setPosition(Vector2f(245, 380));
 
-	menu[2].setString("Ustawienia");
-	menu[2].setPosition(Vector2f(255,550));
+	menu[2].setString("Postacie");
+	menu[2].setPosition(Vector2f(270,480));
 
-	menu[3].setString("Zasady");
-	menu[3].setPosition(Vector2f(280,650));
+	menu[3].setString("Ustawienia");
+	menu[3].setPosition(Vector2f(255,580));
 
-	menu[4].setString("Wyjdz");
-	menu[4].setPosition(Vector2f(290, 750));
+	menu[4].setString("Zasady");
+	menu[4].setPosition(Vector2f(280,680));
+
+	menu[5].setString("Wyjdz");
+	menu[5].setPosition(Vector2f(290, 780));
 }
 Menu::~Menu() {}
+
+//rysuje menu
 void Menu::rysuj_menu(RenderWindow& okno)
 {
 	okno.draw(tlo);
@@ -55,7 +61,7 @@ void Menu::rysuj_menu(RenderWindow& okno)
 		okno.draw(menu[i]);
 	}
 }
-
+//przesuwa kolor gry strzalka do gory
 int Menu::ruch_do_gory(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 {
 	if (wybrany_obiekt - 1 >= 0)
@@ -72,6 +78,8 @@ int Menu::ruch_do_gory(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 	}
 	return wybrany_obiekt;
 }
+
+//przesuwa kolor gry strzalka w dol
 int Menu::ruch_w_dol(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 {
 	if (wybrany_obiekt + 1 <= (ilosc_linijek-1))
@@ -89,6 +97,7 @@ int Menu::ruch_w_dol(int ilosc_linijek, Text tekst[], int wybrany_obiekt)
 	return wybrany_obiekt;
 }
 
+//sprawdza ktory obiekt jest teraz wybrany
 int Menu::ktory_teraz()
 {
 	return wybrany_obiekt;
